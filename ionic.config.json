@@ -1,6 +1,6 @@
 {
-  "name": "auth0-app",
-  "app_id": "97351afb",
+  "name": "googol",
+  "app_id": "",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
