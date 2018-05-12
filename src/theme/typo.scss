@@ -1,0 +1,133 @@
+//Weights
+$light: 200; 
+$normal: 400;
+$medium: 600;
+$bold: 800;
+
+//Sizes
+$small: 12px;
+$default: 14px;
+$average: 16px;
+$large: 18px;
+$xlarge: 20px;
+$xxlarge: 22px;
+
+.small-light{
+    font-weight: $light !important;
+    font-size: $small !important;
+}
+
+.small-normal{
+    font-weight: $normal !important;
+    font-size: $small !important;
+}
+
+.small-medium{
+    font-weight: $medium !important;
+    font-size: $small !important;
+}
+
+.small-bold{
+    font-weight: $bold !important;
+    font-size: $small !important;
+}
+
+.default-light{
+    font-weight: $light !important;
+    font-size: $default !important;
+}
+
+.default-normal{
+    font-weight: $normal !important;
+    font-size: $default !important;
+}
+
+.default-medium{
+    font-weight: $medium !important;
+    font-size: $default !important;
+}
+
+.default-bold{
+    font-weight: $bold !important;
+    font-size: $default !important;
+}
+
+.average-light{
+    font-weight: $light !important;
+    font-size: $average !important;
+}
+
+.average-normal{
+    font-weight: $normal !important;
+    font-size: $average !important;
+}
+
+.average-medium{
+    font-weight: $medium !important;
+    font-size: $average !important;
+}
+
+.average-bold{
+    font-weight: $bold !important;
+    font-size: $average !important;
+}
+
+.large-light{
+    font-weight: $light !important;
+    font-size: $large !important;
+}
+
+.large-normal{
+    font-weight: $normal !important;
+    font-size: $large !important;
+}
+
+.large-medium{
+    font-weight: $medium !important;
+    font-size: $large !important;
+}
+
+.large-bold{
+    font-weight: $bold !important;
+    font-size: $large !important;
+}
+
+.xlarge-light{
+    font-weight: $light !important;
+    font-size: $xlarge !important;
+}
+
+.xlarge-normal{
+    font-weight: $normal !important;
+    font-size: $xlarge !important;
+}
+
+.xlarge-medium{
+    font-weight: $medium !important;
+    font-size: $xlarge !important;
+}
+
+.xlarge-bold{
+    font-weight: $bold !important;
+    font-size: $xlarge !important;
+}
+
+.xxlarge-light{
+    font-weight: $light !important;
+    font-size: $xxlarge !important;
+}
+
+.xxlarge-normal{
+    font-weight: $normal !important;
+    font-size: $xxlarge !important;
+}
+
+.xxlarge-medium{
+    font-weight: $medium !important;
+    font-size: $xxlarge !important;
+}
+
+.xxlarge-bold{
+    font-weight: $bold !important;
+    font-size: $xxlarge !important;
+}

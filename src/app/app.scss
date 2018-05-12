@@ -16,13 +16,15 @@
 // automatically applied to the <body> element in the app.
 
 #googol-menu{
-    
+
     background-color: #000000;
     color: white;
     text-align: center !important;
     
     img{
         margin-top: 30%;
+        width: 145px;
+        height: auto;
     }
 
     ion-list{
@@ -30,6 +32,8 @@
         button{
             color: white;
             background-color: #000000;
+            font-size: 18px;
+            font-weight: 600;
         }
     }
 }
