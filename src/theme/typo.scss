@@ -1,3 +1,7 @@
+//Font: Fira Sans
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+$family: 'Fira Sans', sans-serif;
+
 //Weights
 $light: 200; 
 $normal: 400;
@@ -12,122 +16,146 @@ $large: 18px;
 $xlarge: 20px;
 $xxlarge: 22px;
 
-.small-light{
+.text-small-light{
+    font-family: $family;
     font-weight: $light !important;
     font-size: $small !important;
 }
 
-.small-normal{
+.text-small-normal{
+    font-family: $family;
     font-weight: $normal !important;
     font-size: $small !important;
 }
 
-.small-medium{
+.text-small-medium{
+    font-family: $family;
     font-weight: $medium !important;
     font-size: $small !important;
 }
 
-.small-bold{
+.text-small-bold{
+    font-family: $family;
     font-weight: $bold !important;
     font-size: $small !important;
 }
 
-.default-light{
+.text-default-light{
+    font-family: $family;
     font-weight: $light !important;
     font-size: $default !important;
 }
 
-.default-normal{
+.text-default-normal{
+    font-family: $family;
     font-weight: $normal !important;
     font-size: $default !important;
 }
 
-.default-medium{
+.text-default-medium{
+    font-family: $family;
     font-weight: $medium !important;
     font-size: $default !important;
 }
 
-.default-bold{
+.text-default-bold{
+    font-family: $family;
     font-weight: $bold !important;
     font-size: $default !important;
 }
 
-.average-light{
+.text-average-light{
+    font-family: $family;
     font-weight: $light !important;
     font-size: $average !important;
 }
 
-.average-normal{
+.text-average-normal{
+    font-family: $family;
     font-weight: $normal !important;
     font-size: $average !important;
 }
 
-.average-medium{
+.text-average-medium{
+    font-family: $family;
     font-weight: $medium !important;
     font-size: $average !important;
 }
 
-.average-bold{
+.text-average-bold{
+    font-family: $family;
     font-weight: $bold !important;
     font-size: $average !important;
 }
 
-.large-light{
+.text-large-light{
+    font-family: $family;
     font-weight: $light !important;
     font-size: $large !important;
 }
 
-.large-normal{
+.text-large-normal{
+    font-family: $family;
     font-weight: $normal !important;
     font-size: $large !important;
 }
 
-.large-medium{
+.text-large-medium{
+    font-family: $family;
     font-weight: $medium !important;
     font-size: $large !important;
 }
 
-.large-bold{
+.text-large-bold{
+    font-family: $family;
     font-weight: $bold !important;
     font-size: $large !important;
 }
 
-.xlarge-light{
+.text-xlarge-light{
+    font-family: $family;
     font-weight: $light !important;
     font-size: $xlarge !important;
 }
 
-.xlarge-normal{
+.text-xlarge-normal{
+    font-family: $family;
     font-weight: $normal !important;
     font-size: $xlarge !important;
 }
 
-.xlarge-medium{
+.text-xlarge-medium{
+    font-family: $family;
     font-weight: $medium !important;
     font-size: $xlarge !important;
 }
 
-.xlarge-bold{
+.text-xlarge-bold{
+    font-family: $family;
     font-weight: $bold !important;
     font-size: $xlarge !important;
 }
 
-.xxlarge-light{
+.text-xxlarge-light{
+    font-family: $family;
     font-weight: $light !important;
     font-size: $xxlarge !important;
 }
 
-.xxlarge-normal{
+.text-xxlarge-normal{
+    font-family: $family;
     font-weight: $normal !important;
     font-size: $xxlarge !important;
 }
 
-.xxlarge-medium{
+.text-xxlarge-medium{
+    font-family: $family;
     font-weight: $medium !important;
     font-size: $xxlarge !important;
 }
 
-.xxlarge-bold{
+.text-xxlarge-bold{
+    font-family: $family;
     font-weight: $bold !important;
     font-size: $xxlarge !important;
 }
