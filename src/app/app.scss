@@ -14,3 +14,22 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+#googol-menu{
+    
+    background-color: #000000;
+    color: white;
+    text-align: center !important;
+    
+    img{
+        margin-top: 30%;
+    }
+
+    ion-list{
+        margin-top: 20%;
+        button{
+            color: white;
+            background-color: #000000;
+        }
+    }
+}
