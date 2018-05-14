@@ -4,12 +4,14 @@ googol-card {
     $googol-card-color: #000000 !default;
     $googol-card-padding: 15px !default;
     $googol-card-border-radius: 12px !default;
+    $googol-card-margin-top: 20px;
 
     .base{
         background: $googol-card-background;
         color: $googol-card-color;
         width: 100%;
         border-radius: $googol-card-border-radius;
+        margin-top: $googol-card-margin-top;
     }
 
     header{
@@ -19,5 +21,4 @@ googol-card {
     .body{
         padding: $googol-card-padding;
     }
-
 }

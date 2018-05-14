@@ -5,10 +5,9 @@
 
     <span *ngIf="match.location" class="text-small-normal">
       <br>
-      Localidade do Jogo
+      <ion-icon name="navigate"></ion-icon> {{match.location}}
     </span>
-  
-    <span class="text-default-normal text-secondary" float-right>{{match.hour}}</span>
+    <span class="text-default-normal text-mute" float-right>{{match.hour | date:'HH:mm, dd MMM'}}</span>
   </header>
   
   <hr>
@@ -35,10 +34,57 @@
       </ion-row>
     </ion-grid>
   </section>
+
+  <ng-container
+      *ngIf="match.hour.getHours() === currentDate.getHours() then positiveContent else negativeContent">
+  </ng-container>
+
+  <ng-template #positiveContent>
+    <!-- Game Card -->
+    <span *ngIf="action == 'ADD_EVENT'">
+      <p class="text-small-normal text-secondary" text-center>
+        Sabe onde o jogo está sendo transmitido?
+      </p>
+      <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-secondary">
+        Adicionar Evento
+      </button>
+    </span>
+
+    <!-- Event Card -->
+    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'NONE'">
+      <p class="text-small-medium text-mute" text-center>
+        <span class="text-dark">@cr7</span>
+        e outras 10 pesssoas confirmaram presença
+      </p>
+      <br>
+      <button *ngIf="action !== 'NONE'" class="googol-btn-secondary">
+        Confirmar Presença
+      </button>
+    </span>
+  </ng-template>
   
-  <p class="text-small-normal text-secondary" text-center>Sabe onde o jogo está sendo transmitido?</p>
-  
-  <button class="googol-btn-secondary">
-    Adicionar Evento
-  </button>
+  <ng-template #negativeContent>
+      <!-- Game Card -->
+      <span *ngIf="action == 'ADD_EVENT'">
+        <p class="text-small-normal text-danger" text-center>
+          Sabe onde o jogo está sendo transmitido?
+        </p>
+        <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-danger">
+          Adicionar Evento
+        </button>
+      </span>
+
+      <!-- Event Card -->
+      <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'NONE'">
+        <p  class="text-small-medium text-mute" text-center>
+          <span class="text-dark">@cr7</span>
+          e outras 10 pesssoas confirmaram presença
+        </p>
+        <br>
+        <button *ngIf="action !== 'NONE'" class="googol-btn-danger">
+          Confirmar Presença
+        </button>
+      </span>
+    </ng-template>
+
 </div>

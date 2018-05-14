@@ -9,7 +9,7 @@ export class MatchesPage {
 
   match = {
     league: "Brasileirão Série A",
-    hour: "Agora",
+    hour: new Date(2018, 4, 14, 20, 0, 0, 0),
     home: {
       name: "Botafogo",
       logo: "https://ssl.gstatic.com/onebox/media/sports/logos/KLDWYp-H8CAOT9H_JgizRg_96x96.png"
