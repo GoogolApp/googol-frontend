@@ -8,6 +8,9 @@ import { ProfilePage } from '../pages/profile/profile';
 import { MatchesPage } from '../pages/matches/matches';
 import { EventsPage } from '../pages/events/events';
 import { SearchPage } from '../pages/search/search';
+import { SignInPage } from '../pages/signin/signin';  
+
+import { AuthService } from './_services/auth';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,11 +18,11 @@ import { SearchPage } from '../pages/search/search';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = MatchesPage;
+  rootPage: any;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public auth:AuthService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -30,6 +33,12 @@ export class MyApp {
       { title: 'Eventos', component: EventsPage },
       { title: 'Buscar', component: SearchPage }
     ];
+
+    if(this.auth.isAuthenticated()) {
+      this.rootPage = FeedPage;
+    } else {
+      this.rootPage = SignInPage;
+    }
 
   }
 
