@@ -1,0 +1,20 @@
+profile-pic-generator {
+
+    .placeholder {
+        position: relative;
+        display: inline-block;
+        height: 125px;
+        width: 125px;
+        border-radius: 50%;
+        transition: 0.5s;
+    }
+    
+    .placeholder-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 50px;  
+    }
+}

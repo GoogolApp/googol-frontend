@@ -3,10 +3,45 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Profile</ion-title>
+    <ion-title>Meu Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Profile</h3>
+  <!-- img -->
+  <div text-center>
+      <profile-pic-generator [word]="mockUser.name" color="#4A90E2"></profile-pic-generator>
+  </div>
+  
+  <!-- name / username -->
+  <p class="text-xxlarge-normal" text-center>
+    {{mockUser.name}}
+    <br>
+    <span class="text-small-light" text-center>{{mockUser.username}}</span>
+  </p>
+  
+  <!-- follow grid -->
+  <ion-grid>
+    <ion-row>
+
+      <ion-col class="text-default-light" text-center>
+        <span class="text-default-medium">{{mockUser.following}}</span>
+        <br> Seguindo
+      </ion-col>
+
+      <ion-col class="text-default-light" text-center>
+        <span class="text-default-medium">{{mockUser.followers}}</span>
+        <br> Seguidores
+      </ion-col>
+
+      <ion-col class="text-default-light" text-center>
+        <span class="text-default-medium">{{mockUser.reputation}}</span>
+        <br> Reputação
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- teams row -->
+  
+  <!-- last match card -->
 </ion-content>

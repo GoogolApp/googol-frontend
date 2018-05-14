@@ -15,7 +15,7 @@ import { SearchPage } from '../pages/search/search';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = FeedPage;
+  rootPage: any = ProfilePage;
 
   pages: Array<{title: string, component: any}>;
 
