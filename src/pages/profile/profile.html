@@ -3,27 +3,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meu Perfil</ion-title>
+    <ion-title class="text-large-medium">Meu Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <!-- img -->
-  <div text-center>
+  <section text-center>
       <profile-pic-generator [word]="mockUser.name" color="#4A90E2"></profile-pic-generator>
-  </div>
+  </section>
   
   <!-- name / username -->
   <p class="text-xxlarge-normal" text-center>
     {{mockUser.name}}
     <br>
-    <span class="text-small-light" text-center>{{mockUser.username}}</span>
+    <span class="text-default-light" text-center>{{mockUser.username}}</span>
   </p>
   
   <!-- follow grid -->
   <ion-grid>
     <ion-row>
-
       <ion-col class="text-default-light" text-center>
         <span class="text-default-medium">{{mockUser.following}}</span>
         <br> Seguindo
@@ -42,6 +41,14 @@
   </ion-grid>
 
   <!-- teams row -->
+  <section class="favorite-teams">
+    <p class="text-default-light">Times Favoritos</p>
+    <div>
+      <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/-_cmntP5q_pHL7g5LfkRiw_96x96.png">
+      <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png">
+      <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/7spurne-xDt2p6C0imYYNA_96x96.png">
+    </div>
+  </section>
   
   <!-- last match card -->
 </ion-content>
