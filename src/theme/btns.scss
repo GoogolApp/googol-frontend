@@ -1,0 +1,42 @@
+$googol-btn-border-radius: 12px !default;
+$googol-btn-width: 100% !default;
+$googol-btn-padding: 18px !default;
+$googol-btn-margin: 0px !default;
+
+%googol-btn{
+    @extend .text-default-medium;
+    border-radius: $googol-btn-border-radius !important;
+    width: $googol-btn-width !important;
+    padding: $googol-btn-padding !important;
+    margin: $googol-btn-margin !important;
+}
+
+.googol-btn-primary{
+    @extend %googol-btn;
+    background: color($colors, primary);
+    color: white;
+}
+
+.googol-btn-secondary{
+    @extend %googol-btn;
+    background: color($colors, secondary);
+    color: white;
+}
+
+.googol-btn-danger{
+    @extend %googol-btn;
+    background: color($colors, danger);
+    color: white;
+}
+
+.googol-btn-light{
+    @extend %googol-btn;
+    background: color($colors, light);
+    color: black;
+}
+
+.googol-btn-dark{
+    @extend %googol-btn;
+    background: color($colors, dark);
+    color: white;
+}

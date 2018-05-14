@@ -1,16 +1,23 @@
 googol-card {
+    
+    $googol-card-background: #FFFFFF !default;
+    $googol-card-color: #000000 !default;
+    $googol-card-padding: 15px !default;
+    $googol-card-border-radius: 12px !default;
+
     .base{
-        background: #FFFFFF;
-        color: black;
+        background: $googol-card-background;
+        color: $googol-card-color;
         width: 100%;
-        border-radius: 12px;
+        border-radius: $googol-card-border-radius;
     }
 
     header{
-        padding: 20px;
+        padding: $googol-card-padding;
     }
 
     .body{
-        padding: 20px;
+        padding: $googol-card-padding;
     }
+
 }

@@ -36,11 +36,12 @@ $grid-padding-width: 0px;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary:    #4A90E2,
+  secondary:  #02AD58,
+  danger:     #FF473D,
+  light:      #FFFFFF,
+  dark:       #000000,
+  mute:       #989898,
 );
 
 
@@ -87,4 +88,5 @@ $colors: (
 // --------------------------------------------------
 @import "roboto";
 @import "noto-sans";
-@import "typo.scss";
+@import "typo";
+@import "btns";

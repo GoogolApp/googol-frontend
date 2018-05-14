@@ -35,7 +35,7 @@ export class MyApp {
     ];
 
     if(this.auth.isAuthenticated()) {
-      this.rootPage = FeedPage;
+      this.rootPage = MatchesPage;
     } else {
       this.rootPage = SignInPage;
     }

@@ -16,6 +16,14 @@ $large: 18px;
 $xlarge: 20px;
 $xxlarge: 22px;
 
+//Backgrounds
+.text-primary { color: color($colors, primary) }
+.text-secondary { color: color($colors, secondary) }
+.text-danger { color: color($colors, danger) }
+.text-light { color: color($colors, light) }
+.text-dark { color: color($colors, dark) }
+.text-mute { color: color($colors, mute) }
+
 .text-small-light{
     font-family: $family;
     font-weight: $light !important;

@@ -12,11 +12,24 @@ import { Component } from '@angular/core';
 })
 export class GoogolCardComponent {
 
-  text: string;
+  match = {
+    league: "Brasileirão Série A",
+    home: {
+      name: "Botafogo",
+      logo: ""
+    },
+    away: {
+      name: "Fluminense",
+      logo: ""
+    }
+  }
+
+  action = {
+    
+  }
 
   constructor() {
     console.log('Hello GoogolCardComponent Component');
-    this.text = 'Hello World';
   }
 
 }
