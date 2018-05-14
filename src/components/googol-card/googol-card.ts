@@ -1,32 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-/**
- * Generated class for the GoogolCardComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'googol-card',
   templateUrl: 'googol-card.html'
 })
 export class GoogolCardComponent {
 
-  match = {
-    league: "Brasileirão Série A",
-    home: {
-      name: "Botafogo",
-      logo: ""
-    },
-    away: {
-      name: "Fluminense",
-      logo: ""
-    }
-  }
-
-  action = {
-    
-  }
+  @Input() match: any;
 
   constructor() {
     console.log('Hello GoogolCardComponent Component');

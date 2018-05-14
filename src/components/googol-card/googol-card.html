@@ -1,14 +1,14 @@
 
 <div class="base">  
   <header>
-    <span class="text-default-medium">Brasileirão Série A</span>
-    <!--
-      <span class="text-small-normal">
+    <span class="text-default-medium">{{match.league}}</span>
+
+    <span *ngIf="match.location" class="text-small-normal">
       <br>
       Localidade do Jogo
     </span>
-    -->
-    <span class="text-default-normal text-secondary" float-right>Agora</span>
+  
+    <span class="text-default-normal text-secondary" float-right>{{match.hour}}</span>
   </header>
   
   <hr>
@@ -17,9 +17,9 @@
     <ion-grid text-center>
       <ion-row>
         <ion-col col-5>
-            <img width="70" height="70" src="https://ssl.gstatic.com/onebox/media/sports/logos/KLDWYp-H8CAOT9H_JgizRg_96x96.png">
+            <img width="70" height="70" src="{{match.home.logo}}">
             <br>
-            <span class="text-default-normal">Botafogo</span>
+            <span class="text-default-normal">{{match.home.name}}</span>
         </ion-col>
         <ion-col col-2>
           <span class="text-xlarge-bold text-mute">
@@ -28,9 +28,9 @@
           </span>
         </ion-col>
         <ion-col col-5>
-            <img width="70" height="70" src="https://ssl.gstatic.com/onebox/media/sports/logos/fCMxMMDF2AZPU7LzYKSlig_96x96.png">
+            <img width="70" height="70" src="{{match.away.logo}}">
             <br>
-            <span class="text-default-normal">Fluminense</span>
+            <span class="text-default-normal">{{match.away.name}}</span>
         </ion-col>
       </ion-row>
     </ion-grid>
