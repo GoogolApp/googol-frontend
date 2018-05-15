@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { AuthService } from '../../app/_services/auth'; 
-
-import { FeedPage } from '../feed/feed';
+import { AuthService } from '../../app/_services/auth';
+import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-signin',
@@ -18,7 +17,7 @@ export class SignInPage {
 
   fakeAuth(){
     this.auth.fakeAuth(this.user, this.pass);
-    this.navCtrl.push(FeedPage);
+    this.navCtrl.push(HomePage, {}, {animate: false});
   }
 
 }

@@ -6,6 +6,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { ComponentsModule } from '../components/components.module';
 
 import { MyApp } from './app.component';
+
+import { HomePage } from '../pages/home/home';
+
 import { FeedPage } from '../pages/feed/feed';
 import { ProfilePage } from '../pages/profile/profile';
 import { MatchesPage } from '../pages/matches/matches';
@@ -25,7 +28,8 @@ import { AuthService } from './_services/auth';
     MatchesPage,
     EventsPage,
     SearchPage,
-    SignInPage
+    SignInPage,
+    HomePage
   ],
   imports: [
     ComponentsModule,
@@ -41,7 +45,8 @@ import { AuthService } from './_services/auth';
     MatchesPage,
     EventsPage,
     SearchPage,
-    SignInPage
+    SignInPage,
+    HomePage
   ],
   providers: [
     StatusBar,
