@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { AuthService } from '../../app/_services/auth';
 import { HomePage } from '../home/home';
+import { SignUpPage } from '../signup/signup';
 
 @Component({
   selector: 'page-signin',
@@ -20,4 +21,7 @@ export class SignInPage {
     this.navCtrl.push(HomePage, {}, {animate: false});
   }
 
+  goSignUp(){
+    this.navCtrl.push(SignUpPage, {}, {animate: false});
+  }
 }
