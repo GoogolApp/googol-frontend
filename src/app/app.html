@@ -1,7 +1,7 @@
 <ion-menu [content]="content">
 
   <ion-content id="googol-menu">
-    <img src="../assets/imgs/logo_sidemenu.png">
+    <img src="./assets/imgs/logo_sidemenu.png">
     <ion-list no-lines>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" text-center class="text-large-medium">
         {{p.title}}

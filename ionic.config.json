@@ -1,6 +1,6 @@
 {
   "name": "googol",
-  "app_id": "",
+  "app_id": "googol",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
