@@ -42,6 +42,11 @@ export class MyApp {
 
   }
 
+  logout(){
+    this.auth.signOut();
+    this.nav.push(SignInPage);
+  }
+
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

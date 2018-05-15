@@ -1,6 +1,10 @@
-<ion-content padding>
-  Login
-  <button>
-    Login
-  </button>
+<ion-content padding id="SIGNIN_PAGE" text-center>
+  <img width="300" height="90" src="./assets/imgs/logo_sidemenu.png">
+  
+  <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="user"/>
+  
+  <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="pass"/>
+  
+  <button class="googol-btn-danger" (click)="fakeAuth()">Entrar</button>
+
 </ion-content>

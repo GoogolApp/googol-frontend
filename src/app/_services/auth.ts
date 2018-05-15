@@ -21,14 +21,21 @@ export class AuthService{
                 return user;
             });
     }
+
+    fakeAuth(user: string, pass: string){
+        let fakeUser = {
+            name: user,
+            password: pass
+        }
+        localStorage.setItem('currentUser', JSON.stringify(fakeUser));
+    }
     
     isAuthenticated(){
-        return true;
-        /**if(localStorage.getItem('currentUser')){
+        if(localStorage.getItem('currentUser')){
             return true
         }else{
             return false
-        }*/
+        }
     }
 
     signOut() {

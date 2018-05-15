@@ -1,0 +1,9 @@
+
+.googol-input{
+    @extend .text-default-normal;
+    background: transparent;
+    border-radius: 8px;
+    width: 100%;
+    border: .3px solid rgba($color: #FFF, $alpha: 0.3);
+    padding: 15px;
+}

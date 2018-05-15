@@ -6,6 +6,11 @@
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" text-center class="text-large-medium">
         {{p.title}}
       </button>
+      <button menu-close text-center class="text-large-medium" (click)="logout()">
+        <br>
+        <br>
+        Logout
+      </button>
     </ion-list>
   </ion-content>
 
