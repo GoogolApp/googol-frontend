@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 
 import { CreateEventPage } from '../../pages/matches/create-event/create-event'; 
-import { MatchesPage } from '../../pages/matches/matches';
 
 @Component({
   selector: 'googol-card',
