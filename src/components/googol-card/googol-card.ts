@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { ActionSheetController } from 'ionic-angular'
+import { NavController, ActionSheetController } from 'ionic-angular';
+
+import { CreateEventPage } from '../../pages/matches/create-event/create-event'; 
+import { MatchesPage } from '../../pages/matches/matches';
 
 @Component({
   selector: 'googol-card',
@@ -9,6 +12,7 @@ import { ActionSheetController } from 'ionic-angular'
  * Action types
  * ADD_EVENT
  * CONFIRM_PRESENCE
+ * SHOW
  * NONE
  */
 export class GoogolCardComponent {
@@ -18,7 +22,7 @@ export class GoogolCardComponent {
 
   currentDate = new Date();
 
-  constructor(public actionSheetCtrl:ActionSheetController) {
+  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController) {
     console.log('Hello GoogolCardComponent Component');
   }
 
@@ -43,5 +47,10 @@ export class GoogolCardComponent {
     });
  
     actionSheet.present();
+  }
+
+  createEvent(){
+    console.log(this.navCtrl.getViews());
+    this.navCtrl.push(CreateEventPage, { match: this.match });
   }
 }

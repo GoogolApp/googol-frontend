@@ -45,19 +45,19 @@
       <p class="text-small-normal text-secondary" text-center>
         Sabe onde o jogo está sendo transmitido?
       </p>
-      <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-secondary">
+      <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-secondary" (click)="createEvent()">
         Adicionar Evento
       </button>
     </span>
 
     <!-- Event Card -->
-    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'NONE'">
+    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
       <p class="text-small-medium text-mute" text-center>
         <span class="text-dark">@cr7</span>
         e outras 10 pesssoas confirmaram presença
       </p>
       <br>
-      <button *ngIf="action !== 'NONE'" class="googol-btn-secondary" (click)="confirmPresence()">
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
         Confirmar Presença
       </button>
     </span>
@@ -69,19 +69,19 @@
         <p class="text-small-normal text-danger" text-center>
           Sabe onde o jogo será transmitido?
         </p>
-        <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-danger">
+        <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-danger" (click)="createEvent()">
           Adicionar Evento
         </button>
       </span>
 
       <!-- Event Card -->
-      <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'NONE'">
+      <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
         <p  class="text-small-medium text-mute" text-center>
           <span class="text-dark">@cr7</span>
           e outras 10 pesssoas confirmaram presença
         </p>
         <br>
-        <button *ngIf="action !== 'NONE'" class="googol-btn-danger" (click)="confirmPresence()">
+        <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
           Confirmar Presença
         </button>
       </span>

@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { FeedPage } from '../pages/feed/feed';
 import { ProfilePage } from '../pages/profile/profile';
 import { MatchesPage } from '../pages/matches/matches';
+import { CreateEventPage } from '../pages/matches/create-event/create-event';
 import { EventsPage } from '../pages/events/events';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
@@ -27,6 +28,7 @@ import { AuthService } from './_services/auth';
     FeedPage,
     ProfilePage,
     MatchesPage,
+    CreateEventPage,
     EventsPage,
     SearchPage,
     SignInPage,
@@ -45,6 +47,7 @@ import { AuthService } from './_services/auth';
     FeedPage,
     ProfilePage,
     MatchesPage,
+    CreateEventPage,
     EventsPage,
     SearchPage,
     SignInPage,
