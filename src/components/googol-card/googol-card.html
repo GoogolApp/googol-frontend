@@ -57,7 +57,7 @@
         e outras 10 pesssoas confirmaram presença
       </p>
       <br>
-      <button *ngIf="action !== 'NONE'" class="googol-btn-secondary">
+      <button *ngIf="action !== 'NONE'" class="googol-btn-secondary" (click)="confirmPresence()">
         Confirmar Presença
       </button>
     </span>
@@ -67,7 +67,7 @@
       <!-- Game Card -->
       <span *ngIf="action == 'ADD_EVENT'">
         <p class="text-small-normal text-danger" text-center>
-          Sabe onde o jogo está sendo transmitido?
+          Sabe onde o jogo será transmitido?
         </p>
         <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-danger">
           Adicionar Evento
@@ -81,7 +81,7 @@
           e outras 10 pesssoas confirmaram presença
         </p>
         <br>
-        <button *ngIf="action !== 'NONE'" class="googol-btn-danger">
+        <button *ngIf="action !== 'NONE'" class="googol-btn-danger" (click)="confirmPresence()">
           Confirmar Presença
         </button>
       </span>

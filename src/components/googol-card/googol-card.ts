@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ActionSheetController } from 'ionic-angular'
 
 @Component({
   selector: 'googol-card',
@@ -17,7 +18,30 @@ export class GoogolCardComponent {
 
   currentDate = new Date();
 
-  constructor() {
+  constructor(public actionSheetCtrl:ActionSheetController) {
     console.log('Hello GoogolCardComponent Component');
+  }
+
+  confirmPresence() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Tem certeza que deseja confirmar presença?',
+      buttons: [
+        {
+          text: 'Confirmar',
+          handler: () => {
+            console.log('Confirmado');
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancelado');
+          }
+        }
+      ]
+    });
+ 
+    actionSheet.present();
   }
 }
