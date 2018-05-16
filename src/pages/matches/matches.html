@@ -8,6 +8,5 @@
 </ion-header>
 
 <ion-content padding>
-  <googol-card [match]="match" action="ADD_EVENT"></googol-card>
-  <googol-card [match]="match2" action="ADD_EVENT"></googol-card>
+  <googol-card *ngFor="let match of matches" [match]="match" action="ADD_EVENT"></googol-card>
 </ion-content>
