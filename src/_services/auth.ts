@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map'
 
-import { appConfig } from '../app.config';
+import { appConfig } from '../app/app.config';
 
 @Injectable()
 export class AuthService{

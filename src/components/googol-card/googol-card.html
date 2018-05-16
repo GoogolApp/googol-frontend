@@ -1,12 +1,7 @@
-
-<div class="base">  
+<!-- Match Card -->
+<div class="base" *ngIf="match">
   <header>
     <span class="text-default-medium">{{match.league}}</span>
-
-    <span *ngIf="match.location" class="text-small-normal">
-      <br>
-      <ion-icon name="navigate"></ion-icon> {{match.location}}
-    </span>
     <span class="text-default-normal text-mute" float-right>{{match.hour | date:'HH:mm, dd MMM'}}</span>
   </header>
   
@@ -40,7 +35,6 @@
   </ng-container>
 
   <ng-template #positiveContent>
-    <!-- Game Card -->
     <span *ngIf="action == 'ADD_EVENT'">
       <p class="text-small-normal text-secondary" text-center>
         Sabe onde o jogo está sendo transmitido?
@@ -49,22 +43,9 @@
         Adicionar Evento
       </button>
     </span>
-
-    <!-- Event Card -->
-    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
-      <p class="text-small-medium text-mute" text-center>
-        <span class="text-dark">@cr7</span>
-        e outras 10 pesssoas confirmaram presença
-      </p>
-      <br>
-      <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
-        Confirmar Presença
-      </button>
-    </span>
   </ng-template>
   
   <ng-template #negativeContent>
-      <!-- Game Card -->
       <span *ngIf="action == 'ADD_EVENT'">
         <p class="text-small-normal text-danger" text-center>
           Sabe onde o jogo será transmitido?
@@ -73,18 +54,73 @@
           Adicionar Evento
         </button>
       </span>
+  </ng-template>
+</div>
 
-      <!-- Event Card -->
-      <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
-        <p  class="text-small-medium text-mute" text-center>
+
+<!-- Event Card -->
+<div class="base" *ngIf="event">
+    <header>
+      <span class="text-default-medium">{{event.match.league}}</span>
+      <span class="text-small-normal">
+        <br>
+        <ion-icon name="navigate"></ion-icon> {{event.location}}
+      </span>
+      <span class="text-default-normal text-mute" float-right>{{event.match.hour | date:'HH:mm, dd MMM'}}</span>
+    </header>
+    
+    <hr>
+    
+    <section class="body">
+      <ion-grid text-center>
+        <ion-row>
+          <ion-col col-5>
+              <img width="70" height="70" src="{{event.match.home.logo}}">
+              <br>
+              <span class="text-default-normal">{{event.match.home.name}}</span>
+          </ion-col>
+          <ion-col col-2>
+            <span class="text-xlarge-bold text-mute">
+              <br>
+              X
+            </span>
+          </ion-col>
+          <ion-col col-5>
+              <img width="70" height="70" src="{{event.match.away.logo}}">
+              <br>
+              <span class="text-default-normal">{{event.match.away.name}}</span>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </section>
+  
+    <ng-container
+        *ngIf="event.match.hour.getHours() === currentDate.getHours() then positiveContent else negativeContent">
+    </ng-container>
+  
+    <ng-template #positiveContent>
+      <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
+        <p class="text-small-medium text-mute" text-center>
           <span class="text-dark">@cr7</span>
           e outras 10 pesssoas confirmaram presença
         </p>
         <br>
-        <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
+        <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
           Confirmar Presença
         </button>
       </span>
     </ng-template>
-
-</div>
+    
+    <ng-template #negativeContent>
+        <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
+          <p  class="text-small-medium text-mute" text-center>
+            <span class="text-dark">@cr7</span>
+            e outras 10 pesssoas confirmaram presença
+          </p>
+          <br>
+          <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
+            Confirmar Presença
+          </button>
+        </span>
+      </ng-template>
+  </div>

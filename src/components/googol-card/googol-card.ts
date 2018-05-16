@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 
-import { CreateEventPage } from '../../pages/matches/create-event/create-event'; 
+import { CreateEventPage } from '../../pages/matches/create-event/create-event';
+import { Match } from '../../_models/match';
+import { Event } from '../../_models/event';
 
 @Component({
   selector: 'googol-card',
@@ -16,14 +18,13 @@ import { CreateEventPage } from '../../pages/matches/create-event/create-event';
  */
 export class GoogolCardComponent {
 
-  @Input() match: any;
+  @Input() match: Match;
+  @Input() event: Event;
   @Input() action: string;
 
   currentDate = new Date();
 
-  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController) {
-    console.log('Hello GoogolCardComponent Component');
-  }
+  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController) {}
 
   confirmPresence() {
     let actionSheet = this.actionSheetCtrl.create({

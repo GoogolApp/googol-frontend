@@ -9,7 +9,7 @@ import { MatchesPage } from '../matches/matches';
 import { EventsPage } from '../events/events';
 import { SearchPage } from '../search/search';
 
-import { AuthService } from '../../app/_services/auth';
+import { AuthService } from '../../_services/auth';
 
 @Component({
   selector: 'page-home',

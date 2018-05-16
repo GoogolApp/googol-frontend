@@ -8,5 +8,6 @@
 </ion-header>
 
 <ion-content padding>
-  <googol-card [match]="match" action="CONFIRM_PRESENCE"></googol-card>
+  <p *ngIf="events.length === 0" class="text-default-medium" text-center> Não existem eventos cadastrados!</p>
+  <googol-card *ngFor="let event of events" [event]="event" action="CONFIRM_PRESENCE"></googol-card>
 </ion-content>

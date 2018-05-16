@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { EventsService } from '../../_services/events';
+import { Event } from '../../_models/event';
 
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html'
 })
-export class EventsPage {
+export class EventsPage implements OnInit{
+
+  events: Array<Event> = [];
 
   match = {
     league: "Brasileirão Série A",
@@ -21,8 +25,14 @@ export class EventsPage {
     }
   }
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public eventsService: EventsService) {}
 
+  ngOnInit(){
+    this.fetchEvents();
+  }
+
+  fetchEvents(){
+    this.events = this.eventsService.getAll();
   }
 
 }

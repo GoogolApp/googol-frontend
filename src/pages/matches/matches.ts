@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { MatchesService } from '../../app/_services/matches';
+import { MatchesService } from '../../_services/matches';
+
+import { Match } from '../../_models/match';
 
 @Component({
   selector: 'page-matches',
@@ -8,15 +10,15 @@ import { MatchesService } from '../../app/_services/matches';
 })
 export class MatchesPage implements OnInit{
 
-  matches: any;
+  matches: Match[];
 
   constructor(public navCtrl: NavController, private matchesService: MatchesService) {}
 
   ngOnInit(){
-    this.getMatches();
+    this.fetchMatches();
   }
 
-  getMatches(){
+  fetchMatches(){
     this.matches = this.matchesService.getAll();
   }
 
