@@ -15,6 +15,7 @@ import { MatchesPage } from '../pages/matches/matches';
 import { CreateEventPage } from '../pages/matches/create-event/create-event';
 import { EventsPage } from '../pages/events/events';
 import { AllEventsTab } from '../pages/events/all-events/all-events';
+import { MyEventsTab } from '../pages/events/my-events/my-events';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
 import { SignUpPage } from '../pages/signup/signup'; 
@@ -34,6 +35,7 @@ import { EventsService } from '../_services/events';
     CreateEventPage,
     EventsPage,
     AllEventsTab,
+    MyEventsTab,
     SearchPage,
     SignInPage,
     SignUpPage,
@@ -54,6 +56,7 @@ import { EventsService } from '../_services/events';
     CreateEventPage,
     EventsPage,
     AllEventsTab,
+    MyEventsTab,
     SearchPage,
     SignInPage,
     SignUpPage,
