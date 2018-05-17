@@ -24,6 +24,7 @@ $app-direction: ltr;
 $text-color: #FFFFFF;
 $background-color: #111111;
 $toolbar-background: #111111;
+$tabs-background: #111111;
 $grid-padding-width: 0px;
 
 
@@ -48,8 +49,8 @@ $colors: (
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
+$tabs-ios-tab-text-color: color($colors, light);
+$tabs-ios-tab-text-color-active: color($colors, danger);
 
 
 // App Material Design Variables
