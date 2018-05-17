@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { SignInPage } from '../signin/signin';
-
-import { AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-signup',
