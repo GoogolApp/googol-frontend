@@ -7,7 +7,6 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <p *ngIf="events.length === 0" class="text-default-medium" text-center> Não existem eventos cadastrados!</p>
-  <googol-card *ngFor="let event of events" [event]="event" action="CONFIRM_PRESENCE"></googol-card>
-</ion-content>
+<ion-tabs tabsPlacement="top" style="margin-top: 50px;">
+  <ion-tab tabTitle="Todos" [root]="tab1"></ion-tab>
+</ion-tabs>`
