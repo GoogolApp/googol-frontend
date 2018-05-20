@@ -5,7 +5,9 @@
   <input class="googol-input" type="email" placeholder="Email" [(ngModel)]="email"/>
   <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password"/>
   
-  <button class="googol-btn-danger" (click)="signIn()">Entrar</button>
+  <button class="googol-btn-danger" (click)="signIn()" [disabled]="!email || !password">
+    Entrar
+  </button>
 
   <p class="text-default-normal text-mute account">Você não tem uma conta?</p>
   <p class="text-default-medium" (click)="goSignUp()">REGISTRAR-SE AQUI</p>
