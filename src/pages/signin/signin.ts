@@ -10,8 +10,8 @@ import { SignUpPage } from '../signup/signup';
 })
 export class SignInPage {
 
-  user: string = "";
-  pass: string = "";
+  email: string = "";
+  password: string = "";
 
   constructor(public navCtrl: NavController, public auth: AuthService, public alert:AlertController) {
     if(this.auth.isAuthenticated()){
@@ -20,7 +20,7 @@ export class SignInPage {
   }
 
   signIn(){
-    this.auth.signIn(this.user, this.pass).subscribe(
+    this.auth.signIn(this.email, this.password).subscribe(
       user => {
         if(user){
           this.resetFields();
@@ -45,8 +45,8 @@ export class SignInPage {
   }
 
   resetFields(){
-    this.user = "";
-    this.pass = "";
+    this.email = "";
+    this.password = "";
   }
 
   goSignUp(){

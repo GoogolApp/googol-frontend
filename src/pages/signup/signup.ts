@@ -3,31 +3,53 @@ import { NavController, AlertController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { SignInPage } from '../signin/signin';
 
+import { User } from '../../_models/user';
+
+import { UsersService } from '../../_services/users';
+
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 export class SignUpPage {
 
-  mail: string = "";
-  user: string = "";
-  pass: string = "";
-  pass_confirm: string = ""; 
+  email: string = "";
+  username: string = "";
+  password: string = "";
+  password_confirm: string = ""; 
 
-  constructor(public navCtrl: NavController, public alert:AlertController) {
+  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService) {
   }
 
-  fakeUser(){
-    if(this.pass !== this.pass_confirm){
+  createUser(){
+    if(this.password !== this.password_confirm){
       this.presentAlert("As senhas não combinam!")
     }else{
-      this.navCtrl.push(HomePage, {}, {animate: false});
+      let user = new User(this.username, this.email, this.password);
+      
+      this.usersService.create(user).subscribe(
+        data => {
+          this.presentAlert("Usuário criado com sucesso!");
+          this.clearFields();
+          this.goSignIn();
+        },
+        err => {
+          this.presentAlert("Usuário não pode ser criado!")
+        }
+      )
     }
+  }
+
+  clearFields(){
+    this.email = "";
+    this.username = "";
+    this.password =  "";
+    this.password_confirm = "";
   }
 
   presentAlert(message) {
     let alert = this.alert.create({
-      title: 'Erro',
+      title: 'Atenção',
       subTitle: message,
       buttons: ['Entendido']
     });
