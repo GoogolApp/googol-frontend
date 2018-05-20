@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import { HomePage } from '../home/home';
 import { SignInPage } from '../signin/signin';
 
 import { User } from '../../_models/user';
