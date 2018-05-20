@@ -10,22 +10,20 @@ import { appConfig } from '../app/app.config';
 export class AuthService{
 
     public token: string;
-    private url: string = appConfig.apiUrl + '/api/auth/login';
+    private url: string = appConfig.apiUrl + '/auth/login';
     private httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
     constructor(private http: HttpClient) { 
-        let authUser = JSON.parse(localStorage.getItem('authUser'));
-        this.token = authUser && authUser.token;
     }
 
     /**
      * Realiza o signin na aplicação. O retorno representa um login realizado ou não.
-     * @param username 
+     * @param email 
      * @param password 
      */
-    signIn(username: string, password: string) : Observable<boolean>{
+    signIn(email: string, password: string) : Observable<boolean>{
         
-        let body = { username: username, password: password };
+        let body = { email: email, password: password };
 
         return this.http.post<User>( this.url, body, this.httpOptions)
             .map( user => {
@@ -46,9 +44,9 @@ export class AuthService{
      */
     isAuthenticated() : boolean{
         if(localStorage.getItem('authUser')){
-            return true
+            return true;
         }else{
-            return false
+            return false;
         }
     }
 

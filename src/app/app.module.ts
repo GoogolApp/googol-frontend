@@ -25,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../_services/auth';
 import { MatchesService } from '../_services/matches';
 import { EventsService } from '../_services/events';
+import { UsersService } from '../_services/users';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { EventsService } from '../_services/events';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthService,
     MatchesService,
-    EventsService
+    EventsService,
+    UsersService
   ]
 })
 export class AppModule {}

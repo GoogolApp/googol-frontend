@@ -1,13 +1,13 @@
-<ion-content padding id="SIGNIN_PAGE" text-center>
+<ion-content padding id="SIGNUP_PAGE" text-center>
   
   <img width="290" height="75" src="./assets/imgs/logo_sidemenu.png">
   
-  <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="mail"/>
-  <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="user"/>
-  <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="pass"/>
-  <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="pass_confirm"/>
+  <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email"/>
+  <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="username"/>
+  <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password"/>
+  <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm"/>
   
-  <button class="googol-btn-secondary" (click)="fakeUser()">Criar Conta</button>
+  <button class="googol-btn-secondary" (click)="createUser()">Criar Conta</button>
 
   <p class="text-default-normal text-mute account">Já tem uma conta?</p>
   <p class="text-default-medium" (click)="goSignIn()">ENTRE AQUI</p>
