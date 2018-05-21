@@ -1,35 +1,35 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
+      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png" />
     </button>
     <ion-title class="text-large-medium">Meu Perfil</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="pg-profile">
   <!-- img -->
   <section text-center>
-      <profile-pic-generator [word]="mockUser.name" color="#4A90E2"></profile-pic-generator>
+    <profile-pic-generator word="Castor" color="#4A90E2"></profile-pic-generator>
   </section>
-  
+
   <!-- name / username -->
   <p class="text-xxlarge-normal" text-center>
-    {{mockUser.name}}
+    @{{user.username}}
     <br>
-    <span class="text-default-light" text-center>{{mockUser.username}}</span>
+    <span class="text-default-light" text-center>{{user.email}}</span>
   </p>
-  
+
   <!-- follow grid -->
   <ion-grid>
     <ion-row>
       <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium">{{mockUser.following}}</span>
+        <span class="text-default-medium">{{user.following.length}}</span>
         <br> Seguindo
       </ion-col>
 
       <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium">{{mockUser.followers}}</span>
+        <span class="text-default-medium">{{user.followers.length}}</span>
         <br> Seguidores
       </ion-col>
 
@@ -49,6 +49,13 @@
       <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/7spurne-xDt2p6C0imYYNA_96x96.png">
     </div>
   </section>
-  
-  <!-- last match card -->
+
+  <section class="last-match">
+
+    <span class="text-default-light">Ultima partida</span>
+    <span class="text-secondary" float-right> Ver todas </span>
+
+    <googol-card [event]="eventos[0]" action="NONE"></googol-card>
+  </section>
+
 </ion-content>

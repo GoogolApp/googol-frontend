@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { UsersService } from '../../_services/users';
+import { User } from '../../_models/user';
+import { EventsService } from '../../_services/events';
 
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
-export class ProfilePage {
+export class ProfilePage{
 
   mockUser = {
     name: "Rick Sanchez",
@@ -30,8 +33,29 @@ export class ProfilePage {
     }
   };
 
-  constructor(public navCtrl: NavController) {
-    
+  user = new User();
+  eventos = {};
+
+  constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService) {
+    let id = JSON.parse(localStorage.getItem('authUser')).userId;
+    this.fetchUser(id);
+    this.fetchEvents();
+  }
+
+  fetchEvents(){
+    this.eventos = this.eventsService.getAll();
+  }
+
+  fetchUser(id : string){
+    this.userService.getOne(id).subscribe(
+      data=> {
+        console.log(data)
+        this.user = data;
+      },
+      err =>{
+        console.log(err);
+      }
+    ) 
   }
 
 }
