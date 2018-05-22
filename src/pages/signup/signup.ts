@@ -28,7 +28,7 @@ export class SignUpPage {
       
       this.usersService.create(user).subscribe(
         data => {
-          this.presentAlert("Usuário criado com sucesso!");
+          this.createdUserAlert("Usuário criado com sucesso!");
           this.clearFields();
           this.goSignIn();
         },
@@ -44,6 +44,15 @@ export class SignUpPage {
     this.username = "";
     this.password =  "";
     this.password_confirm = "";
+  }
+
+  createdUserAlert(message) {
+    let alert = this.alert.create({
+      title: 'Sucesso!',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   presentAlert(message) {
