@@ -20,10 +20,28 @@ export class SignUpPage {
   constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService) {
   }
 
+  validateFields() : boolean {
+    let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if(this.email === "" || this.username === "" || this.password === "" || this.password === "") {
+      this.presentAlert("Preencha todos os campos!");
+      return false;
+    }
+    if(!regex.test(this.email)) {
+      this.presentAlert("E-mail inválido!");
+      return false;
+    }
+    if(this.password !== this.password_confirm) {
+      this.presentAlert("As senhas não combinam!");
+      return false;
+    }
+
+    return true;
+  }
+
   createUser(){
-    if(this.password !== this.password_confirm){
-      this.presentAlert("As senhas não combinam!")
-    }else{
+    if(this.validateFields()){
+
       let user = new User(this.username, this.email, this.password);
       
       this.usersService.create(user).subscribe(
