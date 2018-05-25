@@ -26,6 +26,7 @@ import { AuthService } from '../_services/auth';
 import { MatchesService } from '../_services/matches';
 import { EventsService } from '../_services/events';
 import { UsersService } from '../_services/users';
+import { SearchedProfilePage } from '../pages/searched-profile/searched-profile';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { UsersService } from '../_services/users';
     AllEventsTab,
     MyEventsTab,
     SearchPage,
+    SearchedProfilePage,
     SignInPage,
     SignUpPage,
     HomePage
@@ -59,6 +61,7 @@ import { UsersService } from '../_services/users';
     AllEventsTab,
     MyEventsTab,
     SearchPage,
+    SearchedProfilePage,
     SignInPage,
     SignUpPage,
     HomePage

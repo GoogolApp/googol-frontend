@@ -8,4 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+
+    <ion-searchbar [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel">
+      </ion-searchbar>
+      <button class="googol-btn-light" (click)="searchUser(usernameSearch)">Buscar</button>
+
 </ion-content>
