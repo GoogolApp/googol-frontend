@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, ModalController} from 'ionic-angular';
 import { SignInPage } from '../signin/signin';
-
 import { User } from '../../_models/user';
-
 import { UsersService } from '../../_services/users';
+import  { LocationModal } from './location-modal/location-modal';
 
 @Component({
   selector: 'page-signup',
@@ -22,7 +21,7 @@ export class SignUpPage {
     spinner: 'bubbles'
   });
 
-  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService, public loadingController: LoadingController, public modalController: ModalController) {
   }
 
   validateFields() : boolean {
@@ -93,6 +92,11 @@ export class SignUpPage {
 
   goSignIn(){
     this.navCtrl.push(SignInPage, {}, {animate: false});
+  }
+
+  openLocationModal(){
+    let modal = this.modalController.create(LocationModal);
+    modal.present();
   }
 
 }

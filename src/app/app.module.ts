@@ -18,7 +18,8 @@ import { AllEventsTab } from '../pages/events/all-events/all-events';
 import { MyEventsTab } from '../pages/events/my-events/my-events';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
-import { SignUpPage } from '../pages/signup/signup'; 
+import { SignUpPage } from '../pages/signup/signup';
+import { LocationModal } from '../pages/signup/location-modal/location-modal'; 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,6 +41,7 @@ import { UsersService } from '../_services/users';
     SearchPage,
     SignInPage,
     SignUpPage,
+    LocationModal,
     HomePage
   ],
   imports: [
@@ -61,6 +63,7 @@ import { UsersService } from '../_services/users';
     SearchPage,
     SignInPage,
     SignUpPage,
+    LocationModal,
     HomePage
   ],
   providers: [
