@@ -1,3 +1,3 @@
 export const appConfig = {
-    apiUrl: 'http://localhost:4040/api'
+    apiUrl: 'https://googol-api.herokuapp.com/api'
 };

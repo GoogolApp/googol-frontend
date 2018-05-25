@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { AuthService } from '../../_services/auth';
 import { HomePage } from '../home/home';
 import { SignUpPage } from '../signup/signup';
@@ -12,16 +12,24 @@ export class SignInPage {
 
   email: string = "";
   password: string = "";
+  loading = this.loadingController.create({
+    content: 'Por favor, aguarde...',
+    spinner: 'bubbles'
+  });
 
-  constructor(public navCtrl: NavController, public auth: AuthService, public alert:AlertController) {
+  constructor(public navCtrl: NavController, public auth: AuthService, public alert:AlertController, private loadingController: LoadingController) {
     if(this.auth.isAuthenticated()){
       this.navigateHome();
     }
   }
 
   signIn(){
+
+    this.loading.present();
+
     this.auth.signIn(this.email, this.password).subscribe(
       user => {
+        this.loading.dismiss();
         if(user){
           this.resetFields();
           this.navigateHome();
@@ -30,6 +38,7 @@ export class SignInPage {
         }
       },
       err => {
+        this.loading.dismiss();
         this.presentAlert("Usuário ou senha incorretos!");
       } 
     )
