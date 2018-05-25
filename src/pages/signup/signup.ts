@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { SignInPage } from '../signin/signin';
 
 import { User } from '../../_models/user';
@@ -15,9 +15,14 @@ export class SignUpPage {
   email: string = "";
   username: string = "";
   password: string = "";
-  password_confirm: string = ""; 
+  password_confirm: string = "";
 
-  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService) {
+  loading = this.loadingController.create({
+    content: 'Por favor, aguarde...',
+    spinner: 'bubbles'
+  });
+
+  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService, public loadingController: LoadingController) {
   }
 
   validateFields() : boolean {
@@ -42,15 +47,19 @@ export class SignUpPage {
   createUser(){
     if(this.validateFields()){
 
+      this.loading.present();
+
       let user = new User(this.username, this.email, this.password);
       
       this.usersService.create(user).subscribe(
         data => {
+          this.loading.dismiss();
           this.createdUserAlert("Usuário criado com sucesso!");
           this.clearFields();
           this.goSignIn();
         },
         err => {
+          this.loading.dismiss();
           this.presentAlert("Usuário não pode ser criado!")
         }
       )
