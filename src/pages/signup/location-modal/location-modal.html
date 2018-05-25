@@ -5,14 +5,20 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios">Cancel</span>
-        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+        <span class="text-default-medium text-danger">Cancelar</span>
       </button>
     </ion-buttons>
+    <ion-buttons end>
+        <button ion-button (click)="dismiss()">
+          <span class="text-default-medium text-secondary">Adicionar</span>
+        </button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-searchbar></ion-searchbar>
-    location
+    <ion-searchbar id="txtHome" type="text"></ion-searchbar>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" style="height: 100%; z-index: -1;">
+      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    </agm-map>
 </ion-content>
