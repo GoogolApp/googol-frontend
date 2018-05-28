@@ -1,0 +1,67 @@
+<!--
+  Generated template for the SearchedProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Buscar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="pg-profile">
+    <!-- img -->
+    <section text-center>
+      <profile-pic-generator word="Castor" color="#4A90E2"></profile-pic-generator>
+    </section>
+  
+    <!-- name / username -->
+    <p class="text-xxlarge-normal" text-center>
+      @{{userSearch.username}}
+      <br>
+      <span class="text-default-light" text-center>{{userSearch.email}}</span>
+    </p>
+  
+    <!-- follow grid -->
+    <ion-grid>
+      <ion-row>
+        <ion-col class="text-default-light" text-center>
+          <span class="text-default-medium">{{userSearch.following.length}}</span>
+          <br> Seguindo
+        </ion-col>
+  
+        <ion-col class="text-default-light" text-center>
+          <span class="text-default-medium">{{userSearch.followers.length}}</span>
+          <br> Seguidores
+        </ion-col>
+  
+        <ion-col class="text-default-light" text-center>
+          <span class="text-default-medium">{{5}}</span>
+          <br> Reputação
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <!-- teams row -->
+    <section class="favorite-teams">
+      <p class="text-default-light">Times Favoritos</p>
+      <div>
+        <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/-_cmntP5q_pHL7g5LfkRiw_96x96.png">
+        <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png">
+        <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/7spurne-xDt2p6C0imYYNA_96x96.png">
+      </div>
+    </section>
+  
+    <section class="last-match">
+  
+      <span class="text-default-light">Ultima partida</span>
+      <span class="text-secondary" float-right> Ver todas </span>
+  
+      <googol-card [event]="eventos[0]" action="NONE"></googol-card>
+    </section>
+  
+  </ion-content>
