@@ -27,6 +27,8 @@ import { MatchesService } from '../_services/matches';
 import { EventsService } from '../_services/events';
 import { UsersService } from '../_services/users';
 import { Maps } from '../_config/maps.config';
+import { BarService } from '../_services/bar';
+import { OwnerService } from '../_services/owner';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,9 @@ import { Maps } from '../_config/maps.config';
     AuthService,
     MatchesService,
     EventsService,
-    UsersService
+    UsersService,
+    BarService,
+    OwnerService
   ]
 })
 export class AppModule {}
