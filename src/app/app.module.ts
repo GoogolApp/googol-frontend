@@ -7,9 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ComponentsModule } from '../components/components.module';
 
 import { MyApp } from './app.component';
-
 import { HomePage } from '../pages/home/home';
-
 import { FeedPage } from '../pages/feed/feed';
 import { ProfilePage } from '../pages/profile/profile';
 import { MatchesPage } from '../pages/matches/matches';
@@ -28,6 +26,7 @@ import { AuthService } from '../_services/auth';
 import { MatchesService } from '../_services/matches';
 import { EventsService } from '../_services/events';
 import { UsersService } from '../_services/users';
+import { Maps } from '../_config/maps.config';
 
 @NgModule({
   declarations: [
@@ -51,7 +50,7 @@ import { UsersService } from '../_services/users';
     HttpClientModule,
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyCnahpwY4LRTYlzEHnER3B_Y8NR1HzmrVE",
+      apiKey: Maps.apiKey,
       libraries: ["places"]
     })
   ],
