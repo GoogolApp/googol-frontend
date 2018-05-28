@@ -8,12 +8,11 @@
 </ion-header>
 
 <ion-content padding padding id="SEARCH_PAGE">
-  <ion-searchbar placeholder="Digite o username" [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel">
+  <ion-searchbar placeholder="Digite o username" [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel" (keyup)="searchUser(usernameSearch)">
   </ion-searchbar>
-  <button class="googol-btn-light" (click)="fetchUsers()">Buscar</button>
   
-  <ion-list>
-    <button ion-item *ngFor="let user of users">
+  <ion-list no-lines *ngIf="usernameSearch !== '' ">
+    <button ion-item detail-none *ngFor="let user of filteredUsers">
       <ion-avatar item-start>
         <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
       </ion-avatar>

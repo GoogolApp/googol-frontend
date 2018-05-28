@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
@@ -10,12 +10,18 @@ import { SearchedProfilePage } from '../searched-profile/searched-profile';
   selector: 'page-search',
   templateUrl: 'search.html'
 })
-export class SearchPage {
+export class SearchPage implements OnInit{
 
+  async ngOnInit() {
+    await this.fetchUsers();
+  }
   constructor(public navCtrl: NavController, private userService: UsersService, private loadingController: LoadingController) {
   }
 
-  public users:User[]; 
+  private users:User[] = [];
+  public filteredUsers:User[] = [];
+  private idUser = "";
+
   loading = this.loadingController.create({
     content: 'Buscando usuário...',
     spinner: 'bubbles'
@@ -26,11 +32,21 @@ export class SearchPage {
     this.navCtrl.push(SearchedProfilePage);
   }*/
 
-  searchUser(username:string){
-    this.fetchUsers();
+  searchUser(inputUsername:string){
+    this.filterUsers(inputUsername);
   }
 
-  private fetchUsers() {
+  filterUsers(input:string) {
+    this.filteredUsers = [];
+    
+    this.users.forEach(user => {
+      if(user.username.includes(input)) {
+        this.filteredUsers.push(user);
+      }
+    });
+  }
+
+  fetchUsers() {
     this.loading.present();
 
     this.userService.getAll().subscribe(
