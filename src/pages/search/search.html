@@ -7,10 +7,17 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
-    <ion-searchbar [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel">
-      </ion-searchbar>
-      <button class="googol-btn-light" (click)="searchUser(usernameSearch)">Buscar</button>
-
+<ion-content padding padding id="SEARCH_PAGE">
+  <ion-searchbar placeholder="Digite o username" [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel">
+  </ion-searchbar>
+  <button class="googol-btn-light" (click)="fetchUsers()">Buscar</button>
+  
+  <ion-list>
+    <button ion-item *ngFor="let user of users">
+      <ion-avatar item-start>
+        <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
+      </ion-avatar>
+      @{{user.username}}
+    </button>
+  </ion-list>
 </ion-content>

@@ -43,4 +43,11 @@ export class UsersService {
             })
     }
 
+    getAll() : Observable<User[]> {
+        return this.http.get<User[]>(this.url, this.httpOptions)
+            .map(users => {
+                return users;
+            });
+    }
+
 }
