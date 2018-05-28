@@ -1,50 +1,29 @@
 <ion-content padding id="SIGNUP_PAGE" text-center>
 
   <img width="290" height="75" src="./assets/imgs/logo_sidemenu.png">
+ 
+  <ion-segment [(ngModel)]="type" color="light">
+    <ion-segment-button value="user">
+      Usuário
+    </ion-segment-button>
+    <ion-segment-button value="owner">
+      Empresário
+    </ion-segment-button>
+  </ion-segment>
 
-  <form class="radios text-default-normal">
-    <ion-grid>
-      <ion-row>
-        <ion-col>
-          <input type="radio" name="type" [value]="'user'" [(ngModel)]="type" /> Usuário
-        </ion-col>
-        <ion-col>
-          <input type="radio" name="type" [value]="'manager'" [(ngModel)]="type" /> Empresário
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </form>
-
-
-
-  <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email" />
-  <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="username" />
-  <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password" />
-  <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm" />
-
-  <!-- Manager -->
-  <div class="manager" *ngIf="type === 'manager'">
-
-    <ion-list *ngIf="selectedLocation.name !== '' ">
-      <ion-item-sliding>
-        <ion-item>
-          <ion-icon name="navigate" item-start></ion-icon>
-          <h2>{{selectedLocation.name}}</h2>
-          <p>{{selectedLocation.formatted_address}}</p>
-        </ion-item>
-        <ion-item-options side="right">
-          <button ion-button color="dark" (click)="openLocationModal()">
-            <ion-icon name="create"></ion-icon>
-            Editar
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
-
-    <button class="googol-btn-light" (click)="openLocationModal()" *ngIf="selectedLocation.name === '' ">
-      Adicionar localização
-    </button>
-
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="'user'">
+        <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email" />
+        <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="username" />
+        <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password" />
+        <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm" />
+    </div>
+  
+    <div *ngSwitchCase="'owner'">
+        <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email" />
+        <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password" />
+        <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm" />
+    </div>
   </div>
 
   <button class="googol-btn-secondary" (click)="createUser()">Criar Conta</button>
