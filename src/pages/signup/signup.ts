@@ -11,10 +11,19 @@ import  { LocationModal } from './location-modal/location-modal';
 })
 export class SignUpPage {
 
+  type: string = "user";
+
   email: string = "";
   username: string = "";
   password: string = "";
   password_confirm: string = "";
+
+  selectedLocation = {
+    name: "",
+    place_id: "",
+    latitude: 0,
+    longitude: 0
+  }
 
   loading = this.loadingController.create({
     content: 'Por favor, aguarde...',
@@ -43,15 +52,26 @@ export class SignUpPage {
     return true;
   }
 
-  createUser(){
+  async createUser(){
     if(this.validateFields()){
 
       this.loading.present();
 
-      let user = new User(this.username, this.email, this.password);
+      if(this.type === 'user'){
+        await this.createNormalUser();
+      }
       
-      this.usersService.create(user).subscribe(
-        data => {
+      if (this.type === 'manager'){
+
+      }
+    }
+  }
+
+  async createNormalUser(){
+    let user = new User(this.username, this.email, this.password);
+      
+      await this.usersService.create(user).subscribe(
+        data => { 
           this.loading.dismiss();
           this.createdUserAlert("Usuário criado com sucesso!");
           this.clearFields();
@@ -61,8 +81,7 @@ export class SignUpPage {
           this.loading.dismiss();
           this.presentAlert("Usuário não pode ser criado!")
         }
-      )
-    }
+    )
   }
 
   clearFields(){
@@ -96,6 +115,13 @@ export class SignUpPage {
 
   openLocationModal(){
     let modal = this.modalController.create(LocationModal);
+    modal.onDidDismiss(data => {
+        console.log(data);
+        this.selectedLocation.place_id = data.place_id;
+        this.selectedLocation.name = data.name;
+        this.selectedLocation.latitude = data.geometry.location.lat();
+        this.selectedLocation.longitude = data.geometry.location.lng();
+    })
     modal.present();
   }
 

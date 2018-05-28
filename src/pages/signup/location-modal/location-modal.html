@@ -9,7 +9,7 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-        <button ion-button (click)="dismiss()">
+        <button ion-button (click)="addLocation()">
           <span class="text-default-medium text-secondary">Adicionar</span>
         </button>
       </ion-buttons>
@@ -18,7 +18,7 @@
 
 <ion-content>
     <ion-searchbar id="txtHome" type="text"></ion-searchbar>
-    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" style="height: 100%; z-index: -1;">
-      <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+    <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom" style="height: 100%; z-index: -1;" [styles]="styles">
+      <agm-marker iconUrl="./assets/imgs/map-marker.png" [latitude]="latitude" [longitude]="longitude"></agm-marker>
     </agm-map>
 </ion-content>
