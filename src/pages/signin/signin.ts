@@ -27,7 +27,7 @@ export class SignInPage {
 
     this.loading.present();
 
-    this.auth.signIn(this.email, this.password).subscribe(
+    this.auth.userSignIn(this.email, this.password).subscribe(
       user => {
         this.loading.dismiss();
         if(user){
