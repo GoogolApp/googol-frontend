@@ -27,10 +27,10 @@ export class SearchPage implements OnInit{
     spinner: 'bubbles'
   });
 
-  /*searchUser(id: string) {
+  showPageUser(id: string) {
     localStorage.setItem('searchedUser', JSON.stringify(id));
     this.navCtrl.push(SearchedProfilePage);
-  }*/
+  }
 
   searchUser(inputUsername:string){
     this.filterUsers(inputUsername);
