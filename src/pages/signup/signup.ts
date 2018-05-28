@@ -22,7 +22,8 @@ export class SignUpPage {
     name: "",
     place_id: "",
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    formatted_address: ""
   }
 
   loading = this.loadingController.create({
@@ -116,11 +117,16 @@ export class SignUpPage {
   openLocationModal(){
     let modal = this.modalController.create(LocationModal);
     modal.onDidDismiss(data => {
+        
         console.log(data);
         this.selectedLocation.place_id = data.place_id;
         this.selectedLocation.name = data.name;
-        this.selectedLocation.latitude = data.geometry.location.lat();
-        this.selectedLocation.longitude = data.geometry.location.lng();
+        this.selectedLocation.formatted_address = data.formatted_address;
+
+        if(data.geometry){
+          this.selectedLocation.latitude = data.geometry.location.lat();
+          this.selectedLocation.longitude = data.geometry.location.lng();
+        }
     })
     modal.present();
   }

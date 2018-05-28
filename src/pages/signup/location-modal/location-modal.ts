@@ -14,7 +14,13 @@ import { Maps } from '../../../_config/maps.config';
     public longitude: number;
     public searchControl: FormControl;
     public zoom: number;
-    public place: any;
+    public place: any = {
+        name: "",
+        place_id: "",
+        latitude: 0,
+        longitude: 0,
+        formatted_address: ""
+    };
 
     public styles = Maps.styles;
 
@@ -87,19 +93,9 @@ import { Maps } from '../../../_config/maps.config';
             });
         }
     }
-  
-    cancel() {
-      let emptyData = {
-        name: "",
-        place_id: "",
-        latitude: 0,
-        longitude: 0
-      };
 
-      this.viewCtrl.dismiss(emptyData);
-    }
-
-    addLocation(){
+    dismiss(){
         this.viewCtrl.dismiss(this.place);
     }
+
   }
