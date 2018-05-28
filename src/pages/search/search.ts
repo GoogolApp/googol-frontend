@@ -20,7 +20,7 @@ export class SearchPage implements OnInit{
 
   private users:User[] = [];
   public filteredUsers:User[] = [];
-  private idUser = "";
+  public anyResult:boolean;
 
   loading = this.loadingController.create({
     content: 'Buscando usuário...',
@@ -32,16 +32,14 @@ export class SearchPage implements OnInit{
     this.navCtrl.push(SearchedProfilePage);
   }
 
-  searchUser(inputUsername:string){
-    this.filterUsers(inputUsername);
-  }
-
-  filterUsers(input:string) {
+  searchUser(input:string){
     this.filteredUsers = [];
+    this.anyResult = false;
     
     this.users.forEach(user => {
-      if(user.username.includes(input)) {
+      if(user.username.toLowerCase().includes(input.toLowerCase())) {
         this.filteredUsers.push(user);
+        this.anyResult = true;
       }
     });
   }
