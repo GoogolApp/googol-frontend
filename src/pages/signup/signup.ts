@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController, ModalController} from 'ionic-angular';
 import { SignInPage } from '../signin/signin';
+
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
-import  { LocationModal } from './location-modal/location-modal';
+import { Owner } from '../../_models/owner';
+import { OwnerService } from '../../_services/owner';
 
 @Component({
   selector: 'page-signup',
@@ -18,29 +20,36 @@ export class SignUpPage {
   password: string = "";
   password_confirm: string = "";
 
-  selectedLocation = {
-    name: "",
-    place_id: "",
-    latitude: 0,
-    longitude: 0,
-    formatted_address: ""
-  }
-
   loading = this.loadingController.create({
     content: 'Por favor, aguarde...',
     spinner: 'bubbles'
   });
 
-  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService, public loadingController: LoadingController, public modalController: ModalController) {
+  constructor(
+    public navCtrl: NavController,
+    public alert:AlertController,
+    public usersService:UsersService,
+    public ownerService:OwnerService,
+    public loadingController: LoadingController) {
   }
 
   validateFields() : boolean {
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if(this.email === "" || this.username === "" || this.password === "" || this.password === "") {
-      this.presentAlert("Preencha todos os campos!");
-      return false;
+    if (this.type === "user"){
+      if(this.email === "" || this.username === "" || this.password === "" || this.password === "") {
+        this.presentAlert("Preencha todos os campos!");
+        return false;
+      }
     }
+
+    if (this.type === "owner"){
+      if(this.email === "" || this.password === "" || this.password === "") {
+        this.presentAlert("Preencha todos os campos!");
+        return false;
+      }
+    }
+
     if(!regex.test(this.email)) {
       this.presentAlert("E-mail inválido!");
       return false;
@@ -62,8 +71,8 @@ export class SignUpPage {
         await this.createNormalUser();
       }
       
-      if (this.type === 'manager'){
-
+      if (this.type === 'owner'){
+        await this.createOwner();
       }
     }
   }
@@ -82,6 +91,24 @@ export class SignUpPage {
           this.loading.dismiss();
           this.presentAlert("Usuário não pode ser criado!")
         }
+    )
+  }
+
+  async createOwner(){
+    
+    let owner  = new Owner(this.email, this.password);
+
+    await this.ownerService.create(owner).subscribe(
+      data => {
+        this.loading.dismiss();
+        this.createdUserAlert("Owner criado com sucesso!");
+        this.clearFields();
+        this.goSignIn();
+      },
+      err => {
+        this.loading.dismiss();
+        this.presentAlert("Owner não pode ser criado!");
+      }
     )
   }
 
@@ -112,23 +139,6 @@ export class SignUpPage {
 
   goSignIn(){
     this.navCtrl.push(SignInPage, {}, {animate: false});
-  }
-
-  openLocationModal(){
-    let modal = this.modalController.create(LocationModal);
-    modal.onDidDismiss(data => {
-        
-        console.log(data);
-        this.selectedLocation.place_id = data.place_id;
-        this.selectedLocation.name = data.name;
-        this.selectedLocation.formatted_address = data.formatted_address;
-
-        if(data.geometry){
-          this.selectedLocation.latitude = data.geometry.location.lat();
-          this.selectedLocation.longitude = data.geometry.location.lng();
-        }
-    })
-    modal.present();
   }
 
 }

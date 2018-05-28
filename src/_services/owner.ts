@@ -9,7 +9,7 @@ import { Owner } from '../_models/owner';
 @Injectable()
 export class OwnerService {
 
-    private url: string = AppUrl.root + '/bar';
+    private url: string = AppUrl.root + '/owner';
     private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }
