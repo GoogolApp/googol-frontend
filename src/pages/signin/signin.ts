@@ -3,6 +3,7 @@ import { NavController, AlertController, LoadingController } from 'ionic-angular
 import { AuthService } from '../../_services/auth';
 import { HomePage } from '../home/home';
 import { SignUpPage } from '../signup/signup';
+import { OwnerHomePage } from '../home-owner/owner-home';
 
 @Component({
   selector: 'page-signin',
@@ -10,29 +11,64 @@ import { SignUpPage } from '../signup/signup';
 })
 export class SignInPage {
 
+  type: string = "user";
   email: string = "";
   password: string = "";
+
   loading = this.loadingController.create({
     content: 'Por favor, aguarde...',
     spinner: 'bubbles'
   });
 
-  constructor(public navCtrl: NavController, public auth: AuthService, public alert:AlertController, private loadingController: LoadingController) {
-    if(this.auth.isAuthenticated()){
-      this.navigateHome();
+  constructor(
+    public navCtrl: NavController,
+    public auth: AuthService,
+    public alert:AlertController,
+    private loadingController: LoadingController) {
+      if(this.auth.isAuthenticated()){
+      this.navCtrl.push(HomePage, {}, {animate: false});
     }
   }
 
-  signIn(){
+  async signIn(){
 
     this.loading.present();
 
+    if(this.type === 'user'){
+      await this.userSignIn();
+    }
+    
+    if(this.type === 'owner'){
+      await this.ownerSignIn();
+    }
+    
+  }
+
+  userSignIn(){
     this.auth.userSignIn(this.email, this.password).subscribe(
       user => {
         this.loading.dismiss();
         if(user){
           this.resetFields();
-          this.navigateHome();
+          this.navCtrl.push(HomePage, {}, {animate: false});
+        }else{
+          this.presentAlert("Por alguma razão o SignIn não pode ser realizado!");
+        }
+      },
+      err => {
+        this.loading.dismiss();
+        this.presentAlert("Usuário ou senha incorretos!");
+      } 
+    )
+  }
+
+  ownerSignIn(){
+    this.auth.ownerSignIn(this.email, this.password).subscribe(
+      user => {
+        this.loading.dismiss();
+        if(user){
+          this.resetFields();
+          this.navCtrl.push(OwnerHomePage, {}, {animate: false});
         }else{
           this.presentAlert("Por alguma razão o SignIn não pode ser realizado!");
         }
@@ -62,7 +98,4 @@ export class SignInPage {
     this.navCtrl.push(SignUpPage, {}, {animate: false});
   }
 
-  navigateHome(){
-    this.navCtrl.push(HomePage, {}, {animate: false});
-  }
 }

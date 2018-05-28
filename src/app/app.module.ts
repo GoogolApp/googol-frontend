@@ -29,6 +29,7 @@ import { UsersService } from '../_services/users';
 import { Maps } from '../_config/maps.config';
 import { BarService } from '../_services/bar';
 import { OwnerService } from '../_services/owner';
+import { OwnerHomePage } from '../pages/home-owner/owner-home';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { OwnerService } from '../_services/owner';
     SignInPage,
     SignUpPage,
     LocationModal,
-    HomePage
+    HomePage,
+    OwnerHomePage
   ],
   imports: [
     ComponentsModule,
@@ -70,7 +72,8 @@ import { OwnerService } from '../_services/owner';
     SignInPage,
     SignUpPage,
     LocationModal,
-    HomePage
+    HomePage,
+    OwnerHomePage
   ],
   providers: [
     StatusBar,

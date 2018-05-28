@@ -101,13 +101,13 @@ export class SignUpPage {
     await this.ownerService.create(owner).subscribe(
       data => {
         this.loading.dismiss();
-        this.createdUserAlert("Owner criado com sucesso!");
+        this.createdUserAlert("Empresário criado com sucesso!");
         this.clearFields();
         this.goSignIn();
       },
       err => {
         this.loading.dismiss();
-        this.presentAlert("Owner não pode ser criado!");
+        this.presentAlert("Empresário não pode ser criado!");
       }
     )
   }

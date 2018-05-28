@@ -26,8 +26,8 @@ export class OwnerService {
         }
 
         return this.http.post<Owner>(this.url, body, this.httpOptions)
-            .map(barOwner => {
-                return barOwner;
+            .map(owner => {
+                return owner;
             })
     }
 
