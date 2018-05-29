@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
@@ -8,11 +8,8 @@ import { SearchedProfilePage } from '../searched-profile/searched-profile';
   selector: 'page-search',
   templateUrl: 'search.html'
 })
-export class SearchPage implements OnInit{
+export class SearchPage {
 
-  async ngOnInit() {
-    //await this.fetchUsers();
-  }
   constructor(public navCtrl: NavController, private userService: UsersService, private loadingController: LoadingController) {
   }
 
@@ -31,18 +28,6 @@ export class SearchPage implements OnInit{
     this.navCtrl.push(SearchedProfilePage);
   }
 
-  /*searchUser(input:string){
-    this.filteredUsers = [];
-    this.anyResult = false;
-    
-    this.users.forEach(user => {
-      if(user.username.toLowerCase().includes(input.toLowerCase())) {
-        this.filteredUsers.push(user);
-        this.anyResult = true;
-      }
-    });
-  }*/
-
   async searchUser(username:string) {
     if(this.currentSearch !== username.trim()) {
       this.currentSearch = username;
@@ -52,8 +37,6 @@ export class SearchPage implements OnInit{
         this.showList = false;
       }
     }
-    //já nao faz fetch se for vazia
-    //quero que nao faca se for igual ao que ja tem
   }
   
   fetchUsers(input:string) {
