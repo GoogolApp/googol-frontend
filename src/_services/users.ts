@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
@@ -16,7 +16,7 @@ export class UsersService {
 
     /**
      * Cria um novo usuário
-     * @param user 
+     * @param user
      */
     create(user: User): Observable<User> {
 
@@ -34,7 +34,7 @@ export class UsersService {
 
     /**
      * Retorna um único usuário pelo seu id
-     * @param id 
+     * @param id
      */
     getOne(id: string) : Observable<User> {
         return this.http.get<User>(this.url + '/' + id, this.httpOptions)
