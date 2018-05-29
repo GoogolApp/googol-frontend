@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
@@ -18,7 +19,7 @@ import { AllEventsTab } from '../pages/events/all-events/all-events';
 import { MyEventsTab } from '../pages/events/my-events/my-events';
 import { SearchPage } from '../pages/search/search';
 import { SignInPage } from '../pages/signin/signin';
-import { SignUpPage } from '../pages/signup/signup'; 
+import { SignUpPage } from '../pages/signup/signup';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +28,7 @@ import { MatchesService } from '../_services/matches';
 import { EventsService } from '../_services/events';
 import { UsersService } from '../_services/users';
 import { SearchedProfilePage } from '../pages/searched-profile/searched-profile';
+import {TokenInterceptor} from "../_providers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -73,7 +75,10 @@ import { SearchedProfilePage } from '../pages/searched-profile/searched-profile'
     AuthService,
     MatchesService,
     EventsService,
-    UsersService
+    UsersService,
+    {provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true}
   ]
 })
 export class AppModule {}
