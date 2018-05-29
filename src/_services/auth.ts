@@ -50,13 +50,13 @@ export class AuthService{
         }
     }
 
-  /**
-   * Retorna o token de autenticação.
-   * @returns {string}
-   */
-  getToken() : string {
-    return this.token;
-  }
+    /**
+     * Retorna o token de autenticação.
+     * @returns {string}
+     */
+    getToken() : string {
+      return this.token;
+    }
 
     /**
      * Realiza o sign out
