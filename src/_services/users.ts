@@ -50,4 +50,11 @@ export class UsersService {
             });
     }
 
+    getByUsername(username:string) : Observable<User[]> {
+        return this.http.get<User[]>(this.url + '/search?keyword=' + username, this.httpOptions)
+            .map(users => {
+                return users;
+            });
+    }
+
 }
