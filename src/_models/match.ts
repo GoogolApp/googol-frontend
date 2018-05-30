@@ -1,17 +1,30 @@
-import { Team } from './team';
-
 export class Match {
-    _id: number;
-    league: string;
-    hour: Date;
-    home: Team;
-    away: Team;
+    
+    _id: string;
+    stadium: string;
+    league:string;
+    round:string;
+    matchDate:Date;
+    homeTeam:string;
+    homeTeamLogoUrl:string;
+    homeTeamScore:string;
+    awayTeam:string;
+    awayTeamLogoUrl:string;
+    awayTeamScore:string;
 
-    constructor(_id:number, league:string, hour:Date, hname:string, hlogo:string, aname:string, alogo:string ){
+    constructor(_id:string, stadium:string, league:string, round:string, matchDate:Date,
+                homeTeam:string, homeTeamLogoUrl:string, homeTeamScore:string,
+                awayTeam:string, awayTeamLogoUrl:string, awayTeamScore:string) {
         this._id = _id;
+        this.stadium = stadium;
         this.league = league;
-        this.hour = hour;
-        this.home = new Team(hname, hlogo);
-        this.away = new Team(aname, alogo);
+        this.round = round;
+        this.matchDate = matchDate;
+        this.homeTeam = homeTeam;
+        this.homeTeamLogoUrl = homeTeamLogoUrl;
+        this.homeTeamScore = homeTeamScore;
+        this.awayTeam = awayTeam;
+        this.awayTeamLogoUrl = awayTeamLogoUrl;
+        this.awayTeamScore = awayTeamScore;
     }
 };

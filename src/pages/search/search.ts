@@ -46,14 +46,11 @@ export class SearchPage {
       users => {
         this.users = [];
         this.users = users;
-        console.log(this.users);
         this.showList = this.users.length !== 0;
-        console.log(this.showList);
         this.loading.dismiss();
       },
       error => {
         this.loading.dismiss();
-        console.log(error);
       }
     );
   }
