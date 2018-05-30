@@ -42,4 +42,15 @@ export class SearchedProfilePage {
     ) 
   }
 
+  followUser() {
+    this.userService.follow('add', this.userSearch._id).subscribe(
+      data =>{
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
 }
