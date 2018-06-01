@@ -33,7 +33,6 @@ export class SearchedProfilePage {
   fetchUser(id : string){
     this.userService.getOne(id).subscribe(
       data=> {
-        console.log(data)
         this.userSearch = data;
       },
       err =>{
@@ -42,10 +41,30 @@ export class SearchedProfilePage {
     ) 
   }
 
+  followTrue(){
+    if(this.userSearch.followers.indexOf(JSON.parse(localStorage.getItem('authUser')).userId) === -1){
+      return false;
+    }else{
+      return true;
+    }
+
+  }
+
   followUser() {
     this.userService.follow('add', this.userSearch._id).subscribe(
       data =>{
-        console.log(data);
+        this.fetchUser(this.userSearch._id);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  unfollowUser(){
+    this.userService.follow('remove', this.userSearch._id).subscribe(
+      data =>{
+        this.fetchUser(this.userSearch._id);
       },
       err => {
         console.log(err);

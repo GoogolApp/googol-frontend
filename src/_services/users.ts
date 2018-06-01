@@ -65,5 +65,4 @@ export class UsersService {
             return user;
         });
     }
-
 }

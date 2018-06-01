@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { UsersService } from '../../_services/users';
 import { User } from '../../_models/user';
 import { EventsService } from '../../_services/events';
+import { EditProfilePage } from '../edit-profile/edit-profile';
+
 
 @Component({
   selector: 'page-profile',
@@ -49,7 +51,6 @@ export class ProfilePage{
   fetchUser(id : string){
     this.userService.getOne(id).subscribe(
       data=> {
-        console.log(data)
         this.user = data;
       },
       err =>{
@@ -57,5 +58,10 @@ export class ProfilePage{
       }
     ) 
   }
+
+  gotoEdit(){
+    this.navCtrl.push(EditProfilePage);
+  }
+
 
 }
