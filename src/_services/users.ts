@@ -65,4 +65,13 @@ export class UsersService {
             return user;
         });
     }
+
+    salvarEdicoes(username:string , email:string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { username:username, email:email };
+        return this.http.put<User>( this.url + '/' + authUserId, body, this.httpOptions)
+        .map(user => {
+            return user;
+        });
+    }
 }

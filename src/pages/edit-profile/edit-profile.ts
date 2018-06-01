@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
 
@@ -18,9 +18,11 @@ import { UsersService } from '../../_services/users';
 export class EditProfilePage {
 
   user = new User();
-  eventos = {};
 
-  constructor(public navCtrl: NavController, private userService : UsersService) {
+  email: string = "";
+  username: string = "";
+
+  constructor(public navCtrl: NavController, private userService : UsersService, public alert:AlertController) {
     let id = JSON.parse(localStorage.getItem('authUser')).userId;
     this.fetchUser(id);
   }
@@ -35,6 +37,58 @@ export class EditProfilePage {
         console.log(err);
       }
     ) 
+  }
+
+  salvar(){
+    console.log(this.username);
+    console.log(this.email);
+    if(this.username === ""){
+      this.userService.salvarEdicoes(this.user.username, this.email).subscribe(
+        data=> {
+          this.editedUserAlert("Edicoes realizadas com sucesso!");
+          this.user = data;
+        },
+        err =>{
+          console.log(err);
+        })}
+  
+    //else if(email === ""){
+    //  this.userService.salvarEdicoes(username, this.user.email).subscribe(
+    //    data=> {
+    //      this.user = data;
+    //    },
+    //    err =>{
+    //      console.log(err);
+    //    });
+    //}
+    //else if(username === "" && email === ""){
+    //  this.userService.salvarEdicoes(this.user.username,this.user.email).subscribe(
+    //    data=> {
+    //      this.user = data;
+    //    },
+    //    err =>{
+    //      console.log(err);
+    //   });;
+    //}
+    else{
+      this.userService.salvarEdicoes(this.username, this.email).subscribe(
+        data=> {
+          this.editedUserAlert("Ediçoes realizadas com sucesso!");
+          this.user = data;
+        },
+        err =>{
+          console.log(err);
+        });
+    } 
+  }
+
+  editedUserAlert(message) {
+    let alert = this.alert.create({
+      title: 'Sucesso!',
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }
