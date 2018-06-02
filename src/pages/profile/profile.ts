@@ -61,6 +61,7 @@ export class ProfilePage{
 
   gotoEdit(){
     this.navCtrl.push(EditProfilePage);
+    this.fetchUser(JSON.parse(localStorage.getItem('authUser')).userId);
   }
 
 

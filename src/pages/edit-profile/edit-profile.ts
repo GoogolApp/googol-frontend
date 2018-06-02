@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
+import { ProfilePage } from '../profile/profile';
 
 /**
  * Generated class for the EditProfilePage page.
@@ -30,7 +31,6 @@ export class EditProfilePage {
   fetchUser(id : string){
     this.userService.getOne(id).subscribe(
       data=> {
-        console.log(data)
         this.user = data;
       },
       err =>{
@@ -39,47 +39,32 @@ export class EditProfilePage {
     ) 
   }
 
-  salvar(){
-    console.log(this.username);
-    console.log(this.email);
+  save(){
     if(this.username === ""){
-      this.userService.salvarEdicoes(this.user.username, this.email).subscribe(
+      this.userService.saveEditions(this.user.username, this.email).subscribe(
         data=> {
           this.editedUserAlert("Edicoes realizadas com sucesso!");
           this.user = data;
+          this.goProfile();
         },
         err =>{
           console.log(err);
         })}
-  
-    //else if(email === ""){
-    //  this.userService.salvarEdicoes(username, this.user.email).subscribe(
-    //    data=> {
-    //      this.user = data;
-    //    },
-    //    err =>{
-    //      console.log(err);
-    //    });
-    //}
-    //else if(username === "" && email === ""){
-    //  this.userService.salvarEdicoes(this.user.username,this.user.email).subscribe(
-    //    data=> {
-    //      this.user = data;
-    //    },
-    //    err =>{
-    //      console.log(err);
-    //   });;
-    //}
     else{
-      this.userService.salvarEdicoes(this.username, this.email).subscribe(
+      this.userService.saveEditions(this.username, this.email).subscribe(
         data=> {
           this.editedUserAlert("Ediçoes realizadas com sucesso!");
           this.user = data;
+          this.goProfile();
         },
         err =>{
           console.log(err);
         });
     } 
+  }
+
+  goProfile(){
+    this.navCtrl.getPrevious();
   }
 
   editedUserAlert(message) {
