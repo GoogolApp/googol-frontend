@@ -57,4 +57,21 @@ export class UsersService {
             });
     }
 
+    follow(operation: string, user: string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { operation: operation, user: user };
+        return this.http.patch<User>( this.url + '/' + authUserId + '/following', body, this.httpOptions)
+        .map(user => {
+            return user;
+        });
+    }
+
+    saveEditions(username:string , email:string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { username:username, email:email };
+        return this.http.put<User>( this.url + '/' + authUserId, body, this.httpOptions)
+        .map(user => {
+            return user;
+        });
+    }
 }

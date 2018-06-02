@@ -29,6 +29,7 @@ import { EventsService } from '../_services/events';
 import { UsersService } from '../_services/users';
 import { SearchedProfilePage } from '../pages/searched-profile/searched-profile';
 import {TokenInterceptor} from "../_providers/auth.interceptor";
+import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {TokenInterceptor} from "../_providers/auth.interceptor";
     MyEventsTab,
     SearchPage,
     SearchedProfilePage,
+    EditProfilePage,
     SignInPage,
     SignUpPage,
     HomePage
@@ -64,6 +66,7 @@ import {TokenInterceptor} from "../_providers/auth.interceptor";
     MyEventsTab,
     SearchPage,
     SearchedProfilePage,
+    EditProfilePage,
     SignInPage,
     SignUpPage,
     HomePage

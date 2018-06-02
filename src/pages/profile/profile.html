@@ -4,13 +4,16 @@
       <img width="22" height="17" src="./assets/imgs/hamburger_icon.png" />
     </button>
     <ion-title class="text-large-medium">Meu Perfil</ion-title>
+    <ion-buttons end>
+      <button ion-button color="light" (click)="gotoEdit()" clear>Edit</button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="pg-profile">
   <!-- img -->
   <section text-center>
-    <profile-pic-generator word="Castor" color="#4A90E2"></profile-pic-generator>
+    <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
   </section>
 
   <!-- name / username -->
