@@ -15,11 +15,6 @@ export class SignInPage {
   email: string = "";
   password: string = "";
 
-  loading = this.loadingController.create({
-    content: 'Por favor, aguarde...',
-    spinner: 'bubbles'
-  });
-
   constructor(
     public navCtrl: NavController,
     public auth: AuthService,
@@ -32,22 +27,22 @@ export class SignInPage {
 
   async signIn(){
 
-    this.loading.present();
+    let loading = this.loading();
 
     if(this.type === 'user'){
-      await this.userSignIn();
+      await this.userSignIn(loading);
     }
     
     if(this.type === 'owner'){
-      await this.ownerSignIn();
+      await this.ownerSignIn(loading);
     }
     
   }
 
-  userSignIn(){
+  userSignIn(loading){
     this.auth.userSignIn(this.email, this.password).subscribe(
       user => {
-        this.loading.dismiss();
+        loading.dismiss();
         if(user){
           this.resetFields();
           this.navCtrl.push(HomePage, {}, {animate: false});
@@ -56,16 +51,16 @@ export class SignInPage {
         }
       },
       err => {
-        this.loading.dismiss();
+        loading.dismiss();
         this.presentAlert("Usuário ou senha incorretos!");
       } 
     )
   }
 
-  ownerSignIn(){
+  ownerSignIn(loading){
     this.auth.ownerSignIn(this.email, this.password).subscribe(
       user => {
-        this.loading.dismiss();
+        loading.dismiss();
         if(user){
           this.resetFields();
           this.navCtrl.push(OwnerHomePage, {}, {animate: false});
@@ -74,7 +69,7 @@ export class SignInPage {
         }
       },
       err => {
-        this.loading.dismiss();
+        loading.dismiss();
         this.presentAlert("Usuário ou senha incorretos!");
       } 
     )
@@ -92,6 +87,17 @@ export class SignInPage {
   resetFields(){
     this.email = "";
     this.password = "";
+  }
+
+  loading(){
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
   }
 
   goSignUp(){

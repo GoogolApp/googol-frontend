@@ -3,9 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { User } from '../_models/user';
 import { AppUrl } from '../_config/url.config';
-import { Owner } from '../_models/owner';
 
 @Injectable()
 export class AuthService{
@@ -27,7 +25,7 @@ export class AuthService{
 
         let body = { email: email, password: password };
 
-        return this.http.post<User>( url, body, this.httpOptions)
+        return this.http.post<any>( url, body, this.httpOptions)
             .map( user => {
                 let token = user && user.token;
                 if (token) {
