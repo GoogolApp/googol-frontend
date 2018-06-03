@@ -1,43 +1,50 @@
+<!--
+  Generated template for the SearchedProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png" />
-    </button>
-    <ion-title class="text-large-medium">Meu Perfil</ion-title>
-    <ion-buttons end>
-      <button ion-button color="light" (click)="gotoEdit()" clear>Edit</button>
-    </ion-buttons>
+    <ion-title>Buscar</ion-title>
+
+     <ion-buttons end>
+            <button *ngIf="followTrue()" ion-button color="danger" (click)="unfollowUser()" clear>Desseguir</button>
+            <button *ngIf="!followTrue()" ion-button color="secondary" (click)="followUser()" clear>Seguir</button>
+        </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="pg-profile">
   <!-- img -->
   <section text-center>
-    <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
+    <profile-pic-generator word="{{userSearch.username}}" color="#4A90E2"></profile-pic-generator>
   </section>
 
   <!-- name / username -->
   <p class="text-xxlarge-normal" text-center>
-    @{{user.username}}
+    @{{userSearch.username}}
     <br>
-    <span class="text-default-light" text-center>{{user.email}}</span>
+    <span class="text-default-light" text-center>{{userSearch.email}}</span>
   </p>
 
   <!-- follow grid -->
   <ion-grid>
     <ion-row>
       <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium">{{user.following.length}}</span>
+        <span class="text-default-medium">{{userSearch.following.length}}</span>
         <br> Seguindo
       </ion-col>
 
       <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium">{{user.followers.length}}</span>
+        <span class="text-default-medium">{{userSearch.followers.length}}</span>
         <br> Seguidores
       </ion-col>
 
       <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium">{{mockUser.reputation}}</span>
+        <span class="text-default-medium">{{5}}</span>
         <br> Reputação
       </ion-col>
     </ion-row>

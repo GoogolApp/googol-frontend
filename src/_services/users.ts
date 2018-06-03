@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
@@ -16,7 +16,7 @@ export class UsersService {
 
     /**
      * Cria um novo usuário
-     * @param user 
+     * @param user
      */
     create(user: User): Observable<User> {
 
@@ -34,7 +34,7 @@ export class UsersService {
 
     /**
      * Retorna um único usuário pelo seu id
-     * @param id 
+     * @param id
      */
     getOne(id: string) : Observable<User> {
         return this.http.get<User>(this.url + '/' + id, this.httpOptions)
@@ -43,4 +43,35 @@ export class UsersService {
             })
     }
 
+    getAll() : Observable<User[]> {
+        return this.http.get<User[]>(this.url, this.httpOptions)
+            .map(users => {
+                return users;
+            });
+    }
+
+    getByUsername(username:string) : Observable<User[]> {
+        return this.http.get<User[]>(this.url + '/search?keyword=' + username, this.httpOptions)
+            .map(users => {
+                return users;
+            });
+    }
+
+    follow(operation: string, user: string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { operation: operation, user: user };
+        return this.http.patch<User>( this.url + '/' + authUserId + '/following', body, this.httpOptions)
+        .map(user => {
+            return user;
+        });
+    }
+
+    saveEditions(username:string , email:string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { username:username, email:email };
+        return this.http.put<User>( this.url + '/' + authUserId, body, this.httpOptions)
+        .map(user => {
+            return user;
+        });
+    }
 }

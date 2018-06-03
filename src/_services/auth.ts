@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
@@ -15,17 +15,16 @@ export class AuthService{
     private ownerUrl: string = AppUrl.root + '/auth/ownerLogin';
     private httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 
-    constructor(private http: HttpClient) { 
+    constructor(private http: HttpClient) {
     }
 
-    /**
-     * Sign in for any user
+    /** Sign in for any user
      * @param email 
      * @param password 
      * @param url
      */
     private signIn(email: string, password: string, url: string) : Observable<boolean>{
-        
+
         let body = { email: email, password: password };
 
         return this.http.post<User>( url, body, this.httpOptions)
@@ -59,7 +58,7 @@ export class AuthService{
     ownerSignIn(email: string, password: string){
         return this.signIn(email, password, this.ownerUrl);
     }
-    
+
     /**
      * Return if an user is auth
      */
@@ -72,7 +71,15 @@ export class AuthService{
     }
 
     /**
-     * App sign out
+     * Retorna o token de autenticação.
+     * @returns {string}
+     */
+    getToken() : string {
+      return this.token;
+    }
+
+    /**
+     * Realiza o sign out
      */
     signOut() {
         localStorage.removeItem('authUser');

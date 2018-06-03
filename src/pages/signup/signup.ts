@@ -89,7 +89,7 @@ export class SignUpPage {
         },
         err => {
           this.loading.dismiss();
-          this.presentAlert("Usuário não pode ser criado!")
+          this.presentAlert(err.error.message);
         }
     )
   }
