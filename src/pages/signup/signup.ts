@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController, ModalController} from 'ionic-angular';
+import { NavController, AlertController, LoadingController} from 'ionic-angular';
 import { SignInPage } from '../signin/signin';
 
 import { User } from '../../_models/user';
@@ -19,11 +19,6 @@ export class SignUpPage {
   username: string = "";
   password: string = "";
   password_confirm: string = "";
-
-  loading = this.loadingController.create({
-    content: 'Por favor, aguarde...',
-    spinner: 'bubbles'
-  });
 
   constructor(
     public navCtrl: NavController,
@@ -65,48 +60,48 @@ export class SignUpPage {
   async createUser(){
     if(this.validateFields()){
 
-      this.loading.present();
+      let loading = this.loading();
 
       if(this.type === 'user'){
-        await this.createNormalUser();
+        await this.createNormalUser(loading);
       }
       
       if (this.type === 'owner'){
-        await this.createOwner();
+        await this.createOwner(loading);
       }
     }
   }
 
-  async createNormalUser(){
+  async createNormalUser(loading){
     let user = new User(this.username, this.email, this.password);
       
       await this.usersService.create(user).subscribe(
         data => { 
-          this.loading.dismiss();
+          loading.dismiss();
           this.createdUserAlert("Usuário criado com sucesso!");
           this.clearFields();
           this.goSignIn();
         },
         err => {
-          this.loading.dismiss();
+          loading.dismiss();
           this.presentAlert(err.error.message);
         }
     )
   }
 
-  async createOwner(){
+  async createOwner(loading){
     
     let owner  = new Owner(this.email, this.password);
 
     await this.ownerService.create(owner).subscribe(
       data => {
-        this.loading.dismiss();
+        loading.dismiss();
         this.createdUserAlert("Empresário criado com sucesso!");
         this.clearFields();
         this.goSignIn();
       },
       err => {
-        this.loading.dismiss();
+        loading.dismiss();
         this.presentAlert("Empresário não pode ser criado!");
       }
     )
@@ -135,6 +130,17 @@ export class SignUpPage {
       buttons: ['Entendido']
     });
     alert.present();
+  }
+
+  loading(){
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
   }
 
   goSignIn(){
