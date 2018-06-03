@@ -21,4 +21,8 @@ googol-card {
     .body{
         padding: $googol-card-padding;
     }
+
+    #liveContent .text-default-normal {
+        color: green;
+    }
 }
