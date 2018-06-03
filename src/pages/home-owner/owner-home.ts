@@ -1,30 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import { Owner } from '../../_models/owner';
-import { OwnerService } from '../../_services/owner';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform, App } from 'ionic-angular';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from '../../_services/auth';
+
+import { MyBarPage } from '../my-bar/my-bar';
 
 @Component({
   selector: 'owner-home',
   templateUrl: 'owner-home.html'
 })
-export class OwnerHomePage implements OnInit{
+export class OwnerHomePage {
 
-  owner: Owner = new Owner();
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(
-    public navCtrl: NavController,
-    public ownerService: OwnerService
-  ) { }
+  rootPage: any = MyBarPage;
 
-  async ngOnInit(){
-    let id = await JSON.parse(localStorage.getItem('authUser')).ownerId;
-    this.ownerService.getOne(id).subscribe(
-      owner => {
-        this.owner = owner;
-      },
-      err => {
-        console.log(err);
-      }
-    )
+  pages: Array<{title: string, component: any}>;
+
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public auth:AuthService, public app:App) {
+    this.pages = [ 
+      { title: 'Meu Bar', component: MyBarPage }
+    ];
+
+  }
+
+  logout(){
+    this.auth.signOut();
+    this.app.getRootNav().popToRoot();
+  }
+
+  openPage(page) {
+    this.nav.setRoot(page.component);
   }
 }

@@ -1,12 +1,20 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
-    </button>
-    <ion-title class="text-large-medium">Home</ion-title>
-  </ion-navbar>
-</ion-header>
+<ion-menu [content]="content">
 
-<ion-content padding>
-  <h3>{{owner.email}}</h3>
-</ion-content>
+  <ion-content id="googol-menu">
+    <img src="./assets/imgs/logo_sidemenu.png">
+    <ion-list no-lines>
+      <ion-item menuClose *ngFor="let p of pages" (click)="openPage(p)" text-center class="text-large-medium">
+          {{p.title}}
+      </ion-item>
+      <ion-item menu-close text-center class="text-large-medium" (click)="logout()">
+        <br>
+        <br> 
+        Logout
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="true"></ion-nav>

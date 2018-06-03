@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { AppUrl } from '../_config/url.config';
 import { Owner } from '../_models/owner';
+import { Bar } from '../_models/bar';
 
 @Injectable()
 export class OwnerService {
@@ -40,6 +41,15 @@ export class OwnerService {
             .map( owner => {
                 return owner;
             })
+    }
+
+    putBar(id: string, bar: Bar){
+        return this.http.put<Owner>(this.url + '/' + id + '/mybar', bar, this.httpOptions)
+            .map(
+                owner => { 
+                    return owner;
+                }
+            )
     }
 
 }
