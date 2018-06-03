@@ -47,7 +47,24 @@ export class MatchesPage implements OnInit{
          date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
          match.matchDate = date;
          return match;
-        })
+        });
+        /*this.matches = [];
+        let obj = {
+          "_id": "5b0c6462ca3111001486fe89",
+          "homeTeam": "Flamengo",
+          "homeTeamLogoUrl": "https://s.glbimg.com/es/sde/f/equipes/2018/04/09/Flamengo-65.png",
+          "homeTeamScore": null,
+          "awayTeam": "Corinthians",
+          "awayTeamLogoUrl": "https://s.glbimg.com/es/sde/f/equipes/2014/04/14/corinthians_60x60.png",
+          "awayTeamScore": null,
+          "stadium": "Maracanã",
+          "league": "Campeonato Brasileiro",
+          "round": "Rodada 9",
+          "__v": 0,
+          "matchDate": new Date("2018-06-03T21:00:00.000Z")
+      };
+      this.matches.push(obj);
+        console.log(obj);*/
       },error => {
         console.log(error);
       }

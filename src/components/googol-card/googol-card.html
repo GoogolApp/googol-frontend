@@ -1,9 +1,24 @@
 <!-- Match Card -->
 <div class="base" *ngIf="match">
-  <header>
-    <span class="text-default-medium">{{match.league}}</span>
-    <span class="text-default-normal text-mute" float-right>{{match.matchDate | date:'HH:mm, dd MMM'}}</span>
-  </header>
+
+  <ng-container
+    *ngIf="(((currentDate.getTime() - match.matchDate.getTime())/3600000) < 2.5) &&
+            (((currentDate.getTime() - match.matchDate.getTime())/3600000) > 0) then liveContent else scheduledContent">
+  </ng-container>
+
+  <ng-template #liveContent>
+    <header id="liveContent">
+      <span class="text-default-medium">{{match.league}}</span>
+      <span class="text-default-normal text-mute" float-right>Agora</span>
+    </header>
+  </ng-template>
+
+  <ng-template #scheduledContent>
+    <header>
+      <span class="text-default-medium">{{match.league}}</span>
+      <span class="text-default-normal text-mute" float-right>{{match.matchDate | date:'HH:mm, dd MMM'}}</span>
+    </header>
+  </ng-template>
   
   <hr>
   
