@@ -12,6 +12,7 @@ import { Bar } from '../../_models/bar';
 export class MyBarPage implements OnInit{
 
   owner: Owner;
+  ownerId: string;
   place: any = {
     name: "",
     place_id: "",
@@ -30,6 +31,7 @@ export class MyBarPage implements OnInit{
 
   async ngOnInit(){
     let ownerId = await JSON.parse(localStorage.getItem('authUser')).ownerId;
+    this.ownerId = ownerId;
     await this.ownerService.getOne(ownerId).subscribe(
       owner => {
         this.owner = owner;
@@ -54,7 +56,11 @@ export class MyBarPage implements OnInit{
       this.place.longitude
     );
 
-    console.log(bar);
+    this.ownerService.putBar(this.ownerId, bar).subscribe(
+      data => {
+        console.log(data);
+      }
+    )
   }
 
 }
