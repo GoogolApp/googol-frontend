@@ -33,6 +33,7 @@ import { OwnerHomePage } from '../pages/home-owner/owner-home';
 import { SearchedProfilePage } from '../pages/searched-profile/searched-profile';
 import {TokenInterceptor} from "../_providers/auth.interceptor";
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
+import { MyBarPage } from '../pages/my-bar/my-bar';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
     SignUpPage,
     LocationModal,
     HomePage,
-    OwnerHomePage
+    OwnerHomePage,
+    MyBarPage
   ],
   imports: [
     ComponentsModule,
@@ -81,7 +83,8 @@ import { EditProfilePage } from '../pages/edit-profile/edit-profile';
     SignUpPage,
     LocationModal,
     HomePage,
-    OwnerHomePage
+    OwnerHomePage,
+    MyBarPage
   ],
   providers: [
     StatusBar,
