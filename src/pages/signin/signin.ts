@@ -21,7 +21,13 @@ export class SignInPage {
     public alert:AlertController,
     private loadingController: LoadingController) {
       if(this.auth.isAuthenticated()){
-      this.navCtrl.push(HomePage, {}, {animate: false});
+        let userType = JSON.parse(localStorage.getItem('authUser'))
+        if(userType.ownerId){
+          this.navCtrl.push(OwnerHomePage, {}, {animate: false});
+        }
+        if(userType.userId){
+          this.navCtrl.push(HomePage, {}, {animate: false});
+        }
     }
   }
 

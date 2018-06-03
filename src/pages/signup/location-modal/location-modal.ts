@@ -78,7 +78,13 @@ import { Maps } from '../../../_config/maps.config';
                   this.latitude = place.geometry.location.lat();
                   this.longitude = place.geometry.location.lng();
                   this.zoom = 15;
-                  this.place = place;
+
+                  this.place.name = place.name;
+                  this.place.place_id = place.place_id;
+                  this.place.latitude = place.geometry.location.lat();
+                  this.place.longitude = place.geometry.location.lng();
+                  this.place.formatted_address = place.formatted_address;
+                  
               });
           });
       });
