@@ -4,12 +4,12 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
-import { appConfig } from '../app/app.config';
+import { AppUrl } from '../_config/url.config';
 
 @Injectable()
 export class UsersService {
 
-    private url: string = appConfig.apiUrl + '/users';
+    private url: string = AppUrl.root + '/users';
     private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
     constructor(private http: HttpClient) { }

@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, LoadingController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController, ModalController} from 'ionic-angular';
 import { SignInPage } from '../signin/signin';
 
 import { User } from '../../_models/user';
-
 import { UsersService } from '../../_services/users';
+import { Owner } from '../../_models/owner';
+import { OwnerService } from '../../_services/owner';
 
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html'
 })
 export class SignUpPage {
+
+  type: string = "user";
 
   email: string = "";
   username: string = "";
@@ -22,16 +25,31 @@ export class SignUpPage {
     spinner: 'bubbles'
   });
 
-  constructor(public navCtrl: NavController, public alert:AlertController, public usersService:UsersService, public loadingController: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    public alert:AlertController,
+    public usersService:UsersService,
+    public ownerService:OwnerService,
+    public loadingController: LoadingController) {
   }
 
   validateFields() : boolean {
     let regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    if(this.email === "" || this.username === "" || this.password === "" || this.password === "") {
-      this.presentAlert("Preencha todos os campos!");
-      return false;
+    if (this.type === "user"){
+      if(this.email === "" || this.username === "" || this.password === "" || this.password === "") {
+        this.presentAlert("Preencha todos os campos!");
+        return false;
+      }
     }
+
+    if (this.type === "owner"){
+      if(this.email === "" || this.password === "" || this.password === "") {
+        this.presentAlert("Preencha todos os campos!");
+        return false;
+      }
+    }
+
     if(!regex.test(this.email)) {
       this.presentAlert("E-mail inválido!");
       return false;
@@ -44,15 +62,26 @@ export class SignUpPage {
     return true;
   }
 
-  createUser(){
+  async createUser(){
     if(this.validateFields()){
 
       this.loading.present();
 
-      let user = new User(this.username, this.email, this.password);
+      if(this.type === 'user'){
+        await this.createNormalUser();
+      }
       
-      this.usersService.create(user).subscribe(
-        data => {
+      if (this.type === 'owner'){
+        await this.createOwner();
+      }
+    }
+  }
+
+  async createNormalUser(){
+    let user = new User(this.username, this.email, this.password);
+      
+      await this.usersService.create(user).subscribe(
+        data => { 
           this.loading.dismiss();
           this.createdUserAlert("Usuário criado com sucesso!");
           this.clearFields();
@@ -62,8 +91,25 @@ export class SignUpPage {
           this.loading.dismiss();
           this.presentAlert(err.error.message);
         }
-      )
-    }
+    )
+  }
+
+  async createOwner(){
+    
+    let owner  = new Owner(this.email, this.password);
+
+    await this.ownerService.create(owner).subscribe(
+      data => {
+        this.loading.dismiss();
+        this.createdUserAlert("Empresário criado com sucesso!");
+        this.clearFields();
+        this.goSignIn();
+      },
+      err => {
+        this.loading.dismiss();
+        this.presentAlert("Empresário não pode ser criado!");
+      }
+    )
   }
 
   clearFields(){

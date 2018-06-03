@@ -1,15 +1,35 @@
 <ion-content padding id="SIGNUP_PAGE" text-center>
-  
+
   <img width="290" height="75" src="./assets/imgs/logo_sidemenu.png">
+ 
+  <ion-segment [(ngModel)]="type" color="light">
+    <ion-segment-button value="user">
+      Usuário
+    </ion-segment-button>
+    <ion-segment-button value="owner">
+      Empresário
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="type">
+    <div *ngSwitchCase="'user'">
+        <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email" />
+        <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="username" />
+        <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password" />
+        <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm" />
+    </div>
   
-  <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email"/>
-  <input class="googol-input" type="text" placeholder="Usuário" [(ngModel)]="username"/>
-  <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password"/>
-  <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm"/>
-  
+    <div *ngSwitchCase="'owner'">
+        <input class="googol-input" type="email" placeholder="E-mail" [(ngModel)]="email" />
+        <input class="googol-input" type="password" placeholder="Senha" [(ngModel)]="password" />
+        <input class="googol-input" type="password" placeholder="Confirmar Senha" [(ngModel)]="password_confirm" />
+    </div>
+  </div>
+
   <button class="googol-btn-secondary" (click)="createUser()">Criar Conta</button>
 
   <p class="text-default-normal text-mute account">Já tem uma conta?</p>
   <p class="text-default-medium" (click)="goSignIn()">ENTRE AQUI</p>
-  
+
+
 </ion-content>
