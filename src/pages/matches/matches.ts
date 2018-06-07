@@ -30,10 +30,16 @@ export class MatchesPage implements OnInit{
       matches => {
         this.matches = [];
         this.matches = matches.map(function (match) {
-         const date = new Date(match.matchDate);
-         date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
-         match.matchDate = date;
-         return match;
+          const currDate = new Date();
+          const date = new Date(match.matchDate);
+
+          date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
+          match.matchDate = date;
+
+          let timeDiff = currDate.getTime() - date.getTime();
+          if(timeDiff/3600000 <= 2.5) {
+            return match;
+          }
         });
         this.loading.dismiss();
       },error => {
