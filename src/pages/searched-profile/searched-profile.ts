@@ -26,25 +26,22 @@ export class SearchedProfilePage {
     this.fetchEvents();
   }
 
-  loading = this.loadingController.create({
-    content: 'Capturando usuário...',
-    spinner: 'bubbles'
-  });
 
   fetchEvents(){
     this.eventos = this.eventsService.getAll();
   }
 
-  fetchUser(id : string){
-    this.loading.present();
+  async fetchUser(id : string){
+    let loading = this.loading();
+    await loading;
     this.userService.getOne(id).subscribe(
       data=> {
         this.userSearch = data;
-        this.loading.dismiss();
+        loading.dismiss();
       },
       err =>{
         console.log(err);
-        this.loading.dismiss();
+        loading.dismiss();
       }
     ) 
   }
@@ -58,7 +55,7 @@ export class SearchedProfilePage {
 
   }
 
-  followUser() {
+  async followUser() {
     this.userService.follow('add', this.userSearch._id).subscribe(
       data =>{
         this.fetchUser(this.userSearch._id);
@@ -69,7 +66,7 @@ export class SearchedProfilePage {
     );
   }
 
-  unfollowUser(){
+  async unfollowUser(){
     this.userService.follow('remove', this.userSearch._id).subscribe(
       data =>{
         this.fetchUser(this.userSearch._id);
@@ -78,6 +75,17 @@ export class SearchedProfilePage {
         console.log(err);
       }
     );
+  }
+
+  loading(){
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
   }
 
 }

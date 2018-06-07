@@ -40,7 +40,6 @@ export class ProfilePage implements OnInit{
 
   constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService) {
     let id = JSON.parse(localStorage.getItem('authUser')).userId;
-    console.log( JSON.parse(localStorage.getItem('authUser')));
     this.fetchUser(id);
     this.fetchEvents();
   }
