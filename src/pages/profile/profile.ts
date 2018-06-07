@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UsersService } from '../../_services/users';
 import { User } from '../../_models/user';
@@ -10,7 +10,7 @@ import { EditProfilePage } from '../edit-profile/edit-profile';
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
-export class ProfilePage{
+export class ProfilePage implements OnInit{
 
   mockUser = {
     name: "Rick Sanchez",
@@ -40,8 +40,13 @@ export class ProfilePage{
 
   constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService) {
     let id = JSON.parse(localStorage.getItem('authUser')).userId;
+    console.log( JSON.parse(localStorage.getItem('authUser')));
     this.fetchUser(id);
     this.fetchEvents();
+  }
+
+  ngOnInit(){
+    this.fetchUser(JSON.parse(localStorage.getItem('authUser')).userId);
   }
 
   fetchEvents(){
@@ -61,7 +66,6 @@ export class ProfilePage{
 
   gotoEdit(){
     this.navCtrl.push(EditProfilePage);
-    this.fetchUser(JSON.parse(localStorage.getItem('authUser')).userId);
   }
 
 

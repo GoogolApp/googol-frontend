@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
 import { EventsService } from '../../_services/events';
@@ -20,23 +20,31 @@ export class SearchedProfilePage {
   userSearch = new User();
   eventos = {};
 
-  constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService) {
+  constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService,private loadingController: LoadingController) {
     let id = JSON.parse(localStorage.getItem('searchedUser'));
     this.fetchUser(id);
     this.fetchEvents();
   }
+
+  loading = this.loadingController.create({
+    content: 'Capturando usuário...',
+    spinner: 'bubbles'
+  });
 
   fetchEvents(){
     this.eventos = this.eventsService.getAll();
   }
 
   fetchUser(id : string){
+    this.loading.present();
     this.userService.getOne(id).subscribe(
       data=> {
         this.userSearch = data;
+        this.loading.dismiss();
       },
       err =>{
         console.log(err);
+        this.loading.dismiss();
       }
     ) 
   }
