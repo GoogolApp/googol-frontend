@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UsersService } from '../../../_services/users';
+import { TeamService } from '../../../_services/team';
+import { Team } from '../../../_models/team';
 
 /**
  * Generated class for the AllTeamsPage page.
@@ -15,6 +18,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AllTeamsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private teamService: TeamService) {
+    this.fetchTeams();
   }
+
+  private teams:Team[] = [];
+  public anyResult:boolean;
+  showList: boolean = false;
+  currentSearch: string;
+
+  fetchTeams() {
+    this.teamService.getAllTeams().subscribe(
+      teams => {
+        this.teams = [];
+        this.teams = teams;
+        console.log(teams);
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
 }

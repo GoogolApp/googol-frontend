@@ -37,6 +37,7 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
 import { EditTeamsPage } from '../pages/edit-teams/edit-teams';
 import { MyTeamsPage } from '../pages/edit-teams/my-teams/my-teams';
 import { AllTeamsPage } from '../pages/edit-teams/all-teams/all-teams';
+import { TeamService } from '../_services/team';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { AllTeamsPage } from '../pages/edit-teams/all-teams/all-teams';
     MatchesService,
     EventsService,
     UsersService,
+    TeamService,
     BarService,
     OwnerService,
     {provide: HTTP_INTERCEPTORS,
