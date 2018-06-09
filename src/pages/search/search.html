@@ -11,6 +11,15 @@
   <ion-searchbar placeholder="Digite o username" [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel" (keyup)="searchUser(usernameSearch)">
   </ion-searchbar>
   
+  <ion-segment>
+    <ion-segment-button value="user">
+      Usuário
+    </ion-segment-button>
+    <ion-segment-button value="establishment">
+      Estabelecimento
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-list no-lines>
     <div *ngIf="showList">
       <button ion-item detail-none *ngFor="let user of users" (click)="showPageUser(user._id)">
