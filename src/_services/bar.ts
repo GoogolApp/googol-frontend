@@ -44,4 +44,18 @@ export class BarService {
             })
     }
 
+    getAll() : Observable<Bar[]> {
+        return this.http.get<Bar[]>(this.url, this.httpOptions)
+            .map(users => {
+                return users;
+            });
+    }
+
+    getByUsername(username:string) : Observable<Bar[]> {
+        return this.http.get<Bar[]>(this.url + '/search?keyword=' + username, this.httpOptions)
+            .map(users => {
+                return users;
+            });
+    }
+
 }
