@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Times</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding padding id="TIMES_PAGE">
+  <ion-list no-lines>
+    <div *ngIf="showList">
+      <ion-item *ngFor="let team of searchedTeams">
+        <ion-avatar item-start>
+          <img width="40" height="40" src={{team.teamLogoUrl}}>
+        </ion-avatar>
+        <h2>@{{team.name}}</h2>
+        <button ion-button color="secondary" clear item-end>Seguir</button>
+      </ion-item>
+    </div>
+    <div *ngIf="!showList">
+      <ion-item *ngFor="let team of teams">
+        <ion-avatar item-start>
+          <img width="40" height="40" src={{team.teamLogoUrl}}>
+        </ion-avatar>
+        <h2>@{{team.name}}</h2>
+        <button ion-button color="secondary" clear item-end>Seguir</button>
+      </ion-item>
+    </div>
+  </ion-list>
+</ion-content>

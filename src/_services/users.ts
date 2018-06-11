@@ -57,6 +57,22 @@ export class UsersService {
             });
     }
 
+    getAllFollowing() : Observable<User> {
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        return this.http.get<User>(this.url + '/' + authUserId + '/following', this.httpOptions)
+            .map(user => {
+                return user;
+            });
+    }
+
+    getAllFollowers() : Observable<User> {
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        return this.http.get<User>(this.url + '/' + authUserId + '/followers', this.httpOptions)
+            .map(user => {
+                return user;
+            });
+    }
+
     follow(operation: string, user: string) : Observable<User>{
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
         let body = { operation: operation, user: user };
@@ -66,9 +82,9 @@ export class UsersService {
         });
     }
 
-    saveEditions(username:string , email:string) : Observable<User>{
+    saveEditions(username:string , password:string) : Observable<User>{
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
-        let body = { username:username, email:email };
+        let body = { username:username, password:password };
         return this.http.put<User>( this.url + '/' + authUserId, body, this.httpOptions)
         .map(user => {
             return user;

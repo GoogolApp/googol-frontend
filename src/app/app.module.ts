@@ -34,6 +34,12 @@ import { SearchedProfilePage } from '../pages/searched-profile/searched-profile'
 import {TokenInterceptor} from "../_providers/auth.interceptor";
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { MyBarPage } from '../pages/my-bar/my-bar';
+import { EditTeamsPage } from '../pages/edit-teams/edit-teams';
+import { MyTeamsPage } from '../pages/edit-teams/my-teams/my-teams';
+import { AllTeamsPage } from '../pages/edit-teams/all-teams/all-teams';
+import { TeamService } from '../_services/team';
+import { FollowingPage } from '../pages/following/following';
+import { FollowersPage } from '../pages/followers/followers';
 
 
 @NgModule({
@@ -41,6 +47,8 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     MyApp,
     FeedPage,
     ProfilePage,
+    FollowingPage,
+    FollowersPage,
     MatchesPage,
     CreateEventPage,
     EventsPage,
@@ -49,6 +57,9 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     SearchPage,
     SearchedProfilePage,
     EditProfilePage,
+    EditTeamsPage,
+    MyTeamsPage,
+    AllTeamsPage,
     SignInPage,
     SignUpPage,
     LocationModal,
@@ -71,6 +82,8 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     MyApp,
     FeedPage,
     ProfilePage,
+    FollowingPage,
+    FollowersPage,
     MatchesPage,
     CreateEventPage,
     EventsPage,
@@ -79,6 +92,9 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     SearchPage,
     SearchedProfilePage,
     EditProfilePage,
+    EditTeamsPage,
+    MyTeamsPage,
+    AllTeamsPage,
     SignInPage,
     SignUpPage,
     LocationModal,
@@ -94,6 +110,7 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     MatchesService,
     EventsService,
     UsersService,
+    TeamService,
     BarService,
     OwnerService,
     {provide: HTTP_INTERCEPTORS,
