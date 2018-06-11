@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { UsersService } from '../../../_services/users';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { TeamService } from '../../../_services/team';
 import { Team } from '../../../_models/team';
 
@@ -15,7 +14,6 @@ export class AllTeamsPage {
   }
 
   private teams: Team[] = [];
-  private searchedTeams: Team[] = [];
   public anyResult: boolean;
   showList: boolean = false;
   currentSearch: string;

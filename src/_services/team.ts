@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { User } from '../_models/user';
 import { Team } from '../_models/team';
 import { AppUrl } from '../_config/url.config';
 

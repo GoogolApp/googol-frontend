@@ -38,7 +38,6 @@ export class ProfilePage implements OnInit{
   };
 
   user = new User();
-  private following:User[] = [];
   eventos = {};
 
   constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService, private loadingController: LoadingController) {

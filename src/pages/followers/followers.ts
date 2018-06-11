@@ -24,7 +24,6 @@ export class FollowersPage {
       user=> {
         this.user = user;
         this.followers = user.followers;
-        console.log(this.followers);
         loading.dismiss();
       },
       err =>{

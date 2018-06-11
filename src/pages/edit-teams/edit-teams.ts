@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { MyTeamsPage } from './my-teams/my-teams';
 import { AllTeamsPage } from './all-teams/all-teams';
 

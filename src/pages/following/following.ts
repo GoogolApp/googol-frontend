@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
-import { EventsService } from '../../_services/events';
 import { UsersService } from '../../_services/users';
 import { SearchedProfilePage } from '../searched-profile/searched-profile';
 
