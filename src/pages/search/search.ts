@@ -3,6 +3,8 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
 import { SearchedProfilePage } from '../searched-profile/searched-profile';
+import { SearchUserTab } from './search-user/search-user';
+import { SearchBarTab } from './search-bar/search-bar';
 
 @Component({
   selector: 'page-search',
@@ -10,8 +12,12 @@ import { SearchedProfilePage } from '../searched-profile/searched-profile';
 })
 export class SearchPage {
 
+  tab1:any = SearchUserTab;
+  tab2:any = SearchBarTab;
+  
   constructor(public navCtrl: NavController, private userService: UsersService, private loadingController: LoadingController) {
   }
+
 
   private users:User[] = [];
   public anyResult:boolean;
@@ -29,7 +35,7 @@ export class SearchPage {
   }
 
   async searchUser(username:string) {
-    if(this.currentSearch !== username.trim()) {
+    if(username != undefined && this.currentSearch !== username.trim()) {
       this.currentSearch = username;
       if(username !== undefined && username.trim() != "") {
         await this.fetchUsers(username);

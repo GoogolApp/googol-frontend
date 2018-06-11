@@ -17,6 +17,8 @@ import { EventsPage } from '../pages/events/events';
 import { AllEventsTab } from '../pages/events/all-events/all-events';
 import { MyEventsTab } from '../pages/events/my-events/my-events';
 import { SearchPage } from '../pages/search/search';
+import { SearchUserTab } from '../pages/search/search-user/search-user';
+import { SearchBarTab } from '../pages/search/search-bar/search-bar';
 import { SignInPage } from '../pages/signin/signin';
 import { SignUpPage } from '../pages/signup/signup';
 import { LocationModal } from '../pages/signup/location-modal/location-modal'; 
@@ -47,6 +49,8 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     AllEventsTab,
     MyEventsTab,
     SearchPage,
+    SearchUserTab,
+    SearchBarTab,
     SearchedProfilePage,
     EditProfilePage,
     SignInPage,
@@ -77,6 +81,8 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     AllEventsTab,
     MyEventsTab,
     SearchPage,
+    SearchUserTab,
+    SearchBarTab,
     SearchedProfilePage,
     EditProfilePage,
     SignInPage,
