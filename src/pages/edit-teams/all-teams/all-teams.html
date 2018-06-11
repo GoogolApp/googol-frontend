@@ -1,9 +1,4 @@
-<!--
-  Generated template for the AllTeamsPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
@@ -13,18 +8,24 @@
 </ion-header>
 
 <ion-content padding padding id="TIMES_PAGE">
-  <ion-searchbar placeholder="Time" [(ngModel)]="teamName" [showCancelButton]="shouldShowCancel" (keyup)="searchTeam(usernameSearch)">
-  </ion-searchbar>
-
-
   <ion-list no-lines>
-    <ion-item *ngFor="let team of teams">
-      <ion-thumbnail item-start>
-        <img width="40" height="40" src={{team.teamLogoUrl}}>
-      </ion-thumbnail>
-      <h2>@{{team.name}}</h2>
-      <button ion-button color="secondary" clear item-end>Seguir</button>
-    </ion-item>
+    <div *ngIf="showList">
+      <ion-item *ngFor="let team of searchedTeams">
+        <ion-avatar item-start>
+          <img width="40" height="40" src={{team.teamLogoUrl}}>
+        </ion-avatar>
+        <h2>@{{team.name}}</h2>
+        <button ion-button color="secondary" clear item-end>Seguir</button>
+      </ion-item>
+    </div>
+    <div *ngIf="!showList">
+      <ion-item *ngFor="let team of teams">
+        <ion-avatar item-start>
+          <img width="40" height="40" src={{team.teamLogoUrl}}>
+        </ion-avatar>
+        <h2>@{{team.name}}</h2>
+        <button ion-button color="secondary" clear item-end>Seguir</button>
+      </ion-item>
+    </div>
   </ion-list>
-
 </ion-content>

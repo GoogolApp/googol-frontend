@@ -1,43 +1,57 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { UsersService } from '../../../_services/users';
 import { TeamService } from '../../../_services/team';
 import { Team } from '../../../_models/team';
 
-/**
- * Generated class for the AllTeamsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-all-teams',
   templateUrl: 'all-teams.html',
 })
 export class AllTeamsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private teamService: TeamService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private teamService: TeamService,private loadingController: LoadingController) {
     this.fetchTeams();
   }
 
-  private teams:Team[] = [];
-  public anyResult:boolean;
+  private teams: Team[] = [];
+  private searchedTeams: Team[] = [];
+  public anyResult: boolean;
   showList: boolean = false;
   currentSearch: string;
 
-  fetchTeams() {
+  async fetchTeams() {
+    let loading = this.loading();
+    await loading;
     this.teamService.getAllTeams().subscribe(
       teams => {
         this.teams = [];
         this.teams = teams;
-        console.log(teams);
+        teams.sort((team1, team2) => {
+          if (team1.name < team2.name) {
+            return -1;
+          }else if (team1.name > team2.name) {
+            return 1;
+          }return 0;
+        }
+        );
+        loading.dismiss();                
       },
       error => {
         console.log(error);
+        loading.dismiss(); 
       }
     );
   }
 
+  loading(){
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
+  }
 }

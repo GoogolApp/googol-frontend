@@ -38,6 +38,8 @@ import { EditTeamsPage } from '../pages/edit-teams/edit-teams';
 import { MyTeamsPage } from '../pages/edit-teams/my-teams/my-teams';
 import { AllTeamsPage } from '../pages/edit-teams/all-teams/all-teams';
 import { TeamService } from '../_services/team';
+import { FollowingPage } from '../pages/following/following';
+import { FollowersPage } from '../pages/followers/followers';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { TeamService } from '../_services/team';
     MyApp,
     FeedPage,
     ProfilePage,
+    FollowingPage,
+    FollowersPage,
     MatchesPage,
     CreateEventPage,
     EventsPage,
@@ -78,6 +82,8 @@ import { TeamService } from '../_services/team';
     MyApp,
     FeedPage,
     ProfilePage,
+    FollowingPage,
+    FollowersPage,
     MatchesPage,
     CreateEventPage,
     EventsPage,

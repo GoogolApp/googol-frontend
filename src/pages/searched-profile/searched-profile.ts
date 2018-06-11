@@ -1,17 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
 import { EventsService } from '../../_services/events';
 
-/**
- * Generated class for the SearchedProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-searched-profile',
   templateUrl: 'searched-profile.html',
