@@ -40,6 +40,7 @@ import { AllTeamsPage } from '../pages/edit-teams/all-teams/all-teams';
 import { TeamService } from '../_services/team';
 import { FollowingPage } from '../pages/following/following';
 import { FollowersPage } from '../pages/followers/followers';
+import { PromotionsPage } from '../pages/promotions/promotions';
 
 
 @NgModule({
@@ -65,7 +66,8 @@ import { FollowersPage } from '../pages/followers/followers';
     LocationModal,
     HomePage,
     OwnerHomePage,
-    MyBarPage
+    MyBarPage,
+    PromotionsPage
   ],
   imports: [
     ComponentsModule,
@@ -100,7 +102,8 @@ import { FollowersPage } from '../pages/followers/followers';
     LocationModal,
     HomePage,
     OwnerHomePage,
-    MyBarPage
+    MyBarPage,
+    PromotionsPage
   ],
   providers: [
     StatusBar,
