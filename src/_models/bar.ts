@@ -4,6 +4,9 @@ export class Bar{
     name: string;
     latitude: number;
     longitude: number;
+    location: {
+        coordinates: any;
+    };
     
     //from api only
     createdAt: Date;
