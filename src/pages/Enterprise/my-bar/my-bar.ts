@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController, AlertController,LoadingController } from 'ionic-angular';
 import { OwnerService } from '../../../_services/owner';
 import { Owner } from '../../../_models/owner';
-import { LocationModal } from '../../Public/signup/location-modal/location-modal';
+import { LocationModal } from '../../Common/location-modal/location-modal';
 import { Bar } from '../../../_models/bar';
 import { MapsAPILoader } from '@agm/core';
 import { Maps } from '../../../_config/maps.config';
@@ -16,7 +16,7 @@ export class MyBarPage implements OnInit{
   owner: Owner;
   ownerId: string;
   place: any = {
-    name: "",
+    name: "", 
     place_id: "",
     latitude: 0,
     longitude: 0,
@@ -46,7 +46,7 @@ export class MyBarPage implements OnInit{
     this.ownerService.getOne(ownerId).subscribe(
       async owner => {
         this.owner = await owner;
-        this.getPlace(loading, owner);
+        (owner.bar) ? this.getPlace(loading, owner) : loading.dismiss();
       }
     )
   }

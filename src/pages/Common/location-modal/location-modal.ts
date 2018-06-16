@@ -1,9 +1,8 @@
 import { Component, NgZone, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Platform, NavParams, ViewController } from 'ionic-angular';
 import {FormControl} from "@angular/forms";
-import { } from 'googlemaps';
 import { MapsAPILoader } from '@agm/core';
-import { Maps } from '../../../../_config/maps.config';
+import { Maps } from '../../../_config/maps.config';
 
 @Component({
     templateUrl: 'location-modal.html'

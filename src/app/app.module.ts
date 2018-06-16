@@ -23,6 +23,13 @@ import { TeamService } from '../_services/team';
 //App
 import { MyApp } from './app.component';
 
+//Public
+import { SignInPage } from '../pages/Public/signin/signin';
+import { SignUpPage } from '../pages/Public/signup/signup';
+
+//Common
+import { LocationModal } from '../pages/Common/location-modal/location-modal'; 
+
 //User
 import { HomePage } from '../pages/User/home/home';
 import { FeedPage } from '../pages/User/feed/feed';
@@ -45,11 +52,6 @@ import { FollowersPage } from '../pages/User/followers/followers';
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
-
-//Public
-import { SignInPage } from '../pages/Public/signin/signin';
-import { SignUpPage } from '../pages/Public/signup/signup';
-import { LocationModal } from '../pages/Public/signup/location-modal/location-modal'; 
 
 @NgModule({
   declarations: [
