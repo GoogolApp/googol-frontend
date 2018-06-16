@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { NavController, ActionSheetController } from 'ionic-angular';
 
-import { CreateEventPage } from '../../pages/matches/create-event/create-event';
+import { CreateEventPage } from '../../pages/User/matches/create-event/create-event';
 import { Match } from '../../_models/match';
 import { Event } from '../../_models/event';
 
