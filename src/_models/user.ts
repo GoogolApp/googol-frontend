@@ -8,6 +8,7 @@ export class User{
     followers : any[];
     favTeams : any[];
     eventHistory: any[];
+    reputation : number;
 
     
     constructor(username?: string, email?: string, password?: string){
@@ -18,5 +19,6 @@ export class User{
         this.favTeams = [];
         this.eventHistory = [];
         this.followers = [];
+        this.reputation = 0;
     }
 }

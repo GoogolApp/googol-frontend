@@ -9,7 +9,9 @@
     "build": "ionic-app-scripts build",
     "lint": "ionic-app-scripts lint",
     "ionic:build": "ionic-app-scripts build",
-    "ionic:serve": "ionic-app-scripts serve"
+    "ionic:serve": "ionic-app-scripts serve",
+    "dev-ios": "ionic cordova run ios --livereload -c",
+    "dev-andorid": "ionic cordova run android --livereload -c"
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.3",

@@ -1,8 +1,7 @@
 <!-- Match Card -->
 <div class="base" *ngIf="match">
 
-  <ng-container
-    *ngIf="(((currentDate.getTime() - match.matchDate.getTime())/3600000) < 2.5) &&
+  <ng-container *ngIf="(((currentDate.getTime() - match.matchDate.getTime())/3600000) < 2.5) &&
             (((currentDate.getTime() - match.matchDate.getTime())/3600000) > 0) then liveContent else scheduledContent">
   </ng-container>
 
@@ -19,34 +18,32 @@
       <span class="text-default-normal text-mute" float-right>{{match.matchDate | date:'HH:mm, dd MMM'}}</span>
     </header>
   </ng-template>
-  
+
   <hr>
-  
+
   <section class="body">
     <ion-grid text-center>
       <ion-row>
         <ion-col col-5>
-            <img width="70" height="70" src="{{match.homeTeamLogoUrl}}">
-            <br>
-            <span class="text-default-normal">{{match.homeTeam}}</span>
+          <img width="70" height="70" src="{{match.homeTeamLogoUrl}}">
+          <br>
+          <span class="text-default-normal">{{match.homeTeam}}</span>
         </ion-col>
         <ion-col col-2>
           <span class="text-xlarge-bold text-mute">
-            <br>
-            X
+            <br> X
           </span>
         </ion-col>
         <ion-col col-5>
-            <img width="70" height="70" src="{{match.awayTeamLogoUrl}}">
-            <br>
-            <span class="text-default-normal">{{match.awayTeam}}</span>
+          <img width="70" height="70" src="{{match.awayTeamLogoUrl}}">
+          <br>
+          <span class="text-default-normal">{{match.awayTeam}}</span>
         </ion-col>
       </ion-row>
     </ion-grid>
   </section>
 
-  <ng-container
-      *ngIf="match.matchDate.getHours() === currentDate.getHours() then positiveContent else negativeContent">
+  <ng-container *ngIf="match.matchDate.getHours() === currentDate.getHours() then positiveContent else negativeContent">
   </ng-container>
 
   <ng-template #positiveContent>
@@ -59,83 +56,98 @@
       </button>
     </span>
   </ng-template>
-  
+
   <ng-template #negativeContent>
-      <span *ngIf="action == 'ADD_EVENT'">
-        <p class="text-small-normal text-danger" text-center>
-          Sabe onde o jogo será transmitido?
-        </p>
-        <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-danger" (click)="createEvent()">
-          Adicionar Evento
-        </button>
-      </span>
+    <span *ngIf="action == 'ADD_EVENT'">
+      <p class="text-small-normal text-danger" text-center>
+        Sabe onde o jogo será transmitido?
+      </p>
+      <button *ngIf="action == 'ADD_EVENT'" class="googol-btn-danger" (click)="createEvent()">
+        Adicionar Evento
+      </button>
+    </span>
   </ng-template>
 </div>
 
 
 <!-- Event Card -->
 <div class="base" *ngIf="event">
-    <header>
-      <span class="text-default-medium">{{event.match.league}}</span>
-      <span class="text-small-normal">
-        <br>
-        <ion-icon name="navigate"></ion-icon> {{event.location}}
-      </span>
-      <span class="text-default-normal text-mute" float-right>{{event.match.hour | date:'HH:mm, dd MMM'}}</span>
-    </header>
-    
-    <hr>
-    
-    <section class="body">
-      <ion-grid text-center>
-        <ion-row>
-          <ion-col col-5>
-              <img width="70" height="70" src="{{event.match.home.logo}}">
-              <br>
-              <span class="text-default-normal">{{event.match.home.name}}</span>
-          </ion-col>
-          <ion-col col-2>
-            <span class="text-xlarge-bold text-mute">
-              <br>
-              X
-            </span>
-          </ion-col>
-          <ion-col col-5>
-              <img width="70" height="70" src="{{event.match.away.logo}}">
-              <br>
-              <span class="text-default-normal">{{event.match.away.name}}</span>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </section>
-  
-    <ng-container
-        *ngIf="event.match.hour.getHours() === currentDate.getHours() then positiveContent else negativeContent">
-    </ng-container>
-  
-    <ng-template #positiveContent>
-      <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
-        <p class="text-small-medium text-mute" text-center>
-          <span class="text-dark">@cr7</span>
-          e outras 10 pesssoas confirmaram presença
-        </p>
-        <br>
-        <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
-          Confirmar Presença
-        </button>
-      </span>
-    </ng-template>
-    
-    <ng-template #negativeContent>
-        <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
-          <p  class="text-small-medium text-mute" text-center>
-            <span class="text-dark">@cr7</span>
-            e outras 10 pesssoas confirmaram presença
-          </p>
+  <header>
+    <span class="text-default-medium">{{event.match.league}}</span>
+    <span class="text-small-normal">
+      <br>
+      <ion-icon name="navigate"></ion-icon> {{event.location}}
+    </span>
+    <span class="text-default-normal text-mute" float-right>{{event.match.hour | date:'HH:mm, dd MMM'}}</span>
+  </header>
+
+  <hr>
+
+  <section class="body">
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col col-5>
+          <img width="70" height="70" src="{{event.match.home.logo}}">
           <br>
-          <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
-            Confirmar Presença
-          </button>
-        </span>
-      </ng-template>
-  </div>
+          <span class="text-default-normal">{{event.match.home.name}}</span>
+        </ion-col>
+        <ion-col col-2>
+          <span class="text-xlarge-bold text-mute">
+            <br> X
+          </span>
+        </ion-col>
+        <ion-col col-5>
+          <img width="70" height="70" src="{{event.match.away.logo}}">
+          <br>
+          <span class="text-default-normal">{{event.match.away.name}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+
+  <ng-container *ngIf="event.match.hour.getHours() === currentDate.getHours() then positiveContent else negativeContent">
+  </ng-container>
+
+  <ng-template #positiveContent>
+    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
+      <p class="text-small-medium text-mute" text-center>
+        <span class="text-dark">@cr7</span>
+        e outras 10 pesssoas confirmaram presença
+      </p>
+      <br>
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
+        Confirmar Presença
+      </button>
+    </span>
+  </ng-template>
+
+  <ng-template #negativeContent>
+    <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
+      <p class="text-small-medium text-mute" text-center>
+        <span class="text-dark">@cr7</span>
+        e outras 10 pesssoas confirmaram presença
+      </p>
+      <br>
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
+        Confirmar Presença
+      </button>
+    </span>
+  </ng-template>
+</div>
+
+<!-- Promotion Card -->
+<div class="base" *ngIf="promotion">
+  <header text-center>
+    <span class="text-default-medium">Promoção</span>
+    <span class="text-small-normal">
+      <br>
+      <ion-icon name="navigate"></ion-icon> {{place}}
+    </span>
+  </header>
+
+  <hr>
+
+  <section class="body" text-center>
+    {{promotion}}
+  </section>
+</div>
