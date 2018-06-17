@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { NavParams } from "ionic-angular/";
 
 @Component({
     selector: 'tab-search-user',
@@ -7,7 +8,14 @@ import { Component } from "@angular/core";
 
 export class SearchUserTab {
 
-    constructor() {
+    public searchInput:string;
+
+    constructor(navParams:NavParams) {
+        if(navParams) {
+            navParams.data.subscribe(
+                searchResult => this.searchInput = searchResult
+            );
+        }
 
     }
 }

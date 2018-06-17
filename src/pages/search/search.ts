@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { User } from '../../_models/user';
 import { UsersService } from '../../_services/users';
@@ -11,6 +11,9 @@ import { SearchBarTab } from './search-bar/search-bar';
   templateUrl: 'search.html'
 })
 export class SearchPage {
+
+  public searchEmitter: EventEmitter<string> = new EventEmitter<string>();
+  public inputSearch:string;
 
   tab1:any = SearchUserTab;
   tab2:any = SearchBarTab;
@@ -34,6 +37,7 @@ export class SearchPage {
   }
 
   async searchUser(username:string) {
+    this.searchEmitter.emit(this.inputSearch);
     if(username != undefined && this.currentSearch !== username.trim()) {
       this.currentSearch = username;
       if(username !== undefined && username.trim() != "") {

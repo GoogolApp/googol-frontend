@@ -8,12 +8,12 @@
 </ion-header>
 
 <ion-content padding padding id="SEARCH_PAGE">
-  <ion-searchbar placeholder="Digite para pesquisar" [(ngModel)]="usernameSearch" [showCancelButton]="shouldShowCancel" (keyup)="searchUser(usernameSearch)">
+  <ion-searchbar placeholder="Digite para pesquisar" [(ngModel)]="inputSearch" [showCancelButton]="shouldShowCancel" (keyup)="searchUser(inputSearch)">
   </ion-searchbar>
   
   <ion-tabs tabsPlacement="top" style="margin-top: 60px;">
-    <ion-tab tabTitle="Usuário" [root]="tab1"></ion-tab>
-    <ion-tab tabTitle="Estabelecimento" [root]="tab2"></ion-tab>
+    <ion-tab [rootParams]="searchEmitter" tabTitle="Usuário" [root]="tab1"></ion-tab>
+    <ion-tab [rootParams]="searchEmitter" tabTitle="Estabelecimento" [root]="tab2"></ion-tab>
   </ion-tabs>
 
   <ion-list no-lines>
