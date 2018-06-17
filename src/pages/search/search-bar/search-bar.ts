@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NavParams } from "ionic-angular/";
 
 @Component({
@@ -6,7 +6,10 @@ import { NavParams } from "ionic-angular/";
     templateUrl: 'search-bar.html'
 })
 
-export class SearchBarTab {
+export class SearchBarTab implements OnInit{
+    ngOnInit(): void {
+        console.log("iniciou search-bar");
+    }
 
     public searchInput:string;
 

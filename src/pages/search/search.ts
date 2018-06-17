@@ -18,50 +18,11 @@ export class SearchPage {
   tab1:any = SearchUserTab;
   tab2:any = SearchBarTab;
   
-  constructor(public navCtrl: NavController, private userService: UsersService, private loadingController: LoadingController) {
+  constructor() {
   }
 
-
-  private users:User[] = [];
-  showList: boolean = false;
-  currentSearch: string;
-
-  loading = this.loadingController.create({
-    content: 'Buscando usuário...',
-    spinner: 'bubbles'
-  });
-
-  showPageUser(id: string) {
-    localStorage.setItem('searchedUser', JSON.stringify(id));
-    this.navCtrl.push(SearchedProfilePage);
-  }
-
-  async searchUser(username:string) {
+  async search() {
     this.searchEmitter.emit(this.inputSearch);
-    if(username != undefined && this.currentSearch !== username.trim()) {
-      this.currentSearch = username;
-      if(username !== undefined && username.trim() != "") {
-        await this.fetchUsers(username);
-      } else {
-        this.showList = false;
-      }
-    }
-  }
-  
-  fetchUsers(input:string) {
-    this.loading.present();
-
-    this.userService.getByUsername(input).subscribe(
-      users => {
-        this.users = [];
-        this.users = users;
-        this.showList = this.users.length !== 0;
-        this.loading.dismiss();
-      },
-      error => {
-        this.loading.dismiss();
-      }
-    );
   }
 
 }
