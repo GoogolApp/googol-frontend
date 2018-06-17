@@ -1,0 +1,15 @@
+<ion-content padding>
+    <ion-list no-lines>
+    <div *ngIf="showList">
+      <button ion-item detail-none *ngFor="let user of users" (click)="showPageUser(user._id)">
+        <ion-avatar item-start>
+          <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
+        </ion-avatar>
+        @{{user.username}}
+      </button>
+    </div>
+    <ion-item no-lines *ngIf="inputUser !== undefined && inputUser !== '' && !showList">
+      Usuário não encontrado
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AgmCoreModule } from '@agm/core';
+
 import { ComponentsModule } from '../components/components.module';
 
 //Providers
@@ -17,6 +18,9 @@ import { UsersService } from '../_services/users';
 import { Maps } from '../_config/maps.config';
 import { BarService } from '../_services/bar';
 import { OwnerService } from '../_services/owner';
+
+
+import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar'
 import {TokenInterceptor} from "../_providers/auth.interceptor";
 import { TeamService } from '../_services/team';
 
@@ -66,7 +70,10 @@ import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
     AllEventsTab,
     MyEventsTab,
     SearchPage,
+    SearchUserTab,
+    SearchBarTab,
     SearchedProfilePage,
+    SearchedBarPage,
     EditProfilePage,
     EditTeamsPage,
     MyTeamsPage,
@@ -102,7 +109,10 @@ import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
     AllEventsTab,
     MyEventsTab,
     SearchPage,
+    SearchUserTab,
+    SearchBarTab,
     SearchedProfilePage,
+    SearchedBarPage,
     EditProfilePage,
     EditTeamsPage,
     MyTeamsPage,

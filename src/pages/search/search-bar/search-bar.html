@@ -1,0 +1,15 @@
+<ion-content padding>
+    <ion-list no-lines>
+        <div *ngIf="showList">
+          <button ion-item detail-none *ngFor="let bar of bars" (click)="showPageBar(bar._id)">
+            <ion-avatar item-start>
+              <profile-pic-generator word="{{bar.name}}" color="#4A90E2"></profile-pic-generator>
+            </ion-avatar>
+            {{bar.name}}
+          </button>
+        </div>
+        <ion-item no-lines *ngIf="inputBar !== undefined && inputBar !== '' && !showList">
+          Estabelecimento não encontrado
+        </ion-item>
+      </ion-list>
+</ion-content>
