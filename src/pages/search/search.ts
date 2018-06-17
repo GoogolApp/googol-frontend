@@ -20,7 +20,6 @@ export class SearchPage {
 
 
   private users:User[] = [];
-  public anyResult:boolean;
   showList: boolean = false;
   currentSearch: string;
 
