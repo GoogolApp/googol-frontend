@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { BarService } from '../../_services/bar';
-import { Bar } from '../../_models/bar';
+import { BarService } from '../../../_services/bar';
+import { Bar } from '../../../_models/bar';
 
 @Component({
   selector: 'page-searched-bar',

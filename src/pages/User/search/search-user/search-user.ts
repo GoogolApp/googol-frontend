@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { NavParams, LoadingController, NavController } from "ionic-angular/";
-import { UsersService } from "../../../_services/users";
-import { User } from "../../../_models/user";
+import { UsersService } from "../../../../_services/users";
+import { User } from "../../../../_models/user";
 import { SearchedProfilePage } from "../../searched-profile/searched-profile";
 
 @Component({

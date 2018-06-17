@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { NavParams, LoadingController, NavController } from "ionic-angular/";
-import { Bar } from "../../../_models/bar";
-import { BarService } from "../../../_services/bar";
+import { Bar } from "../../../../_models/bar";
+import { BarService } from "../../../../_services/bar";
 import { SearchedBarPage } from "../../searched-bar/searched-bar";
 
 @Component({
