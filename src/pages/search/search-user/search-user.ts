@@ -35,7 +35,7 @@ export class SearchUserTab {
 
     showPageUser(id: string) {
         localStorage.setItem('searchedUser', JSON.stringify(id));
-        this.navCtrl.push(SearchedProfilePage);
+        this.navCtrl.parent.parent.push(SearchedProfilePage);
     }
 
     async searchUser(username:string) {

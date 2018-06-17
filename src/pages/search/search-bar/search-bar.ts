@@ -32,10 +32,10 @@ export class SearchBarTab {
         spinner: 'bubbles'
     });
 
-    showPageBar(id: string) {
+    /*showPageBar(id: string) {
         localStorage.setItem('searchedBar', JSON.stringify(id));
         this.navCtrl.push(SearchedProfilePage);
-    }
+    }*/
 
     async searchBar(barname:string) {
         if(barname != undefined && this.currentSearch !== barname.trim()) {
