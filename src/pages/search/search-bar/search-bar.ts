@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { NavParams, LoadingController, NavController } from "ionic-angular/";
 import { Bar } from "../../../_models/bar";
 import { BarService } from "../../../_services/bar";
+import { SearchedBarPage } from "../../searched-bar/searched-bar";
 
 @Component({
     selector: 'tab-search-bar',
@@ -32,10 +33,10 @@ export class SearchBarTab {
         spinner: 'bubbles'
     });
 
-    /*showPageBar(id: string) {
+    showPageBar(id: string) {
         localStorage.setItem('searchedBar', JSON.stringify(id));
-        this.navCtrl.push(SearchedProfilePage);
-    }*/
+        this.navCtrl.parent.parent.push(SearchedBarPage);
+    }
 
     async searchBar(barname:string) {
         if(barname != undefined && this.currentSearch !== barname.trim()) {

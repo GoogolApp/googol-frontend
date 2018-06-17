@@ -1,7 +1,7 @@
 <ion-content padding>
     <ion-list no-lines>
         <div *ngIf="showList">
-          <button ion-item detail-none *ngFor="let bar of bars">
+          <button ion-item detail-none *ngFor="let bar of bars" (click)="showPageBar(bar._id)">
             <ion-avatar item-start>
               <profile-pic-generator word="{{bar.name}}" color="#4A90E2"></profile-pic-generator>
             </ion-avatar>

@@ -33,6 +33,7 @@ import { BarService } from '../_services/bar';
 import { OwnerService } from '../_services/owner';
 import { OwnerHomePage } from '../pages/home-owner/owner-home';
 import { SearchedProfilePage } from '../pages/searched-profile/searched-profile';
+import { SearchedBarPage } from '../pages/searched-bar/searched-bar'
 import {TokenInterceptor} from "../_providers/auth.interceptor";
 import { EditProfilePage } from '../pages/edit-profile/edit-profile';
 import { MyBarPage } from '../pages/my-bar/my-bar';
@@ -52,6 +53,7 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     SearchUserTab,
     SearchBarTab,
     SearchedProfilePage,
+    SearchedBarPage,
     EditProfilePage,
     SignInPage,
     SignUpPage,
@@ -84,6 +86,7 @@ import { MyBarPage } from '../pages/my-bar/my-bar';
     SearchUserTab,
     SearchBarTab,
     SearchedProfilePage,
+    SearchedBarPage,
     EditProfilePage,
     SignInPage,
     SignUpPage,
