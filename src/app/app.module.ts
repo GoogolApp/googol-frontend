@@ -20,7 +20,7 @@ import { BarService } from '../_services/bar';
 import { OwnerService } from '../_services/owner';
 
 
-import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar'
+import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar';
 import {TokenInterceptor} from "../_providers/auth.interceptor";
 import { TeamService } from '../_services/team';
 
@@ -56,6 +56,8 @@ import { FollowersPage } from '../pages/User/followers/followers';
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
+import { SearchUserTab } from '../pages/User/search/search-user/search-user';
+import { SearchBarTab } from '../pages/User/search/search-bar/search-bar';
 
 @NgModule({
   declarations: [
