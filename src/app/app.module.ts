@@ -58,6 +58,7 @@ import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar';
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
+import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
     HomePage,
     OwnerHomePage,
     MyBarPage,
-    PromotionsPage
+    PromotionsPage,
+    AddPromotionModal
   ],
   imports: [
     ComponentsModule,
@@ -125,7 +127,8 @@ import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
     HomePage,
     OwnerHomePage,
     MyBarPage,
-    PromotionsPage
+    PromotionsPage,
+    AddPromotionModal
   ],
   providers: [
     StatusBar,

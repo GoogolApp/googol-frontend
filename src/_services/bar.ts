@@ -58,4 +58,18 @@ export class BarService {
             });
     }
 
+    editBar(bar: any) : Observable<Bar>{
+        let body = {
+            name: bar.name,
+            placeId: bar.placeId,
+            eventHistory: bar.eventHistory,
+            followers: bar.followers,
+            location: bar.location
+        };
+        return this.http.put<Bar>( this.url + '/' + bar._id, body, this.httpOptions)
+        .map(bar => {
+            return bar;
+        });
+    }
+
 }

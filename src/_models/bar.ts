@@ -1,5 +1,5 @@
 export class Bar{
-    
+    _id: string;
     placeId: string;
     name: string;
     latitude: number;
@@ -7,6 +7,7 @@ export class Bar{
     location: {
         coordinates: any;
     };
+    promotion: string;
     
     //from api only
     createdAt: Date;
