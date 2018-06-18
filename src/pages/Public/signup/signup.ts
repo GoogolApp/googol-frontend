@@ -100,9 +100,9 @@ export class SignUpPage {
         this.clearFields();
         this.goSignIn();
       },
-      err => {
+      error => {
         loading.dismiss();
-        this.presentAlert("Empresário não pode ser criado!");
+        this.presentAlert(error.error.message);
       }
     )
   }
