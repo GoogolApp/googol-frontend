@@ -43,7 +43,8 @@
     </ion-grid>
   </section>
 
-  <ng-container *ngIf="match.matchDate.getHours() === currentDate.getHours() then positiveContent else negativeContent">
+  <ng-container *ngIf="(((currentDate.getTime() - match.matchDate.getTime())/3600000) < 2.5) &&
+  (((currentDate.getTime() - match.matchDate.getTime())/3600000) > 0) then positiveContent else negativeContent">
   </ng-container>
 
   <ng-template #positiveContent>
@@ -105,7 +106,8 @@
     </ion-grid>
   </section>
 
-  <ng-container *ngIf="event.match.hour.getHours() === currentDate.getHours() then positiveContent else negativeContent">
+  <ng-container *ngIf="(((currentDate.getTime() - match.matchDate.getTime())/3600000) < 2.5) &&
+  (((currentDate.getTime() - match.matchDate.getTime())/3600000) > 0) then positiveContent else negativeContent">
   </ng-container>
 
   <ng-template #positiveContent>
