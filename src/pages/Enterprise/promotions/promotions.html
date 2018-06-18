@@ -5,7 +5,7 @@
     </button>
     <ion-title class="text-large-medium">Minhas Promoções</ion-title>
     <ion-buttons end>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="openAddPromotionModal()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
@@ -13,8 +13,6 @@
 </ion-header>
 
 <ion-content padding>
-  <googol-card promotion="Promoção 1" place="Este Bar"></googol-card>
-  <googol-card promotion="Promoção 2" place="Este Bar"></googol-card>
-  <googol-card promotion="Promoção 3" place="Este Bar"></googol-card>
-  <googol-card promotion="Promoção 4" place="Este Bar"></googol-card>
+  <p text-center *ngIf="!owner.bar.promotion">Você ainda não adicionou nenhuma promoção</p>
+  <googol-card [promotion]="owner.bar.promotion" place="Este Bar"></googol-card>
 </ion-content>
