@@ -82,6 +82,17 @@ export class UsersService {
         });
     }
 
+    followBar(operation: string, barId: string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { operation: operation, barId: barId };
+        return this.http.patch<User>( this.url + '/' + authUserId + '/followingBars', body, this.httpOptions)
+        .map(user => {
+            console.log('respostareq');
+            console.log(user);
+            return user;
+        });
+    }
+
     saveEditions(username:string , password:string) : Observable<User>{
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
         let body = { username:username, password:password };
