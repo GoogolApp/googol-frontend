@@ -6,6 +6,7 @@ import { AuthService } from '../../../_services/auth';
 
 import { MyBarPage } from '../my-bar/my-bar';
 import { PromotionsPage } from '../promotions/promotions';
+import { ClaimBarPage } from '../claim-bar/claim-bar';
 
 @Component({
   selector: 'owner-home',
@@ -22,7 +23,8 @@ export class OwnerHomePage {
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public auth:AuthService, public app:App) {
     this.pages = [ 
       { title: 'Meu Bar', component: MyBarPage },
-      { title: 'Minhas Promoções', component: PromotionsPage }
+      { title: 'Minhas Promoções', component: PromotionsPage },
+      { title: 'ClaimBarTest', component: ClaimBarPage }
     ];
 
   }
