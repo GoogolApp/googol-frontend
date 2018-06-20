@@ -8,6 +8,7 @@ export class User{
     followers : any[];
     favTeams : any[];
     eventHistory: any[];
+    followingBars: any[];
     reputation : number;
 
     
@@ -19,6 +20,7 @@ export class User{
         this.favTeams = [];
         this.eventHistory = [];
         this.followers = [];
+        this.followingBars = [];
         this.reputation = 0;
     }
 }

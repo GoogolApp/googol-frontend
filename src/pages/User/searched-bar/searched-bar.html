@@ -2,8 +2,9 @@
   <ion-navbar>
     <ion-title>{{ currentBar.name }}</ion-title>
     <ion-buttons end>
-      <button ion-button color="secondary" clear>Seguir</button>
-    </ion-buttons>
+      <button *ngIf="followTrue()" ion-button color="danger" (click)="unfollowBar()" clear>Desseguir</button>
+      <button *ngIf="!followTrue()" ion-button color="secondary" (click)="followBar()" clear>Seguir</button>
+  </ion-buttons>>
   </ion-navbar>
 </ion-header>
 
