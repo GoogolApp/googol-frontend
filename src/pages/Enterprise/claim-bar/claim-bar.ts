@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController, ModalController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController, AlertController, Events } from 'ionic-angular';
 import { OwnerService } from '../../../_services/owner';
 import { LocationModal } from '../../Common/location-modal/location-modal';
 import { Bar } from '../../../_models/bar';
@@ -15,10 +15,11 @@ export class ClaimBarPage implements OnInit{
 
   constructor(
     public navCtrl: NavController,
+    public events: Events,
     private ownerService: OwnerService,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
-    private alertCtrl: AlertController,
+    private alertCtrl: AlertController
   ) {
     this.owner = { bar: { } };
     this.initPlace();
@@ -62,6 +63,7 @@ export class ClaimBarPage implements OnInit{
     this.ownerService.putBar(this.owner._id, bar).subscribe(
       data => {
         this.presentAlert("Pronto!", "Bar reivindicado com sucesso.");
+        this.events.publish("owner:hasBar");
         loading.dismiss();
       },
       error => {
