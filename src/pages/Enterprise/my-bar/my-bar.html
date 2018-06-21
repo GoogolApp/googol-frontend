@@ -3,28 +3,11 @@
     <button ion-button menuToggle>
       <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
     </button>
-    <ion-title class="text-large-medium">Meu Bar</ion-title>
+    <ion-title class="text-large-medium">{{owner.bar.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="MyBarPage">
-
-  <div *ngIf="owner.bar">
-      <p class="text-average-medium" text-center>{{owner.bar.name}}</p>
-      <p class="text-average-medium" text-center>{{place.formatted_address}}</p>
-  </div>
-
-  <div *ngIf="!owner.bar">
-      <p class="text-average-medium" text-center *ngIf="place.name == ''">Você ainda não está associado à um bar</p>
-  
-      <p class="text-average-medium" text-center>{{place.name}}</p>
-      <p class="text-average-medium" text-center>{{place.formatted_address}}</p>
-    
-      <button class="googol-btn-light" (click)="addLocationModal()" *ngIf="place.name == ''">Associar um Bar</button>
-      <button class="googol-btn-danger" (click)="addLocationModal()" *ngIf="place.name != ''">Editar</button>
-      <p class="text-average-default" text-center *ngIf="place.name != ''">A Localização está correta?</p>
-      <button class="googol-btn-secondary" (click)="associateBar()" *ngIf="place.name != ''">Associar</button>
-  </div>
 
   <div id="map" style="height: 40%"></div>
 
