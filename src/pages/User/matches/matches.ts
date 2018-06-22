@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import { MatchesService } from '../../../_services/matches';
 
 import { Match } from '../../../_models/match';
+import { FilterMatchesModal } from './filter-matches/filter-matches';
 
 @Component({
   selector: 'page-matches',
@@ -12,7 +13,8 @@ export class MatchesPage implements OnInit{
 
   matches: Match[] = [];
 
-  constructor(public navCtrl: NavController, private matchesService: MatchesService, private loadingController: LoadingController) {}
+  constructor(public navCtrl: NavController, private modalCtrl: ModalController, private matchesService: MatchesService, 
+    private loadingController: LoadingController) {}
 
   async ngOnInit(){
     await this.fetchMatches();
@@ -22,6 +24,12 @@ export class MatchesPage implements OnInit{
     content: 'Buscando partidas...',
     spinner: 'bubbles'
   });
+
+  openFilterModal() {
+    console.log("OPEN MODAL");
+    let modal = this.modalCtrl.create(FilterMatchesModal);
+    modal.present();
+  }
 
   fetchMatches(){
     this.loading.present();

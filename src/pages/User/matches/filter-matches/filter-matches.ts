@@ -5,5 +5,5 @@ import { Component } from "@angular/core";
     templateUrl: 'filter-matches.html'
 })
 export class FilterMatchesModal {
-
+    
 }
