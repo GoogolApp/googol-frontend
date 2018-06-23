@@ -93,6 +93,15 @@ export class UsersService {
         });
     }
 
+    addTeam(operation: string, team: string) : Observable<User>{
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { operation: operation, favTeamId: team };
+        return this.http.patch<User>( this.url + '/' + authUserId + '/favTeam', body, this.httpOptions)
+        .map(user => {
+            return user;
+        });
+    }
+
     saveEditions(username:string , password:string) : Observable<User>{
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
         let body = { username:username, password:password };
