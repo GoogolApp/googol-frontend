@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { TeamService } from '../../../../_services/team';
 import { Team } from '../../../../_models/team';
 import { UsersService } from '../../../../_services/users';
@@ -16,7 +16,9 @@ export class AllTeamsPage {
     public navParams: NavParams, 
     private teamService: TeamService,
     private loadingController: LoadingController,
-    private userService: UsersService) {
+    private userService: UsersService,
+    private event:Events
+    ) {
     
     let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
     this.fetchUser(authUserId);
@@ -73,6 +75,12 @@ export class AllTeamsPage {
         console.log(err);
       }
     );
+  }
+
+  refresh(){
+    let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+    this.fetchUser(authUserId);
+    this.fetchTeams();
   }
 
   followTrue(idTeam:string){

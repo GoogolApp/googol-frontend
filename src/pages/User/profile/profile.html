@@ -26,13 +26,13 @@
   <!-- follow grid -->
   <ion-grid>
     <ion-row>
-      <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium" (click)="gotoFollowingPage()">{{user.following.length}}</span>
+      <ion-col class="text-default-light" text-center (click)="gotoFollowingPage()">
+        <span class="text-default-medium" >{{user.following.length}}</span>
         <br> Seguindo
       </ion-col>
 
-      <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium" (click)="gotoFollowersPage()">{{user.followers.length}}</span>
+      <ion-col class="text-default-light" text-center (click)="gotoFollowersPage()">
+        <span class="text-default-medium" >{{user.followers.length}}</span>
         <br> Seguidores
       </ion-col>
 

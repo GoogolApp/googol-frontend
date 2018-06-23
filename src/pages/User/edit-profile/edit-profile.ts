@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Events } from 'ionic-angular';
 import { User } from '../../../_models/user';
 import { UsersService } from '../../../_services/users';
 import { EditTeamsPage } from '../edit-teams/edit-teams';
+import { ProfilePage } from '../profile/profile';
 
 @Component({
   selector: 'page-edit-profile',
@@ -17,7 +18,12 @@ export class EditProfilePage {
   password: string = "";
   password_confirm: string = "";
 
-  constructor(public navCtrl: NavController, private userService: UsersService, public alert: AlertController) {
+  constructor(
+    public navCtrl: NavController, 
+    private userService: UsersService, 
+    public alert: AlertController,
+    private events:Events) {
+
     let id = JSON.parse(localStorage.getItem('authUser')).userId;
     this.fetchUser(id);
   }
@@ -51,7 +57,8 @@ export class EditProfilePage {
           data => {
             this.editedUserAlert("Edicoes realizadas com sucesso!");
             this.user = data;
-            this.goProfile();
+            this.saveEditions();
+            this.clearFields();
           },
           err => {
             this.clearFields();
@@ -63,7 +70,8 @@ export class EditProfilePage {
           data => {
             this.editedUserAlert("Edicoes realizadas com sucesso!");
             this.user = data;
-            this.goProfile();
+            this.saveEditions();
+            this.clearFields();
           },
           err => {
             this.clearFields();
@@ -76,7 +84,7 @@ export class EditProfilePage {
             this.editedUserAlert("Ediçoes realizadas com sucesso!");
             this.user = data;
             this.clearFields();
-            this.goProfile();
+            this.saveEditions();
           },
           err => {
             //this.loading.dismiss();
@@ -88,12 +96,12 @@ export class EditProfilePage {
     }
   }
 
-  goProfile() {
-    this.navCtrl.getPrevious();
+  saveEditions() {
+    this.events.publish('reloadDetails'); 
   }
 
   goToEditTeams() {
-    this.navCtrl.push(EditTeamsPage);
+    this.navCtrl.push(EditTeamsPage, { "parentPage": ProfilePage });
   }
 
   editedUserAlert(message) {
@@ -115,7 +123,7 @@ export class EditProfilePage {
   }
 
   clearFields() {
-    this.email = "";
+    this.username = "";
     this.password = "";
     this.password_confirm = "";
 

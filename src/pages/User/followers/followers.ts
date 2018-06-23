@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { User } from '../../../_models/user';
 import { SearchedProfilePage } from '../searched-profile/searched-profile';
 import { UsersService } from '../../../_services/users';
@@ -10,14 +10,23 @@ import { UsersService } from '../../../_services/users';
 })
 export class FollowersPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UsersService, private loadingController: LoadingController) {
-    this.getFollowersUser();
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private userService: UsersService, 
+    private loadingController: LoadingController,
+    private events: Events) {
+
+    this.getFollowersUserFirst();
+    this.events.subscribe('reloadDetails',() => {
+      this.getFollowersUser();
+     });
   }
 
   user = new User();
   private followers:User[] = [];
 
-  async getFollowersUser(){
+  async getFollowersUserFirst(){
     let loading = this.loading();
     await loading;
     this.userService.getAllFollowers().subscribe(
@@ -33,9 +42,21 @@ export class FollowersPage {
     ) 
   }
 
+  getFollowersUser(){
+    this.userService.getAllFollowers().subscribe(
+      user=> {
+        this.user = user;
+        this.followers = user.followers;
+      },
+      err =>{
+        console.log(err);
+      }
+    ) 
+  }
+
   showPageUser(id: string) {
     localStorage.setItem('searchedUser', JSON.stringify(id));
-    this.navCtrl.push(SearchedProfilePage);
+    this.navCtrl.push(SearchedProfilePage, { "parentPage": this });
   }
 
   loading(){
