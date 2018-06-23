@@ -12,4 +12,8 @@ export class FilterMatchesModal {
     dismiss() {
         this.viewCtrl.dismiss();
     }
+
+    logIn(mail, password) {
+        this.viewCtrl.dismiss({ mail: mail, password: password });
+    }
 }

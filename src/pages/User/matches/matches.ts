@@ -29,6 +29,10 @@ export class MatchesPage implements OnInit{
     console.log("OPEN MODAL");
     let modal = this.modalCtrl.create(FilterMatchesModal);
     modal.present();
+
+    modal.onDidDismiss(data => {
+      console.log(data);
+    });
   }
 
   fetchMatches(){
