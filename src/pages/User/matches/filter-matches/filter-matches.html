@@ -9,23 +9,13 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-row>
-      <ion-col>
-        <ion-list inset>
-          <ion-item>
-            <ion-input placeholder="e-mail" type="text" #mail></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input placeholder="senha" type="password" #password></ion-input>
-          </ion-item>
-        </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <button ion-button class="submit-btn" (click)="logIn(mail.value,password.value)" type="submit">Login
-        </button>
-      </ion-col>
-    </ion-row>
+<ion-content padding class="content">
+    <ion-list>
+        <ion-item>
+         <ion-label>Campeonato</ion-label>
+           <ion-select id="Liga/Campeonato" [(ngModel)]="selectedLeagues" multiple="true">
+             <ion-option *ngFor="let league of leagues" [value]="league">{{ league }}</ion-option>
+           </ion-select>
+        </ion-item>
+    </ion-list>
 </ion-content>
