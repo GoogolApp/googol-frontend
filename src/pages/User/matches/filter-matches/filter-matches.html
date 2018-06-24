@@ -18,4 +18,13 @@
            </ion-select>
         </ion-item>
     </ion-list>
+
+    <ion-list>
+        <ion-item>
+         <ion-label>Time/Seleção</ion-label>
+           <ion-select id="Time/Seleção" [(ngModel)]="selectedTeams" multiple="true">
+             <ion-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-option>
+           </ion-select>
+        </ion-item>
+    </ion-list>
 </ion-content>

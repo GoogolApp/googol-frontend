@@ -12,14 +12,33 @@ export class FilterMatchesModal implements OnInit{
     
     leagues: string[] = [];
     selectedLeagues: string[] = [];
+
+    teams: string[] = [];
+    selectedTeams: string[] = [];
     
     ngOnInit(): void {
         let matches:Match[] = this.navParams.get('matches');
 
-        this.leagues = matches.map(function(match) {
+        this.leagues = this.getLeagues(matches);
+        this.teams = this.getTeams(matches);
+    }
+
+    private getLeagues(matches: Match[]) {
+        let leagues = matches.map(function (match) {
             return match.league;
         });
-        this.leagues = Array.from(new Set(this.leagues)).sort();
+        return Array.from(new Set(leagues)).sort();
+    }
+
+    private getTeams(matches: Match[]) {
+        let teams: string[] = [];
+        matches.forEach(
+            match => {
+                teams.push(match.homeTeam);
+                teams.push(match.awayTeam);
+            }
+        );
+        return Array.from(new Set(teams)).sort();
     }
 
     dismiss() {
