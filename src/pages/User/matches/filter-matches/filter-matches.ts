@@ -15,6 +15,8 @@ export class FilterMatchesModal implements OnInit{
 
     teams: string[] = [];
     selectedTeams: string[] = [];
+
+    favorites:boolean = false;
     
     ngOnInit(): void {
         let matches:Match[] = this.navParams.get('matches');

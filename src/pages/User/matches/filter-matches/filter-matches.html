@@ -27,4 +27,17 @@
            </ion-select>
         </ion-item>
     </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Apenas times favoritos</ion-label>
+            <ion-toggle [(ngModel)]="favorites" color="royal" checked="false"></ion-toggle>
+        </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+        <button ion-button block>
+            Aplicar filtros
+        </button>
+    </ion-buttons>
 </ion-content>
