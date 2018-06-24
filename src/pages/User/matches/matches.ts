@@ -27,7 +27,7 @@ export class MatchesPage implements OnInit{
 
   openFilterModal() {
     console.log("OPEN MODAL");
-    let modal = this.modalCtrl.create(FilterMatchesModal);
+    let modal = this.modalCtrl.create(FilterMatchesModal, {matches: this.matches});
     modal.present();
 
     modal.onDidDismiss(data => {
@@ -53,6 +53,7 @@ export class MatchesPage implements OnInit{
             return match;
           }
         });
+        this.matches = this.matches.filter(match => match !== undefined);
         this.loading.dismiss();
       },error => {
         this.loading.dismiss();
