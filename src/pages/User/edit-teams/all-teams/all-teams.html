@@ -1,31 +1,22 @@
-
 <ion-header>
 
   <ion-navbar>
     <ion-title>Times</ion-title>
+    <ion-buttons end>
+      <button ion-button color="light" (click)="refresh()" clear>Atualizar</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding padding id="TIMES_PAGE">
+<ion-content padding padding id="TEAMS_PAGE">
   <ion-list no-lines>
-    <div *ngIf="showList">
-      <ion-item *ngFor="let team of searchedTeams">
-        <ion-avatar item-start>
-          <img width="40" height="40" src={{team.teamLogoUrl}}>
-        </ion-avatar>
-        <h2>@{{team.name}}</h2>
-        <button ion-button color="secondary" clear item-end>Seguir</button>
-      </ion-item>
-    </div>
-    <div *ngIf="!showList">
-      <ion-item *ngFor="let team of teams">
-        <ion-avatar item-start>
-          <img width="40" height="40" src={{team.teamLogoUrl}}>
-        </ion-avatar>
-        <h2>@{{team.name}}</h2>
-        <button ion-button color="secondary" clear item-end>Seguir</button>
-      </ion-item>
-    </div>
+    <ion-item *ngFor="let team of teams" class="avatar">
+      <ion-avatar item-start>
+        <img width="40" height="40" src={{team.teamLogoUrl}}>
+      </ion-avatar>
+      <h2>{{team.name}}</h2>
+      <button ion-button color="secondary" item-end (click)="addTeam(team._id)" clear>Adicionar</button>
+    </ion-item>
   </ion-list>
 </ion-content>

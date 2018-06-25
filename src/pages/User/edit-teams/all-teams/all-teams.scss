@@ -1,3 +1,14 @@
-page-all-teams {
+#TEAMS_PAGE{
+    .placeholder {
+        height: 33px;
+        width: 33px;
+    }
+    
+    .placeholder-text {
+        font-size: 15px;  
+    }
 
+    .item-ios ion-avatar ion-img, .item-ios ion-avatar img{
+        border-radius: 0%;
+    }
 }

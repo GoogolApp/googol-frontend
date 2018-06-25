@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Events } from 'ionic-angular';
 import { User } from '../../../_models/user';
 import { UsersService } from '../../../_services/users';
 import { EventsService } from '../../../_services/events';
@@ -12,7 +12,13 @@ export class SearchedProfilePage {
   userSearch = new User();
   eventos = {};
 
-  constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService,private loadingController: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    private userService : UsersService, 
+    private eventsService : EventsService,
+    private loadingController: LoadingController,
+    private events: Events) {
+
     let id = JSON.parse(localStorage.getItem('searchedUser'));
     this.fetchUser(id);
     this.fetchEvents();
@@ -51,6 +57,7 @@ export class SearchedProfilePage {
     this.userService.follow('add', this.userSearch._id).subscribe(
       data =>{
         this.fetchUser(this.userSearch._id);
+        this.saveFollows();
       },
       err => {
         console.log(err);
@@ -62,11 +69,16 @@ export class SearchedProfilePage {
     this.userService.follow('remove', this.userSearch._id).subscribe(
       data =>{
         this.fetchUser(this.userSearch._id);
+        this.saveFollows();
       },
       err => {
         console.log(err);
       }
     );
+  }
+
+  saveFollows() {
+    this.events.publish('reloadDetails');
   }
 
   loading(){
