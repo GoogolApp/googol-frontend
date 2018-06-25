@@ -36,8 +36,12 @@
     </ion-list>
 
     <ion-buttons>
-        <button ion-button block>
+        <button ion-button float-left (click)="applyFilters()">
             Aplicar filtros
+        </button>
+        
+        <button ion-button float-right color="danger" (click)="clearFilters()">
+            Remover filtros
         </button>
     </ion-buttons>
 </ion-content>

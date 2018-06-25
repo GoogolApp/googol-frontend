@@ -27,7 +27,8 @@ export class MatchesPage implements OnInit{
 
   openFilterModal() {
     console.log("OPEN MODAL");
-    let modal = this.modalCtrl.create(FilterMatchesModal, {matches: this.matches});
+
+    let modal = this.modalCtrl.create(FilterMatchesModal, {'matches': this.matches});
     modal.present();
 
     modal.onDidDismiss(data => {

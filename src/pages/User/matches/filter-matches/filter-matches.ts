@@ -44,10 +44,25 @@ export class FilterMatchesModal implements OnInit{
     }
 
     dismiss() {
-        this.viewCtrl.dismiss(this.selectedLeagues);
+        this.viewCtrl.dismiss();
     }
 
-    logIn(mail, password) {
-        this.viewCtrl.dismiss({ mail: mail, password: password });
+    applyFilters() {
+        let filters = {
+            'leagues': this.selectedLeagues,
+            'teams': this.selectedTeams,
+            'favorites': this.favorites
+        }
+        this.viewCtrl.dismiss(filters);
     }
+
+    clearFilters() {
+        let filter = {
+            'leagues': [],
+            'teams': [],
+            'favorites': false
+        };
+        this.viewCtrl.dismiss(filter);
+    }
+
 }
