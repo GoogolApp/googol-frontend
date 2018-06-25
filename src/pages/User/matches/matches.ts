@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, ModalController } from 'ionic-angular';
 import { MatchesService } from '../../../_services/matches';
 
 import { Match } from '../../../_models/match';
+import { FilterMatchesModal } from './filter-matches/filter-matches';
+import _ from 'lodash';
 
 @Component({
   selector: 'page-matches',
@@ -11,8 +13,10 @@ import { Match } from '../../../_models/match';
 export class MatchesPage implements OnInit{
 
   matches: Match[] = [];
+  filteredMatches: Match[] = [];
 
-  constructor(public navCtrl: NavController, private matchesService: MatchesService, private loadingController: LoadingController) {}
+  constructor(public navCtrl: NavController, private modalCtrl: ModalController, private matchesService: MatchesService, 
+    private loadingController: LoadingController) {}
 
   async ngOnInit(){
     await this.fetchMatches();
@@ -22,6 +26,28 @@ export class MatchesPage implements OnInit{
     content: 'Buscando partidas...',
     spinner: 'bubbles'
   });
+
+  openFilterModal() {
+    let modal = this.modalCtrl.create(FilterMatchesModal, {'matches': this.matches});
+    modal.present();
+
+    modal.onDidDismiss(data => {
+      this.filterMatches(data);
+    });
+  }
+
+  filterMatches(filterOptions) {
+    if(filterOptions !== undefined) {
+      if(_.isEqual(filterOptions,{})) {
+        this.filteredMatches = this.matches;
+      } else {
+        this.filteredMatches = _.filter(this.matches, function(match) {
+          return _.includes(filterOptions.leagues, match.league) 
+          || _.includes(filterOptions.teams, match.homeTeam) || _.includes(filterOptions.teams, match.awayTeam);
+        });
+      }
+    }
+  }
 
   fetchMatches(){
     this.loading.present();
@@ -41,6 +67,8 @@ export class MatchesPage implements OnInit{
             return match;
           }
         });
+        this.matches = this.matches.filter(match => match !== undefined);
+        this.filteredMatches = this.matches;
         this.loading.dismiss();
       },error => {
         this.loading.dismiss();

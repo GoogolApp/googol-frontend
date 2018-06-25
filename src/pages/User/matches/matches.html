@@ -4,9 +4,14 @@
       <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
     </button>
     <ion-title class="text-large-medium">Jogos</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="openFilterModal()">
+        <ion-icon name="funnel"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <googol-card *ngFor="let match of matches" [match]="match" action="ADD_EVENT"></googol-card>
+  <googol-card *ngFor="let match of filteredMatches" [match]="match" action="ADD_EVENT"></googol-card>
 </ion-content>
