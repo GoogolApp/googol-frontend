@@ -57,11 +57,7 @@ export class FilterMatchesModal implements OnInit{
     }
 
     clearFilters() {
-        let filter = {
-            'leagues': [],
-            'teams': [],
-            'favorites': false
-        };
+        let filter = {};
         this.viewCtrl.dismiss(filter);
     }
 

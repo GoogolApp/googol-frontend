@@ -4,6 +4,7 @@ import { MatchesService } from '../../../_services/matches';
 
 import { Match } from '../../../_models/match';
 import { FilterMatchesModal } from './filter-matches/filter-matches';
+import _ from 'lodash';
 
 @Component({
   selector: 'page-matches',
@@ -12,6 +13,7 @@ import { FilterMatchesModal } from './filter-matches/filter-matches';
 export class MatchesPage implements OnInit{
 
   matches: Match[] = [];
+  filteredMatches: Match[] = [];
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController, private matchesService: MatchesService, 
     private loadingController: LoadingController) {}
@@ -26,14 +28,25 @@ export class MatchesPage implements OnInit{
   });
 
   openFilterModal() {
-    console.log("OPEN MODAL");
-
     let modal = this.modalCtrl.create(FilterMatchesModal, {'matches': this.matches});
     modal.present();
 
     modal.onDidDismiss(data => {
-      console.log(data);
+      this.filterMatches(data);
     });
+  }
+
+  filterMatches(filterOptions) {
+    if(filterOptions !== undefined) {
+      if(_.isEqual(filterOptions,{})) {
+        this.filteredMatches = this.matches;
+      } else {
+        this.filteredMatches = _.filter(this.matches, function(match) {
+          return _.includes(filterOptions.leagues, match.league) 
+          || _.includes(filterOptions.teams, match.homeTeam) || _.includes(filterOptions.teams, match.awayTeam);
+        });
+      }
+    }
   }
 
   fetchMatches(){
@@ -55,6 +68,7 @@ export class MatchesPage implements OnInit{
           }
         });
         this.matches = this.matches.filter(match => match !== undefined);
+        this.filteredMatches = this.matches;
         this.loading.dismiss();
       },error => {
         this.loading.dismiss();
