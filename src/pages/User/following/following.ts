@@ -17,10 +17,11 @@ export class FollowingPage {
     private loadingController: LoadingController,
     private events: Events) {
 
-     this.getFollowingUserFirst();
-    this.events.subscribe('reloadDetails',() => {
-      this.getFollowingUser();
-     });
+  }
+
+  ionViewDidEnter(){
+    this.getFollowingUserFirst();
+    
   }
 
   user = new User();
@@ -38,18 +39,6 @@ export class FollowingPage {
       err =>{
         console.log(err);
         loading.dismiss();
-      }
-    ) 
-  }
-
-  getFollowingUser(){
-    this.userService.getAllFollowing().subscribe(
-      user=> {
-        this.user = user;
-        this.following = user.following;
-      },
-      err =>{
-        console.log(err);
       }
     ) 
   }
