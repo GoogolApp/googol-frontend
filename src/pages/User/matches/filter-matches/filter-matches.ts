@@ -1,13 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import { NavController, ViewController, NavParams } from "ionic-angular/";
+
 import { Match } from "../../../../_models/match";
+import { UsersService } from "../../../../_services/users";
 
 @Component({
     selector: 'filter-matches',
     templateUrl: 'filter-matches.html'
 })
 export class FilterMatchesModal implements OnInit{
-    constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams, private userService: UsersService) {
     }
     
     leagues: string[] = [];
@@ -16,7 +18,7 @@ export class FilterMatchesModal implements OnInit{
     teams: string[] = [];
     selectedTeams: string[] = [];
 
-    favorites:boolean = false;
+    favorites:any = false;
     
     ngOnInit(): void {
         let matches:Match[] = this.navParams.get('matches');
@@ -48,12 +50,28 @@ export class FilterMatchesModal implements OnInit{
     }
 
     applyFilters() {
-        let filters = {
-            'leagues': this.selectedLeagues,
-            'teams': this.selectedTeams,
-            'favorites': this.favorites
+        if(this.favorites === false && this.selectedLeagues.length === 0 && this.selectedTeams.length === 0) {
+            this.viewCtrl.dismiss();
+        } else {
+            let filters = {
+                'leagues': this.selectedLeagues,
+                'teams': this.selectedTeams,
+                'favorites': this.favorites
+            }
+
+            if(this.favorites) {
+                let userId = JSON.parse(localStorage.getItem('authUser')).userId;
+                this.userService.getOne(userId).subscribe(
+                    async user => {
+                        filters.favorites = await user.favTeams.map(team => team.name);
+                    }
+                );
+            } else {
+                filters.favorites = this.favorites;
+            }
+
+            this.viewCtrl.dismiss(filters);
         }
-        this.viewCtrl.dismiss(filters);
     }
 
     clearFilters() {
