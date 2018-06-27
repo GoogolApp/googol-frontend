@@ -60,7 +60,7 @@ export class FilterMatchesModal implements OnInit{
             let userId = JSON.parse(localStorage.getItem('authUser')).userId;
             this.userService.getOne(userId).subscribe(
                 async user => {
-                    filters.favorites = await user.favTeams;
+                    filters.favorites = await user.favTeams.map(team => team.name);
                 }
             );
         } else {
