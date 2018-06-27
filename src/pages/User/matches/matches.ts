@@ -40,6 +40,10 @@ export class MatchesPage implements OnInit{
     if(filterOptions !== undefined) {
       if(_.isEqual(filterOptions,{})) {
         this.filteredMatches = this.matches;
+      } else if(filterOptions.favorites !== false) {
+        this.filteredMatches = _.filter(this.matches, function(match) {
+          return _.includes(filterOptions.favorites, match.homeTeam) || _.includes(filterOptions.favorites, match.awayTeam);
+        });
       } else {
         this.filteredMatches = _.filter(this.matches, function(match) {
           return _.includes(filterOptions.leagues, match.league) 
