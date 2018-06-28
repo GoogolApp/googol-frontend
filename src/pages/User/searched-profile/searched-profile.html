@@ -53,10 +53,23 @@
   <!-- teams row -->
   <section class="favorite-teams">
     <p class="text-default-light">Times Favoritos</p>
-    <div>
-      <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/-_cmntP5q_pHL7g5LfkRiw_96x96.png">
-      <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/Th4fAVAZeCJWRcKoLW7koA_96x96.png">
-      <img width="40" height="40" src="https://ssl.gstatic.com/onebox/media/sports/logos/7spurne-xDt2p6C0imYYNA_96x96.png">
+    <div *ngIf="userSearch.favTeams.length==0">
+      <p class="text-default-light">Usuário sem times favoritos!</p>
+    </div>
+
+    <div *ngIf="userSearch.favTeams.length==1">
+      <img width="40" height="40" src={{userSearch.favTeams[0].teamLogoUrl}}>
+    </div>
+
+    <div *ngIf="userSearch.favTeams.length==2" (click)="gotoTeamsPage()">
+      <img width="40" height="40" src={{userSearch.favTeams[0].teamLogoUrl}}>
+      <img width="40" height="40" src={{userSearch.favTeams[1].teamLogoUrl}}>
+    </div>
+
+    <div *ngIf="userSearch.favTeams.length >=3 ">
+      <img width="40" height="40" src={{userSearch.favTeams[0].teamLogoUrl}}>
+      <img width="40" height="40" src={{userSearch.favTeams[1].teamLogoUrl}}>
+      <img width="40" height="40" src={{userSearch.favTeams[2].teamLogoUrl}}>
     </div>
   </section>
 
