@@ -14,4 +14,4 @@ export class Event {
         this.match = match;
         this.confirmed_users = new Array<User>();
     }
-};
+}

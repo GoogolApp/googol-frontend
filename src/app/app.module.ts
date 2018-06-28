@@ -53,6 +53,7 @@ import { FollowersPage } from '../pages/User/followers/followers';
 import { SearchUserTab } from '../pages/User/search/search-user/search-user';
 import { SearchBarTab } from '../pages/User/search/search-bar/search-bar';
 import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar';
+import { FilterMatchesModal } from '../pages/User/matches/filter-matches/filter-matches';
 
 //Enterprise
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
@@ -90,7 +91,9 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
     MyBarPage,
     PromotionsPage,
     AddPromotionModal,
+    refineEnterprise
     ClaimBarPage
+    FilterMatchesModal
   ],
   imports: [
     ComponentsModule,
@@ -132,6 +135,7 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage
+    FilterMatchesModal
   ],
   providers: [
     StatusBar,

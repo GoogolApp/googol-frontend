@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Filtros</ion-title>
+      <ion-buttons end>
+          <button ion-button (click)="dismiss()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="content">
+    <ion-list>
+        <ion-item>
+         <ion-label>Campeonato</ion-label>
+           <ion-select id="Liga/Campeonato" [(ngModel)]="selectedLeagues" multiple="true">
+             <ion-option *ngFor="let league of leagues" [value]="league">{{ league }}</ion-option>
+           </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+         <ion-label>Time/Seleção</ion-label>
+           <ion-select id="Time/Seleção" [(ngModel)]="selectedTeams" multiple="true">
+             <ion-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-option>
+           </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>
+            <ion-label>Apenas times favoritos</ion-label>
+            <ion-toggle [(ngModel)]="favorites" color="royal" checked="false"></ion-toggle>
+        </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+        <button ion-button float-left color="secondary" (click)="applyFilters()">
+            Aplicar filtros
+        </button>
+        
+        <button ion-button float-right color="danger" (click)="clearFilters()">
+            Remover filtros
+        </button>
+    </ion-buttons>
+</ion-content>
