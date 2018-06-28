@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
+    </button>
+    <ion-title class="text-large-medium">Reivindicar Bar</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="pg-claim-bar">
+
+    <p class="text-average-medium" text-center *ngIf="place.name == ''">Você ainda não está associado à um bar</p>
+  
+    <p class="text-average-medium" text-center>{{place.name}}</p>
+    <p class="text-average-medium" text-center>{{place.formatted_address}}</p>
+  
+    <button class="googol-btn-light" (click)="addLocationModal()" *ngIf="place.name == ''">Associar um Bar</button>
+
+    <div *ngIf="place.name != ''">
+        <button class="googol-btn-danger" (click)="addLocationModal()">Editar</button>
+        <p class="text-average-default" text-center>A Localização está correta?</p>
+        <button class="googol-btn-secondary" (click)="associateBar()">Associar</button>
+        <button class="googol-btn-light" (click)="initPlace()">Cancelar</button>
+    </div>
+    
+
+</ion-content>

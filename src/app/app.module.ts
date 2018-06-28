@@ -60,6 +60,7 @@ import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
+import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,8 @@ import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-
     MyBarPage,
     PromotionsPage,
     AddPromotionModal,
+    refineEnterprise
+    ClaimBarPage
     FilterMatchesModal
   ],
   imports: [
@@ -131,6 +134,7 @@ import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-
     MyBarPage,
     PromotionsPage,
     AddPromotionModal,
+    ClaimBarPage
     FilterMatchesModal
   ],
   providers: [

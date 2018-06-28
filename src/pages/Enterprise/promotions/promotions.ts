@@ -19,7 +19,8 @@ export class PromotionsPage implements OnInit{
   ) {
     this.owner = {
       bar:{
-        name: ""
+        name: "",
+        promotion: ""
       }
     }
   }
