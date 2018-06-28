@@ -24,19 +24,23 @@ export class AllTeamsPage {
   ionViewDidEnter(){
     let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
     this.fetchUser(authUserId);
-    this.fetchTeams();
+    //this.fetchTeams();
   }
 
   private user = new User();
   private teams: Team[] = [];
   
   fetchUser(id : string){
+    
     this.userService.getOne(id).subscribe(
       data=> {
         this.user = data;
+        this.fetchTeams();
+        
       },
       err =>{
         console.log(err);
+       
       }
     ) 
   }
@@ -44,25 +48,29 @@ export class AllTeamsPage {
   async fetchTeams() {
     let loading = this.loading();
     await loading;
+
     this.teamService.getAllTeams().subscribe(
       teams => {
         this.teams = [];
           this.teams = teams.filter((team) => {
             return !this.followTrue(team._id);
+            
           });
+          loading.dismiss();
           this.teams.sort((team1, team2) => {
             if (team1.name < team2.name) {
               return -1;
             }else if (team1.name > team2.name) {
               return 1;
-            }return 0;
+            }return 0;   
         }
         );
-        loading.dismiss();                
+                      
       },
       error => {
         console.log(error);
-        loading.dismiss(); 
+        loading.dismiss();
+         
       }
     );
   }
