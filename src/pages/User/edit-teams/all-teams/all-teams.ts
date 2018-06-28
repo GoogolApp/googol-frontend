@@ -19,11 +19,14 @@ export class AllTeamsPage {
     private userService: UsersService,
     private event:Events
     ) {
-    
+  }
+
+  ionViewDidEnter(){
     let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
     this.fetchUser(authUserId);
     this.fetchTeams();
   }
+
   private user = new User();
   private teams: Team[] = [];
   
@@ -68,6 +71,7 @@ export class AllTeamsPage {
     this.userService.addTeam('add', teamId).subscribe(
       data =>{
         this.teams = this.teams.filter((team) => {
+          this.saveTeams();
           return team._id !== teamId;
         });
       },
@@ -75,6 +79,12 @@ export class AllTeamsPage {
         console.log(err);
       }
     );
+  }
+
+  saveTeams() {
+
+    this.event.publish('reloadDetails');
+
   }
 
   refresh(){

@@ -6,6 +6,7 @@ import { EventsService } from '../../../_services/events';
 import { EditProfilePage } from '../edit-profile/edit-profile';
 import { FollowingPage } from '../following/following';
 import { FollowersPage } from '../followers/followers';
+import { EditTeamsPage } from '../edit-teams/edit-teams';
 
 
 @Component({
@@ -46,12 +47,14 @@ export class ProfilePage{
     private eventsService : EventsService, 
     private loadingController: LoadingController,
     private events: Events) {
-    let id = JSON.parse(localStorage.getItem('authUser')).userId;
-    this.fetchUserFirst(id);
+    
+  }
+
+  ionViewDidEnter(){
+    let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+    this.fetchUserFirst(authUserId);
     this.fetchEvents();
-    this.events.subscribe('reloadDetails',() => {
-      this.fetchUser(id);
-     });
+    
   }
 
 
@@ -73,17 +76,6 @@ export class ProfilePage{
       }
     ) 
   }
-
-  fetchUser(id : string){
-    this.userService.getOne(id).subscribe(
-      data=> {
-        this.user = data;
-      },
-      err =>{
-        console.log(err);
-      }
-    ) 
-  }
   
   gotoEdit(){
     this.navCtrl.push(EditProfilePage, { "parentPage": this });
@@ -95,6 +87,10 @@ export class ProfilePage{
 
   gotoFollowersPage(){
     this.navCtrl.push(FollowersPage, { "parentPage": this });
+  }
+
+  gotoTeamsPage(){
+    this.navCtrl.push(EditTeamsPage, { "parentPage": this });
   }
 
   loading(){
