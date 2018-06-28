@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Events } from 'ionic-angular';
 import { UsersService } from '../../../_services/users';
 import { User } from '../../../_models/user';
 import { EventsService } from '../../../_services/events';
@@ -12,7 +12,7 @@ import { FollowersPage } from '../followers/followers';
   selector: 'page-profile',
   templateUrl: 'profile.html'
 })
-export class ProfilePage implements OnInit{
+export class ProfilePage{
 
   mockUser = {
     name: "Rick Sanchez",
@@ -40,21 +40,26 @@ export class ProfilePage implements OnInit{
   user = new User();
   eventos = {};
 
-  constructor(public navCtrl: NavController, private userService : UsersService, private eventsService : EventsService, private loadingController: LoadingController) {
+  constructor(
+    public navCtrl: NavController, 
+    private userService : UsersService, 
+    private eventsService : EventsService, 
+    private loadingController: LoadingController,
+    private events: Events) {
     let id = JSON.parse(localStorage.getItem('authUser')).userId;
-    this.fetchUser(id);
+    this.fetchUserFirst(id);
     this.fetchEvents();
+    this.events.subscribe('reloadDetails',() => {
+      this.fetchUser(id);
+     });
   }
 
-  ngOnInit(){
-    this.fetchUser(JSON.parse(localStorage.getItem('authUser')).userId);
-  }
 
   fetchEvents(){
     this.eventos = this.eventsService.getAll();
   }
 
-  async fetchUser(id : string){
+  async fetchUserFirst(id : string){
     let loading = this.loading();
     await loading;
     this.userService.getOne(id).subscribe(
@@ -68,17 +73,28 @@ export class ProfilePage implements OnInit{
       }
     ) 
   }
+
+  fetchUser(id : string){
+    this.userService.getOne(id).subscribe(
+      data=> {
+        this.user = data;
+      },
+      err =>{
+        console.log(err);
+      }
+    ) 
+  }
   
   gotoEdit(){
-    this.navCtrl.push(EditProfilePage);
+    this.navCtrl.push(EditProfilePage, { "parentPage": this });
   }
 
   gotoFollowingPage(){
-    this.navCtrl.push(FollowingPage);
+    this.navCtrl.push(FollowingPage, { "parentPage": this });
   }
 
   gotoFollowersPage(){
-    this.navCtrl.push(FollowersPage);
+    this.navCtrl.push(FollowersPage, { "parentPage": this });
   }
 
   loading(){
