@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { AppUrl } from '../_config/url.config';
@@ -16,7 +16,7 @@ export class BarService {
 
     /**
      * Create a new bar
-     * @param bar 
+     * @param bar
      */
     create(bar: Bar): Observable<Bar> {
 
@@ -35,7 +35,7 @@ export class BarService {
 
     /**
      * Get one bar with a given id
-     * @param id 
+     * @param id
      */
     getOne(id: string) : Observable<Bar> {
         return this.http.get<Bar>(this.url + '/' + id, this.httpOptions)

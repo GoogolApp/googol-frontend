@@ -31,7 +31,7 @@ import { SignInPage } from '../pages/Public/signin/signin';
 import { SignUpPage } from '../pages/Public/signup/signup';
 
 //Common
-import { LocationModal } from '../pages/Common/location-modal/location-modal'; 
+import { LocationModal } from '../pages/Common/location-modal/location-modal';
 
 //User
 import { HomePage } from '../pages/User/home/home';
@@ -91,8 +91,7 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
     MyBarPage,
     PromotionsPage,
     AddPromotionModal,
-    refineEnterprise
-    ClaimBarPage
+    ClaimBarPage,
     FilterMatchesModal
   ],
   imports: [
@@ -134,7 +133,7 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
     MyBarPage,
     PromotionsPage,
     AddPromotionModal,
-    ClaimBarPage
+    ClaimBarPage,
     FilterMatchesModal
   ],
   providers: [
