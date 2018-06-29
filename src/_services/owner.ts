@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { AppUrl } from '../_config/url.config';
@@ -17,7 +17,7 @@ export class OwnerService {
 
     /**
      * Create a new owner
-     * @param owner 
+     * @param owner
      */
     create(owner: Owner): Observable<Owner> {
 
@@ -34,7 +34,7 @@ export class OwnerService {
 
     /**
      * Get a single owner by a given id
-     * @param id 
+     * @param id
      */
     getOne(id: string) : Observable<Owner> {
         return this.http.get<Owner>(this.url + '/' + id, this.httpOptions)
@@ -46,7 +46,7 @@ export class OwnerService {
     putBar(id: string, bar: Bar){
         return this.http.put<Owner>(this.url + '/' + id + '/mybar', bar, this.httpOptions)
             .map(
-                owner => { 
+                owner => {
                     return owner;
                 }
             )
