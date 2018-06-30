@@ -16,7 +16,7 @@ export class CreateEventPage {
     }
 
     createEvent(){
-        this.eventsService.create(this.match);
+        //this.eventsService.create(this.match);
         this.navCtrl.pop();
     }
 }
