@@ -23,15 +23,20 @@ export class EventsService {
                 return events;
             });
     }
+    
+    create(matchId: string, barId: string){
+        let body = {
+        "matchId": matchId,
+        "barId": barId
+        }
+        return this.http.post<Event>(this.url, this.httpOptions)
+            .map(events => {
+                return events;
+            });
+    }
 
     getById(_id: string) {
         return this.fakeStorage;
     }
 
-    create(match: Match){
-        let event = new Event(this.fakeId, this.fakeLocation, match);
-        this.fakeId = this.fakeId + 1;
-        this.fakeStorage.push(event);
-    }
-    
 }
