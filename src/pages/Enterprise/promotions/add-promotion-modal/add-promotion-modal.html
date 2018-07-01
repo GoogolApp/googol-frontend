@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Adicionar Promoção
+      {{title}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -13,6 +13,6 @@
 
 <ion-content padding>
   <p class="text-default-normal">Texto da Promoção:</p>
-  <textarea class="googol-input" rows="7"></textarea>
-  <button class="googol-btn-secondary" style="margin-top: 20px!important">Adicionar</button>
+  <textarea class="googol-input" rows="7" [(ngModel)]="promoText"></textarea>
+  <button class="googol-btn-secondary add-bar-button" (click)="addPromo(bar, promoText)">Adicionar</button>
 </ion-content>

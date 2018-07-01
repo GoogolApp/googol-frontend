@@ -139,7 +139,7 @@
 
 <!-- Promotion Card -->
 <div class="base" *ngIf="promotion">
-  
+
   <header text-center>
     <span class="text-default-medium">Promoção</span>
   </header>
@@ -147,6 +147,6 @@
   <hr>
 
   <section class="body" text-center>
-    {{promotion}}
+    <textarea class="googol-input" rows="7" readonly> {{promotion}}</textarea>
   </section>
 </div>
