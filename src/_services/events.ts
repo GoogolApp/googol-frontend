@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Match } from '../_models/match';
 import { Event } from '../_models/event';
+import { AppUrl } from '../_config/url.config';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class EventsService {
@@ -9,7 +11,10 @@ export class EventsService {
     fakeId = 1;
     fakeLocation = "Bar da putaria - Campina Grande";
     
-    constructor() { }
+    private url: string = AppUrl.root + '/events';
+    private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    
+    constructor(private http: HttpClient) { }
 
     getAll() {
         return this.fakeStorage;
@@ -19,10 +24,12 @@ export class EventsService {
         return this.fakeStorage;
     }
 
-    create(match: Match){
-        let event = new Event(this.fakeId, this.fakeLocation, match);
-        this.fakeId = this.fakeId + 1;
-        this.fakeStorage.push(event);
+    create(matchId: string, barId: string){
+        let body = { matchId: matchId, barId: barId };
+        return this.http.post<Event>( this.url + '/', body, this.httpOptions)
+        .map(event => {
+            return event;
+        });
     }
     
 }
