@@ -7,8 +7,12 @@ export class Bar{
     location: {
         coordinates: any;
     };
-    promotion: string;
-    
+
+    promo: {
+      createdAt: any,
+      content: string
+    };
+
     //from api only
     createdAt: Date;
     eventHistory: any[];
