@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EventsService {
 
-    private url: string = appConfig.apiUrl + '/matches';
+    private url: string = appConfig.apiUrl + '/events';
     private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     
     fakeStorage = new Array<Event>();
