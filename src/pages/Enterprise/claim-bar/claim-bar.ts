@@ -45,7 +45,7 @@ export class ClaimBarPage implements OnInit{
     let modal = this.modalCtrl.create(LocationModal);
     modal.onDidDismiss(place => {
       this.place = place;
-    })
+    });
     modal.present();
   }
 
@@ -57,7 +57,8 @@ export class ClaimBarPage implements OnInit{
       this.place.place_id,
       this.place.name,
       this.place.latitude,
-      this.place.longitude
+      this.place.longitude,
+      this.place.formatted_address
     );
 
     this.ownerService.putBar(this.owner._id, bar).subscribe(
@@ -92,4 +93,4 @@ export class ClaimBarPage implements OnInit{
 
     return loading;
   }
-} 
+}
