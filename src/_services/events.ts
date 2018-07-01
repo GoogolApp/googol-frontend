@@ -16,8 +16,12 @@ export class EventsService {
     
     constructor(private http: HttpClient) { }
 
-    getAll() {
-        return this.fakeStorage;
+
+    getAll(){
+        return this.http.get<Event[]>(this.url, this.httpOptions)
+            .map(events => {
+                return events;
+            });
     }
 
     getById(_id: string) {

@@ -18,6 +18,7 @@ export class CreateEventPage {
     placeName: string = '';
     public idEventBar: string;
     user = new User();
+    private events = {};
 
     constructor(
         public navCtrl: NavController,
@@ -29,11 +30,24 @@ export class CreateEventPage {
     ) {
         this.match = this.navParams.get('match');
         this.initPlace();
+        this.fetchEvents();
     }
 
     initPlace() {
         this.placeName = '';
     }
+
+    fetchEvents(){
+        this.eventsService.getAll().subscribe(data=> {
+            this.events = data;
+            console.log(this.events);
+          },
+          err =>{
+            console.log(err);
+          })
+    }
+
+    
 
     createEvent() {
         this.eventsService.create(this.match._id, this.idEventBar).subscribe(
