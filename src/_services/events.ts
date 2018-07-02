@@ -29,7 +29,8 @@ export class EventsService {
     }
 
     create(matchId: string, barId: string){
-        let body = { matchId: matchId, barId: barId };
+        let userId = JSON.parse(localStorage.getItem('authUser')).userId;
+        let body = { matchId: matchId, barId: barId, userId: userId };
         return this.http.post<Event>( this.url + '/', body, this.httpOptions)
         .map(event => {
             return event;

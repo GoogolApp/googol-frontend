@@ -18,6 +18,6 @@ export class AllEventsTab implements OnInit{
       }
     
     fetchEvents(){
-        this.events = this.eventsService.getAll();
+        //this.events = this.eventsService.getAll();
     }
 }
