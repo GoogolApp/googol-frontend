@@ -7,17 +7,24 @@ export class Bar{
     location: {
         coordinates: any;
     };
-    promotion: string;
-    
-    //from api only
+
+    promo: {
+      createdAt: any,
+      content: string
+    };
+
+    address: string;
+
+  //from api only
     createdAt: Date;
     eventHistory: any[];
 
-    constructor(placeId?:string, name?:string, latitude?:number, longitude?:number){
+    constructor(placeId?:string, name?:string, latitude?:number, longitude?:number, address?:string){
         this.placeId = placeId;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
     }
 
 }

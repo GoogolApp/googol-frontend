@@ -72,4 +72,10 @@ export class BarService {
         });
     }
 
+    editBarPromo (bar: any, promoText: string) : Observable<Bar> {
+      const body = {
+        promo: promoText
+      };
+      return this.http.patch<Bar>(`${this.url}/${bar._id}/promo`, body, this.httpOptions);
+    }
 }

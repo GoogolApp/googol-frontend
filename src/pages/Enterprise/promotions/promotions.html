@@ -4,7 +4,7 @@
       <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
     </button>
     <ion-title class="text-large-medium">Minhas Promoções</ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="!owner.bar.promo">
       <button ion-button icon-only (click)="openAddPromotionModal()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -13,6 +13,6 @@
 </ion-header>
 
 <ion-content padding>
-  <p text-center *ngIf="!owner.bar.promotion">Você ainda não adicionou nenhuma promoção</p>
-  <googol-card [promotion]="owner.bar.promotion" place="Este Bar"></googol-card>
+  <p text-center *ngIf="!owner.bar.promo">Você ainda não adicionou nenhuma promoção</p>
+  <googol-card [promotion]="getPromoContent()" (click)="openEditPromotionModal()" place="Este Bar"></googol-card>
 </ion-content>

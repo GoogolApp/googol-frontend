@@ -20,7 +20,9 @@ export class PromotionsPage implements OnInit{
     this.owner = {
       bar:{
         name: "",
-        promotion: ""
+        promo: {
+          content:""
+        }
       }
     }
   }
@@ -29,21 +31,38 @@ export class PromotionsPage implements OnInit{
     await this.getData(this.loading());
   }
 
-  async getData(loading){
+  async getData(loading) {
     let ownerId = JSON.parse(localStorage.getItem('authUser')).ownerId;
-    this.ownerService.getOne(ownerId).subscribe(async owner => {
-      this.owner = await owner;
-      loading.dismiss();
-    })
+    await this.ownerService.getOne(ownerId).subscribe(owner => {
+      this.owner = owner
+    });
+    loading.dismiss();
   }
 
+  openAddPromotionModal () {
+    const title = 'Adicionar Promoção';
+    this._openPromotionModal(title);
+  }
 
-  openAddPromotionModal(){
-    let modal = this.modalCtrl.create(AddPromotionModal);
+  openEditPromotionModal () {
+    const title = 'Editar Promoção';
+    this._openPromotionModal(title);
+  }
+
+  private _openPromotionModal (title) {
+    let modal = this.modalCtrl.create(AddPromotionModal, {
+      'bar': this.owner.bar,
+      'title': title
+    });
     modal.onDidDismiss(obj => {
-      console.log("dismissed");
-    })
+      this.getData(this.loading());
+    });
     modal.present();
+  }
+
+  getPromoContent () {
+    const promo = this.owner.bar.promo;
+    return promo ?  promo.content : "";
   }
 
   loading(){
@@ -51,7 +70,6 @@ export class PromotionsPage implements OnInit{
       content: 'Por favor, aguarde...',
       spinner: 'bubbles'
     });
-
     loading.present();
 
     return loading;

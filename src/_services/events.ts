@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Match } from '../_models/match';
 import { Event } from '../_models/event';
-import { appConfig } from '../app/app.config';
+import { AppUrl } from '../_config/url.config';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export class EventsService {
 
-    private url: string = appConfig.apiUrl + '/events';
-    private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    
     fakeStorage = new Array<Event>();
     fakeId = 1;
     fakeLocation = "Bar da putaria - Campina Grande";
+    
+    private url: string = AppUrl.root + '/events';
+    private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     
     constructor(private http: HttpClient) { }
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../../../_services/events';
 import { Event } from '../../../../_models/event';
-import { LoadingController } from 'ionic-angular/';
 
 @Component({
     selector: 'tab-all-events',

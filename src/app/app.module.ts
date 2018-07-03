@@ -61,6 +61,7 @@ import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
 import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
+import { SearchBarEventPage } from '../pages/User/matches/create-event/search-bar-event/search-bar-event';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
     FollowersPage,
     MatchesPage,
     CreateEventPage,
+    SearchBarEventPage,
     EventsPage,
     AllEventsTab,
     MyEventsTab,
@@ -113,6 +115,7 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
     FollowersPage,
     MatchesPage,
     CreateEventPage,
+    SearchBarEventPage,
     EventsPage,
     AllEventsTab,
     MyEventsTab,

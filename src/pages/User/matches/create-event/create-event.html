@@ -1,11 +1,23 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>Adicionar Evento</ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-navbar>
+    <ion-title>Adicionar Evento</ion-title>
+  </ion-navbar>
+</ion-header>
 
-<ion-content padding>
+<ion-content padding class="pg-create-event">
   <googol-card [match]="match" action="NONE"></googol-card>
   <br>
-  <button class="googol-btn-light" (click)="createEvent()">Criar evento</button>
+
+  <p class="text-average-medium" text-center *ngIf="placeName == ''">Nenhum bar selecionado até o momento</p>
+  <button class="googol-btn-light" (click)="addLocationModal()" *ngIf="placeName == ''">Associar um Bar</button>
+
+  <div *ngIf="placeName != ''">
+      <p class="text-average-medium" text-center>O bar que ocorrerá o evento é:</p>
+      <p class="text-average-medium" text-center>{{place.name}}</p>
+      <button class="googol-btn-danger" (click)="addLocationModal()">Editar</button>
+  </div>
+  
+  <button class="googol-btn-secondary" (click)="createEvent()">Criar evento</button>
+
+
 </ion-content>
