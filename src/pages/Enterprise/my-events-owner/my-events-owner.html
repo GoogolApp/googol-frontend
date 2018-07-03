@@ -4,10 +4,17 @@
       <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
     </button>
     <ion-title class="text-large-medium">Meus Eventos</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="openAddEvent()">
+          <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="MyEventsOwnerPage">
-  text...
+
+    <p *ngIf="events.length === 0" class="text-default-medium" text-center> Não existem eventos cadastrados no seu bar!</p>
+    <googol-card *ngFor="let event of events" [event]="event" action="CONFIRM_PRESENCE"></googol-card>
 
 </ion-content>

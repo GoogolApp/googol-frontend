@@ -140,13 +140,29 @@
 <!-- Promotion Card -->
 <div class="base" *ngIf="promotion">
 
-  <header text-center>
+  <header>
     <span class="text-default-medium">Promoção</span>
+    <span class="text-default-normal text-mute" float-right>{{promotion.createdAt | date:'HH:mm, dd MMM'}}</span>
   </header>
 
   <hr>
 
   <section class="body" text-center>
-    <textarea class="googol-input" rows="7" readonly> {{promotion}}</textarea>
+    <p> {{promotion.content}}</p>
+  </section>
+</div>
+
+
+<!-- Address Card -->
+<div class="base" *ngIf="address">
+
+  <header text-center>
+    <span class="text-default-medium">Endereço</span>
+  </header>
+
+  <hr>
+
+  <section class="body" text-center>
+    <p> {{address}}</p>
   </section>
 </div>

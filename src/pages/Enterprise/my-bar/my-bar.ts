@@ -15,7 +15,7 @@ export class MyBarPage implements OnInit{
     private ownerService: OwnerService,
     private loadingController: LoadingController
   ) {
-    this.owner = { bar: {}}
+    this.owner = { bar: { promo: { }}}
   }
 
   async ngOnInit(){
@@ -27,6 +27,7 @@ export class MyBarPage implements OnInit{
     this.ownerService.getOne(id).subscribe( owner => {
         loading.dismiss();
         this.owner = owner;
+        console.log(owner);
       }
     );
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { OwnerService } from '../../../_services/owner';
 
 @Component({
@@ -9,11 +9,13 @@ import { OwnerService } from '../../../_services/owner';
 export class MyEventsOwnerPage implements OnInit{
 
   owner: any;
+  events: any = [];
 
   constructor(
     public navCtrl: NavController,
     private ownerService: OwnerService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private alertController: AlertController
   ) {
     this.owner = { bar: {}}
   }
@@ -31,6 +33,10 @@ export class MyEventsOwnerPage implements OnInit{
     );
   }
 
+  openAddEvent(){
+    this.presentAlert('Aviso!', 'Recurso ainda não implementado');
+  }
+
   loading(){
     let loading = this.loadingController.create({
       content: 'Recuperando eventos, aguarde ...',
@@ -40,6 +46,15 @@ export class MyEventsOwnerPage implements OnInit{
     loading.present();
 
     return loading;
+  }
+
+  presentAlert(title, message) {
+    let alert = this.alertController.create({
+      title: title,
+      subTitle: message,
+      buttons: ['Entendido']
+    });
+    alert.present();
   }
 
 }

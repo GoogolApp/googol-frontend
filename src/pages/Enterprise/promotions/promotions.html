@@ -14,5 +14,5 @@
 
 <ion-content padding>
   <p text-center *ngIf="!owner.bar.promo">Você ainda não adicionou nenhuma promoção</p>
-  <googol-card [promotion]="getPromoContent()" (click)="openEditPromotionModal()" place="Este Bar"></googol-card>
+  <googol-card [promotion]="getPromoContent()" (click)="openEditPromotionModal()"></googol-card>
 </ion-content>

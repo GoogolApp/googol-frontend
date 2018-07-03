@@ -62,7 +62,7 @@ export class PromotionsPage implements OnInit{
 
   getPromoContent () {
     const promo = this.owner.bar.promo;
-    return promo ?  promo.content : "";
+    return promo ?  promo : "";
   }
 
   loading(){

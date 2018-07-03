@@ -20,7 +20,8 @@ export class GoogolCardComponent {
 
   @Input() match: Match;
   @Input() event: Event;
-  @Input() promotion: string;
+  @Input() promotion: any;
+  @Input() address: string;
   @Input() place: string;
   @Input() action: string;
 
