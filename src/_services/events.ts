@@ -24,12 +24,23 @@ export class EventsService {
             });
     }
     
-    create(matchId: string, barId: string){
-        let body = {
-        "matchId": matchId,
-        "barId": barId
+    create(matchId: string, barId: string, userId?: string){
+        let body;
+        if(userId !== undefined) {
+            console.log("entrou aqui")
+            body = {
+                "matchId": matchId,
+                "barId": barId,
+                "userId": userId
+            }
+            console.log(body)
+        } else {
+            body = {
+                "matchId": matchId,
+                "barId": barId
+            }
         }
-        return this.http.post<Event>(this.url, this.httpOptions)
+        return this.http.post<Event>(this.url, body, this.httpOptions)
             .map(events => {
                 return events;
             });

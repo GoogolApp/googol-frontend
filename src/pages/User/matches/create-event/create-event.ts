@@ -50,7 +50,9 @@ export class CreateEventPage {
     
 
     createEvent() {
-        this.eventsService.create(this.match._id, this.idEventBar).subscribe(
+        let auth = localStorage.getItem('authUser')
+        let userId = JSON.parse(auth).userId;
+        this.eventsService.create(this.match._id, this.idEventBar, userId).subscribe(
             data => {
                 this.editedUserAlert('Evento cadastrado com sucesso!');
             },
