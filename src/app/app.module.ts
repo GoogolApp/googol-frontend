@@ -62,6 +62,7 @@ import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
 import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
 import { SearchBarEventPage } from '../pages/User/matches/create-event/search-bar-event/search-bar-event';
+import { MyEventsOwnerPage } from '../pages/Enterprise/my-events-owner/my-events-owner';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage,
-    FilterMatchesModal
+    FilterMatchesModal,
+    MyEventsOwnerPage
   ],
   imports: [
     ComponentsModule,
@@ -137,7 +139,8 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage,
-    FilterMatchesModal
+    FilterMatchesModal,
+    MyEventsOwnerPage
   ],
   providers: [
     StatusBar,

@@ -8,6 +8,7 @@ import { MyBarPage } from '../my-bar/my-bar';
 import { PromotionsPage } from '../promotions/promotions';
 import { ClaimBarPage } from '../claim-bar/claim-bar';
 import { OwnerService } from '../../../_services/owner';
+import { MyEventsOwnerPage } from '../my-events-owner/my-events-owner';
 
 @Component({
   selector: 'owner-home',
@@ -55,7 +56,8 @@ export class OwnerHomePage {
     this.rootPage = MyBarPage;
     this.pages = [ 
       { title: 'Meu Bar', component: MyBarPage },
-      { title: 'Minhas Promoções', component: PromotionsPage }
+      { title: 'Minhas Promoções', component: PromotionsPage },
+      { title: 'Meus Eventos', component: MyEventsOwnerPage}
     ];
   }
 
