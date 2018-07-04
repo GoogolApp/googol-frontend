@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, Searchbar, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, Searchbar, AlertController, LoadingController } from 'ionic-angular';
 import { EventsService } from '../../../../_services/events';
 import { SearchBarTab } from '../../search/search-bar/search-bar';
 import { SearchPage } from '../../search/search';
@@ -26,7 +26,8 @@ export class CreateEventPage {
         private eventsService: EventsService,
         private modalCtrl: ModalController,
         private userService: UsersService,
-        private alert: AlertController
+        private alert: AlertController,
+        private loadingController: LoadingController
     ) {
         this.match = this.navParams.get('match');
         this.initPlace();
@@ -37,29 +38,46 @@ export class CreateEventPage {
         this.placeName = '';
     }
 
-    fetchEvents(){
+    async fetchEvents(){
+        let loading = this.loading();
+        await loading;
         this.eventsService.getAll().subscribe(data=> {
             this.events = data;
             console.log(this.events);
+            loading.dismiss();
           },
           err =>{
             console.log(err);
+            loading.dismiss();
           })
     }
 
-    
-
-    createEvent() {
+    async createEvent() {
+        let loading = this.loading();
+        await loading;
         this.eventsService.create(this.match._id, this.idEventBar).subscribe(
             data => {
+                loading.dismiss();
                 this.editedUserAlert('Evento cadastrado com sucesso!');
             },
             err => {
+                loading.dismiss();
                 this.presentAlert(err.error.message);
             }
         );
         this.navCtrl.pop();
     }
+
+    loading(){
+        let loading = this.loadingController.create({
+          content: 'Por favor, aguarde...',
+          spinner: 'bubbles'
+        });
+    
+        loading.present();
+    
+        return loading;
+      }
 
     editedUserAlert(message) {
         let alert = this.alert.create({
