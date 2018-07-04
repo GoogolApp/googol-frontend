@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Events } from 'ionic-angular';
+import { NavController, AlertController, Events, LoadingCmp, LoadingController } from 'ionic-angular';
 import { User } from '../../../_models/user';
 import { UsersService } from '../../../_services/users';
 import { EditTeamsPage } from '../edit-teams/edit-teams';
@@ -22,19 +22,26 @@ export class EditProfilePage {
     public navCtrl: NavController, 
     private userService: UsersService, 
     public alert: AlertController,
+    private loadingController: LoadingController,
     private events:Events) {
 
     let id = JSON.parse(localStorage.getItem('authUser')).userId;
     this.fetchUser(id);
   }
 
-  fetchUser(id: string) {
+  async fetchUser(id: string) {
+    let loading = this.loading();
+    await loading;
     this.userService.getOne(id).subscribe(
       data => {
         this.user = data;
+        loading.dismiss();
+
       },
       err => {
         console.log(err);
+        loading.dismiss();
+
       }
     )
   }
@@ -94,6 +101,17 @@ export class EditProfilePage {
           });
       }
     }
+  }
+
+  loading() {
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
   }
 
   saveEditions() {
