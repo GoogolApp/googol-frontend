@@ -38,13 +38,11 @@ export class EventsService {
     create(matchId: string, barId: string, userId?: string){
         let body;
         if(userId !== undefined) {
-            console.log("entrou aqui")
             body = {
                 "matchId": matchId,
                 "barId": barId,
                 "userId": userId
             }
-            console.log(body)
         } else {
             body = {
                 "matchId": matchId,
@@ -57,8 +55,25 @@ export class EventsService {
             });
     }
 
-    getById(_id: string) {
-        return this.fakeStorage;
+    getById(userId: string) : Observable<Event[]> {
+        return this.http.get<any[]>(this.url, this.httpOptions)
+            .map(events => {
+                console.log(events)
+                return events.map(function(event) {
+                    const currDate = new Date();
+                    const date = new Date(event.match.matchDate);
+
+                    date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
+                    event.match.matchDate = date;
+                    
+                    let timeDiff = currDate.getTime() - date.getTime();
+                    if(timeDiff/3600000 <= 2.5) {
+                        return event;
+                    }
+                }).filter(event => 
+                    event !== undefined && event.user !== undefined && event.user === userId
+                );
+            });
     }
 
 }
