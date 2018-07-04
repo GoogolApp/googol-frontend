@@ -20,11 +20,11 @@ export class EventsService {
 
     getAll() : Observable<Event[]> {
         return this.http.get<Event[]>(this.url, this.httpOptions)
-            .map(users => {
-                return users;
+            .map(events => {
+                return events;
             });
     }
-    
+
     getById(_id: string) {
         return this.fakeStorage;
     }
