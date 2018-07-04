@@ -20,7 +20,6 @@ export class EventsService {
     getAll() : Observable<Event[]> {
         return this.http.get<Event[]>(this.url, this.httpOptions)
             .map(events => {
-                console.log(events)
                 return events.map(function(event) {
                     const currDate = new Date();
                     const date = new Date(event.match.matchDate);

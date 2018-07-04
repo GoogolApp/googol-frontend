@@ -30,7 +30,6 @@ export class AllEventsTab implements OnInit{
             events => {
                 this.events = [];
                 this.events = events;
-                console.log(events);
                 this.loading.dismiss();
             },
             error => {
