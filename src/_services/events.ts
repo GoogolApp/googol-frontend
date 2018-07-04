@@ -20,7 +20,10 @@ export class EventsService {
     getAll() : Observable<Event[]> {
         return this.http.get<Event[]>(this.url, this.httpOptions)
             .map(events => {
-                return events;
+                console.log(events)
+                return events.map(function(event) {
+                    return event;
+                });
             });
     }
     
