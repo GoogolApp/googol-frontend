@@ -1,50 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController } from 'ionic-angular/';
 import { EventsService } from '../../../../_services/events';
 import { Event } from '../../../../_models/event';
-import { LoadingController } from 'ionic-angular';
 
 @Component({
     selector: 'tab-all-events',
     templateUrl: 'all-events.html'
 })
 
-export class AllEventsTab implements OnInit {
+export class AllEventsTab implements OnInit{
+    
+    events: Array<Event> = [];
 
-    private events: Event[] = [];
+    constructor(private eventsService: EventsService, private loadingController: LoadingController){}
+    
+    loading = this.loadingController.create({
+        content: 'Buscando eventos...',
+        spinner: 'bubbles'
+    });
 
-    constructor(
-        public eventsService: EventsService,
-        private loadingController: LoadingController) { }
+    async ngOnInit(){
+        await this.fetchEvents();
+      }
+    
+    fetchEvents(){
+        this.loading.present();
 
-    ngOnInit() {
-        this.fetchEvents();
-    }
-
-    async fetchEvents() {
-        let loading = this.loading();
-        await loading;
         this.eventsService.getAll().subscribe(
-            data => {
-                this.events = data;
-                loading.dismiss();
-                console.log(this.events);
+            events => {
+                this.events = [];
+                this.events = events;
+                this.loading.dismiss();
             },
-            err => {
-                console.log(err);
-                loading.dismiss();
-
+            error => {
+                this.loading.dismiss();
             }
-        )
-    }
-
-    loading() {
-        let loading = this.loadingController.create({
-            content: 'Por favor, aguarde...',
-            spinner: 'bubbles'
-        });
-
-        loading.present();
-
-        return loading;
+        );
     }
 }

@@ -79,7 +79,7 @@
       <br>
       <ion-icon name="navigate"></ion-icon> {{event.bar.name}}
     </span>
-    <span class="text-default-normal text-mute" float-right>{{event.match.matchDate | date:'HH:mm, dd MMM'}}</span>
+    <span class="text-default-normal text-mute" float-right>{{event.match.hour | date:'HH:mm, dd MMM'}}</span>
   </header>
 
   <hr>
@@ -88,7 +88,7 @@
     <ion-grid text-center>
       <ion-row>
         <ion-col col-5>
-          <img width="50" height="50" src={{event.match.homeTeamLogoUrl}}>
+          <img width="50" height="50" src="{{event.match.homeTeamLogoUrl}}">
           <br>
           <span class="text-default-normal">{{event.match.homeTeam}}</span>
         </ion-col>
@@ -98,14 +98,14 @@
           </span>
         </ion-col>
         <ion-col col-5>
-          <img width="50" height="50" src={{event.match.awayTeamLogoUrl}}>
+          <img width="50" height="50" src="{{event.match.awayTeamLogoUrl}}">
           <br>
           <span class="text-default-normal">{{event.match.awayTeam}}</span>
         </ion-col>
       </ion-row>
     </ion-grid>
   </section>
-<!--
+
   <ng-container *ngIf="(((currentDate.getTime() - event.match.matchDate.getTime())/3600000) < 2.5) &&
   (((currentDate.getTime() - event.match.matchDate.getTime())/3600000) > 0) then positiveContent else negativeContent">
   </ng-container>
@@ -136,7 +136,7 @@
     </span>
   </ng-template>
 </div>
--->
+
 <!-- Promotion Card -->
 <div class="base" *ngIf="promotion">
 

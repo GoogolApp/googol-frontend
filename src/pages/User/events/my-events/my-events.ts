@@ -13,11 +13,17 @@ export class MyEventsTab implements OnInit{
 
     constructor(public eventsService: EventsService){}
     
-    ngOnInit(){
-        this.fetchEvents();
-      }
+    async ngOnInit(){
+        await this.fetchEvents();
+    }
     
     fetchEvents(){
-        //this.events = this.eventsService.getAll();
+        const auth = localStorage.getItem('authUser');
+        const userId = JSON.parse(auth).userId;
+        this.eventsService.getById(userId).subscribe(
+            events => {
+                this.events = events;
+            }
+        );
     }
 }
