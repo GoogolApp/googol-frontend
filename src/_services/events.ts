@@ -58,7 +58,6 @@ export class EventsService {
     getById(userId: string) : Observable<Event[]> {
         return this.http.get<any[]>(this.url, this.httpOptions)
             .map(events => {
-                console.log(events)
                 return events.map(function(event) {
                     const currDate = new Date();
                     const date = new Date(event.match.matchDate);
