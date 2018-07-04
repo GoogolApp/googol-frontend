@@ -54,6 +54,7 @@ import { SearchUserTab } from '../pages/User/search/search-user/search-user';
 import { SearchBarTab } from '../pages/User/search/search-bar/search-bar';
 import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar';
 import { FilterMatchesModal } from '../pages/User/matches/filter-matches/filter-matches';
+import { FilterEventsModal } from '../pages/User/events/filter-events/filter-events'
 
 //Enterprise
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
@@ -94,7 +95,8 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage,
-    FilterMatchesModal
+    FilterMatchesModal,
+    FilterEventsModal
   ],
   imports: [
     ComponentsModule,
@@ -137,7 +139,8 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage,
-    FilterMatchesModal
+    FilterMatchesModal,
+    FilterEventsModal
   ],
   providers: [
     StatusBar,
