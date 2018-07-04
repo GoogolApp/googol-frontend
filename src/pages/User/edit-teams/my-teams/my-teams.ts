@@ -51,15 +51,19 @@ export class MyTeamsPage {
   }
 
   async removeTeam(teamId: string) {
+    let loading = this.loading();
+    await loading;
     this.userService.addTeam('remove', teamId).subscribe(
       data => {
         this.teams = this.teams.filter((team) => {
           this.saveTeams();
           return team._id !== teamId;
         });
+        loading.dismiss();
       },
       err => {
         console.log(err);
+        loading.dismiss();
       }
     );
   }

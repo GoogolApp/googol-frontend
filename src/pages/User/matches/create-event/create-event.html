@@ -12,7 +12,7 @@
   <button class="googol-btn-light" (click)="addLocationModal()" *ngIf="placeName == ''">Associar um Bar</button>
 
   <div *ngIf="placeName != ''">
-      <p class="text-average-medium" text-center>O bar que ocorrerá o evento é:</p>
+      <p class="text-average-medium" text-center>O bar que transmitirá este evento é:</p>
       <p class="text-average-medium" text-center>{{place.name}}</p>
       <button class="googol-btn-danger" (click)="addLocationModal()">Editar</button>
   </div>
