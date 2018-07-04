@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Match } from '../_models/match';
 import { Event } from '../_models/event';
 import { AppUrl } from '../_config/url.config';
+import { Observable } from 'rxjs/Observable';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Injectable()
@@ -17,7 +18,7 @@ export class EventsService {
     constructor(private http: HttpClient) { }
 
 
-    getAll(){
+    getAll() : Observable<Event[]> {
         return this.http.get<Event[]>(this.url, this.httpOptions)
             .map(events => {
                 return events;
