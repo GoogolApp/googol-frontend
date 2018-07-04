@@ -22,8 +22,17 @@ export class EventsService {
             .map(events => {
                 console.log(events)
                 return events.map(function(event) {
-                    return event;
-                });
+                    const currDate = new Date();
+                    const date = new Date(event.match.matchDate);
+
+                    date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
+                    event.match.matchDate = date;
+                    
+                    let timeDiff = currDate.getTime() - date.getTime();
+                    if(timeDiff/3600000 <= 2.5) {
+                        return event;
+                    }
+                }).filter(event => event !== undefined);
             });
     }
     
