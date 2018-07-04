@@ -76,15 +76,19 @@ export class AllTeamsPage {
   }
 
   async addTeam(teamId : string) {
+    let loading = this.loading();
+    await loading;
     this.userService.addTeam('add', teamId).subscribe(
       data =>{
         this.teams = this.teams.filter((team) => {
           this.saveTeams();
           return team._id !== teamId;
         });
+        loading.dismiss();
       },
       err => {
         console.log(err);
+        loading.dismiss();
       }
     );
   }
