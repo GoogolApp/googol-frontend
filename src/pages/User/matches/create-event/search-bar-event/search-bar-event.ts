@@ -39,7 +39,6 @@ export class SearchBarEventPage {
         await this.fetchBars(barname);
       } else {
         this.showList = false;
-        this.presentAlert('Bar nao encontrado!');
       }
     }
   }
@@ -58,15 +57,6 @@ export class SearchBarEventPage {
         this.loading.dismiss();
       }
     );
-  }
-
-  presentAlert(message) {
-    let alert = this.alert.create({
-      title: 'Atenção',
-      subTitle: message,
-      buttons: ['Entendido']
-    });
-    alert.present();
   }
 
   goBack(){
