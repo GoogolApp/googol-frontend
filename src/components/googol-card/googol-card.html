@@ -148,21 +148,24 @@
   <hr>
 
   <section class="body" text-center>
-    <p> {{promotion.content}}</p>
+    <pre> {{promotion.content}}</pre>
   </section>
 </div>
 
 
-<!-- Address Card -->
+<!-- Info Card -->
 <div class="base" *ngIf="address">
 
-  <header text-center>
-    <span class="text-default-medium">Endereço</span>
+  <header>
+    <span class="text-default-medium">Informações</span>
+    <span class="text-default-normal text-secondary" float-right (click)="navigateToPlace()">Como chegar ></span>
   </header>
 
   <hr>
 
-  <section class="body" text-center>
-    <p> {{address}}</p>
+  <section class="body">
+    <span> <ion-icon name="compass"></ion-icon> {{address}}</span>
+    <br><br>
+    <span> <ion-icon name="call"></ion-icon> {{phone}}</span> 
   </section>
 </div>

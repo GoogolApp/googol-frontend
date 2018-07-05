@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController,LoadingController } from 'ionic-angular';
+import { NavController,LoadingController, AlertController } from 'ionic-angular';
 import { OwnerService } from '../../../_services/owner';
 
 @Component({
@@ -13,7 +13,8 @@ export class MyBarPage implements OnInit{
   constructor(
     public navCtrl: NavController,
     private ownerService: OwnerService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private alertController: AlertController
   ) {
     this.owner = { bar: { promo: { }}}
   }
@@ -41,6 +42,19 @@ export class MyBarPage implements OnInit{
     loading.present();
 
     return loading;
+  }
+
+  openFollowers(){
+    this.presentAlert('Aviso!', 'Recurso ainda não implementado');
+  }
+
+  presentAlert(title, message) {
+    let alert = this.alertController.create({
+      title: title,
+      subTitle: message,
+      buttons: ['Entendido']
+    });
+    alert.present();
   }
 
 }

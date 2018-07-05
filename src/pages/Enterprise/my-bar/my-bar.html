@@ -1,13 +1,27 @@
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
-      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
+      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png" />
     </button>
-    <ion-title class="text-large-medium">{{owner.bar.name}}</ion-title>
+    <ion-title class="text-large-medium">Meu Bar</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="MyBarPage">
-  <googol-card [address]="owner.bar.address"></googol-card>
-  <googol-card [promotion]="owner.bar.promo" place="Este Bar"></googol-card>
+
+  <!-- profile pic -->
+  <section text-center>
+    <profile-pic-generator word="{{owner.bar.name}}" color="#4A90E2"></profile-pic-generator>
+  </section>
+
+  <!-- name / email -->
+  <p class="text-xxlarge-normal" text-center>
+    {{owner.bar.name}}
+    <br>
+    <span class="text-default-light" text-center>{{owner.email}}</span>
+  </p>
+
+  <button class="googol-btn-light" (click)="openFollowers()"> Seguidores</button>
+
+  <googol-card [address]="owner.bar.address" phone="(83) 98176-0281"></googol-card>
 </ion-content>

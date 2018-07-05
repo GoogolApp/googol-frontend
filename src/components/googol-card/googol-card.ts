@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, AlertController } from 'ionic-angular';
 
 import { CreateEventPage } from '../../pages/User/matches/create-event/create-event';
 import { Match } from '../../_models/match';
@@ -22,12 +22,13 @@ export class GoogolCardComponent {
   @Input() event: Event;
   @Input() promotion: any;
   @Input() address: string;
+  @Input() phone: string;
   @Input() place: string;
   @Input() action: string;
 
   currentDate = new Date();
 
-  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController) {}
+  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController, public alertCtrl: AlertController) {}
 
   confirmPresence() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -55,5 +56,18 @@ export class GoogolCardComponent {
   createEvent(){
     console.log(this.navCtrl.getViews());
     this.navCtrl.push(CreateEventPage, { match: this.match });
+  }
+
+  navigateToPlace(){
+    this.presentAlert('Aviso!', 'Recurso ainda não implementado');
+  }
+
+  presentAlert(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['Entendido']
+    });
+    alert.present();
   }
 }
