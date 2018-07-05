@@ -12,6 +12,8 @@ import { FilterEventsModal } from './filter-events/filter-events'
 })
 export class EventsPage{
 
+private filter: any = {};
+
   tab1 = AllEventsTab;
   tab2 = MyEventsTab;
 
@@ -20,6 +22,8 @@ export class EventsPage{
   openFilterModal() {
     let modal = this.modalCtrl.create(FilterEventsModal);
     modal.present();
+
+    modal.onDidDismiss(data => this.filter = data);
   }
 
 }

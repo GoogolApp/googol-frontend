@@ -11,7 +11,7 @@ export class FilterEventsModal implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log("ABRIU O MODAL DE FILTRAR EVENTOS");
+        
     }
 
     dismiss() {
