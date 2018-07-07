@@ -13,6 +13,7 @@ import { FilterEventsModal } from './filter-events/filter-events'
 export class EventsPage{
 
 private filter: any = {};
+private info: any = {'bar':'tio lucio', 'times': ['brasil', 'belgica']};
 
   tab1 = AllEventsTab;
   tab2 = MyEventsTab;
@@ -20,10 +21,13 @@ private filter: any = {};
   constructor(public navCtrl: NavController, private modalCtrl: ModalController) {}
 
   openFilterModal() {
-    let modal = this.modalCtrl.create(FilterEventsModal);
+    let modal = this.modalCtrl.create(FilterEventsModal, {'info': this.info});
     modal.present();
 
-    modal.onDidDismiss(data => this.filter = data);
+    modal.onDidDismiss(data => {
+      this.filter = data;
+      console.log(this.filter)
+    });
   }
 
 }

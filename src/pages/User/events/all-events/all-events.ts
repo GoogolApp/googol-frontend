@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController } from 'ionic-angular/';
+import { LoadingController, ViewController, NavParams } from 'ionic-angular/';
 import { EventsService } from '../../../../_services/events';
 import { Event } from '../../../../_models/event';
 
@@ -12,7 +12,7 @@ export class AllEventsTab implements OnInit{
     
     events: Array<Event> = [];
 
-    constructor(private eventsService: EventsService, private loadingController: LoadingController){}
+    constructor(private eventsService: EventsService, private loadingController: LoadingController, public viewCtrl: ViewController, public navParams: NavParams,){}
     
     loading = this.loadingController.create({
         content: 'Buscando eventos...',
