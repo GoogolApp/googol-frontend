@@ -8,6 +8,7 @@ import { MyBarPage } from '../my-bar/my-bar';
 import { PromotionsPage } from '../promotions/promotions';
 import { ClaimBarPage } from '../claim-bar/claim-bar';
 import { OwnerService } from '../../../_services/owner';
+import {BarEvents} from "../bar-events/bar-events";
 
 @Component({
   selector: 'owner-home',
@@ -30,7 +31,7 @@ export class OwnerHomePage {
     public ownerService: OwnerService,
     public events: Events
   ) {
-    
+
     let id = JSON.parse(localStorage.getItem('authUser')).ownerId;
     this.ownerService.getOne(id).subscribe(owner => {
       this.owner = owner;
@@ -53,15 +54,16 @@ export class OwnerHomePage {
 
   ownerWithBarMenu(){
     this.rootPage = MyBarPage;
-    this.pages = [ 
-      { title: 'Meu Bar', component: MyBarPage },
-      { title: 'Minhas Promoções', component: PromotionsPage }
+    this.pages = [
+      { title: 'Bar', component: MyBarPage },
+      { title: 'Eventos', component: BarEvents },
+      { title: 'Promoções', component: PromotionsPage }
     ];
   }
 
   ownerWithoutBarMenu(){
     this.rootPage = ClaimBarPage
-    this.pages = [ 
+    this.pages = [
       { title: 'Reivindicar Bar', component: ClaimBarPage }
     ];
   }

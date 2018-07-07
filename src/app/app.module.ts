@@ -58,6 +58,7 @@ import { FilterMatchesModal } from '../pages/User/matches/filter-matches/filter-
 //Enterprise
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
+import { BarEvents } from '../pages/Enterprise/bar-events/bar-events';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
 import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
@@ -91,6 +92,7 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     HomePage,
     OwnerHomePage,
     MyBarPage,
+    BarEvents,
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage,
@@ -134,6 +136,7 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     HomePage,
     OwnerHomePage,
     MyBarPage,
+    BarEvents,
     PromotionsPage,
     AddPromotionModal,
     ClaimBarPage,
