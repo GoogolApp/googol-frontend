@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController,LoadingController } from 'ionic-angular';
 import { OwnerService } from '../../../_services/owner';
+import {EventsService} from "../../../_services/events";
 
 @Component({
   selector: 'bar-events',
@@ -9,20 +10,25 @@ import { OwnerService } from '../../../_services/owner';
 export class BarEvents implements OnInit{
 
   owner: any;
+  events: any;
 
   constructor(
     public navCtrl: NavController,
     private ownerService: OwnerService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private eventsService: EventsService
   ) {
     this.owner = { bar: {}}
+    this.events = [];
   }
 
   async ngOnInit(){
-    await this.getOwner(this.loading());
+    await this.getOwner();
+    await this.fetchEvents();
   }
 
-  getOwner(loading){
+  getOwner () {
+    const loading = this.loading();
     let id = JSON.parse(localStorage.getItem('authUser')).ownerId;
     this.ownerService.getOne(id).subscribe( owner => {
         loading.dismiss();
@@ -31,7 +37,7 @@ export class BarEvents implements OnInit{
     );
   }
 
-  loading(){
+  loading () {
     let loading = this.loadingController.create({
       content: 'Por favor, aguarde...',
       spinner: 'bubbles'
@@ -42,4 +48,18 @@ export class BarEvents implements OnInit{
     return loading;
   }
 
+  fetchEvents () {
+    const loading = this.loading();
+
+    this.eventsService.getAll().subscribe(
+      events => {
+        this.events = [];
+        this.events = events.filter(event => event.bar._id === this.owner.bar._id);
+        loading.dismiss();
+      },
+      error => {
+        loading.dismiss();
+      }
+    );
+  }
 }

@@ -8,5 +8,6 @@
 </ion-header>
 
 <ion-content padding class="barEvents">
-  <h1>Bar events</h1>
+  <p *ngIf="events.length === 0" class="text-default-medium" text-center> Seu bar não possui eventos cadastrados!</p>
+  <googol-card *ngFor="let event of events" [event]="event" action="CONFIRM_EVENT"></googol-card>
 </ion-content>
