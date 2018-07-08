@@ -3,6 +3,8 @@ import { NavController, LoadingController, ModalController, AlertController, Eve
 import { OwnerService } from '../../../_services/owner';
 import { LocationModal } from '../../Common/location-modal/location-modal';
 import { Bar } from '../../../_models/bar';
+import { FoursquareService } from '../../../_services/foursquare';
+import { GESTURE_PRIORITY_SLIDING_ITEM } from 'ionic-angular/umd/gestures/gesture-controller';
 
 @Component({
   selector: 'page-claim-bar',
@@ -12,6 +14,7 @@ export class ClaimBarPage implements OnInit{
 
   owner: any;
   place: any;
+  searchQuery = "";
 
   constructor(
     public navCtrl: NavController,
@@ -19,7 +22,8 @@ export class ClaimBarPage implements OnInit{
     private ownerService: OwnerService,
     private loadingCtrl: LoadingController,
     private modalCtrl: ModalController,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private foursquareService: FoursquareService
   ) {
     this.owner = { bar: { } };
     this.initPlace();
@@ -92,5 +96,13 @@ export class ClaimBarPage implements OnInit{
     loading.present();
 
     return loading;
+  }
+
+  testXHR(){
+    this.searchQuery = "tio";
+    
+    function callback(minivenues){ console.log(minivenues)}
+
+    this.foursquareService.getSuggestionsXHR(this.searchQuery, callback);
   }
 }

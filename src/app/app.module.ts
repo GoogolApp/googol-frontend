@@ -63,6 +63,7 @@ import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-
 import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
 import { SearchBarEventPage } from '../pages/User/matches/create-event/search-bar-event/search-bar-event';
 import { MyEventsOwnerPage } from '../pages/Enterprise/my-events-owner/my-events-owner';
+import { FoursquareService } from '../_services/foursquare';
 
 @NgModule({
   declarations: [
@@ -153,6 +154,7 @@ import { MyEventsOwnerPage } from '../pages/Enterprise/my-events-owner/my-events
     TeamService,
     BarService,
     OwnerService,
+    FoursquareService,
     {provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true}

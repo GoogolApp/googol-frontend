@@ -14,7 +14,7 @@
     <p class="text-average-medium" text-center>{{place.name}}</p>
     <p class="text-average-medium" text-center>{{place.formatted_address}}</p>
   
-    <button class="googol-btn-light" (click)="addLocationModal()" *ngIf="place.name == ''">Associar um Bar</button>
+    <button class="googol-btn-light" (click)="testXHR()" *ngIf="place.name == ''">Associar um Bar</button>
 
     <div *ngIf="place.name != ''">
         <button class="googol-btn-danger" (click)="addLocationModal()">Editar</button>
