@@ -23,18 +23,15 @@ export class BarEvents implements OnInit{
   }
 
   async ngOnInit(){
+    const loading = this.loading();
     await this.getOwner();
     await this.fetchEvents();
+    loading.dismiss();
   }
 
-  getOwner () {
-    const loading = this.loading();
+  async getOwner () {
     let id = JSON.parse(localStorage.getItem('authUser')).ownerId;
-    this.ownerService.getOne(id).subscribe( owner => {
-        loading.dismiss();
-        this.owner = owner;
-      }
-    );
+    this.owner = await this.ownerService.getOne(id).toPromise();
   }
 
   loading () {
@@ -48,18 +45,10 @@ export class BarEvents implements OnInit{
     return loading;
   }
 
-  fetchEvents () {
-    const loading = this.loading();
-
-    this.eventsService.getAll().subscribe(
-      events => {
-        this.events = [];
-        this.events = events.filter(event => event.bar._id === this.owner.bar._id);
-        loading.dismiss();
-      },
-      error => {
-        loading.dismiss();
-      }
-    );
+  async fetchEvents () {
+    const events = await this.eventsService.getAll().toPromise();
+    this.events = events
+      .filter(event => event.bar._id === this.owner.bar._id)
+      .sort((ev1, ev2) => new Date(ev1.match.matchDate) -  new Date(ev2.match.matchDate));
   }
 }
