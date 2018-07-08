@@ -23,10 +23,14 @@ export class GoogolCardComponent {
   @Input() promotion: string;
   @Input() place: string;
   @Input() action: string;
+  @Input() addEventFn: Function;
 
   currentDate = new Date();
 
-  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController) {}
+  constructor(
+    public navCtrl:NavController, 
+    public actionSheetCtrl:ActionSheetController
+  ) {}
 
   confirmPresence() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -47,7 +51,7 @@ export class GoogolCardComponent {
         }
       ]
     });
- 
+
     actionSheet.present();
   }
 

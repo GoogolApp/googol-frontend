@@ -1,10 +1,12 @@
 import { Bar } from "./bar";
 
 export class Owner{
-    
+
+    _id: string;
+
     email: string;
     password:string;
-    
+
     //Location
     bar: Bar;
 

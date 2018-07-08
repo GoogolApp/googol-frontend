@@ -61,6 +61,7 @@ import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { BarEvents } from '../pages/Enterprise/bar-events/bar-events';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
+import { CreateEventModal } from '../pages/Enterprise/bar-events/create-event-modal/create-event-modal';
 import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
 import { SearchBarEventPage } from '../pages/User/matches/create-event/search-bar-event/search-bar-event';
 
@@ -95,6 +96,7 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     BarEvents,
     PromotionsPage,
     AddPromotionModal,
+    CreateEventModal,
     ClaimBarPage,
     FilterMatchesModal
   ],
@@ -139,6 +141,7 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     BarEvents,
     PromotionsPage,
     AddPromotionModal,
+    CreateEventModal,
     ClaimBarPage,
     FilterMatchesModal
   ],

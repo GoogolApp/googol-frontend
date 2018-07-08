@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Adicionar Evento
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span class="text-default-medium text-danger">Cancelar</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <googol-card *ngFor="let match of matches" [match]="match" action="ADD_EVENT_OWNER" [addEventFn]="createEventCallback"></googol-card>
+</ion-content>

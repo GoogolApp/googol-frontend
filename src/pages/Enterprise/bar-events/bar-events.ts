@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController,LoadingController } from 'ionic-angular';
+import { NavController, ModalController, LoadingController } from 'ionic-angular';
+
 import { OwnerService } from '../../../_services/owner';
 import {EventsService} from "../../../_services/events";
+import {CreateEventModal} from "./create-event-modal/create-event-modal";
 
 @Component({
   selector: 'bar-events',
@@ -16,7 +18,8 @@ export class BarEvents implements OnInit{
     public navCtrl: NavController,
     private ownerService: OwnerService,
     private loadingController: LoadingController,
-    private eventsService: EventsService
+    private eventsService: EventsService,
+    private modalController: ModalController
   ) {
     this.owner = { bar: {}}
     this.events = [];
@@ -49,6 +52,16 @@ export class BarEvents implements OnInit{
     const events = await this.eventsService.getAll().toPromise();
     this.events = events
       .filter(event => event.bar._id === this.owner.bar._id)
-      .sort((ev1, ev2) => new Date(ev1.match.matchDate) -  new Date(ev2.match.matchDate));
+      .sort((ev1, ev2) => (+new Date(ev1.match.matchDate)) -  (+new Date(ev2.match.matchDate)));
+  }
+
+  openCreateEventModal () {
+    const modal = this.modalController.create(CreateEventModal, {
+      'owner': this.owner
+    });
+    modal.onDidDismiss(obj => {
+      this.fetchEvents();
+    });
+    modal.present();
   }
 }
