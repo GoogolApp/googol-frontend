@@ -29,15 +29,10 @@ export class FilterEventsModal implements OnInit {
 
     private getTeams(events: Event[]) {
         let teams: string[] = [];
-        /*matches.forEach(
-            match => {
-                teams.push(match.homeTeam);
-                teams.push(match.awayTeam);
-            }
-        );*/
         events.forEach(
             event => {
-                event
+                teams.push(event.match.homeTeam);
+                teams.push(event.match.awayTeam);
             }
         );
         return Array.from(new Set(teams)).sort();

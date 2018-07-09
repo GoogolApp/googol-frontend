@@ -14,16 +14,16 @@
         <ion-item>
             <ion-label>Estabelecimento</ion-label>
             <ion-select id="Estabelecimento" >
-
+                
             </ion-select>
         </ion-item>
     </ion-list>
 
     <ion-list no-lines>
         <ion-item>
-            <ion-label>Jogo</ion-label>
-            <ion-select id="Jogo">
-
+            <ion-label>Times</ion-label>
+            <ion-select id="Times">
+                <ion-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-option>
             </ion-select>
         </ion-item>
     </ion-list>
