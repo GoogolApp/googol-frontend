@@ -13,7 +13,7 @@ export class FilterEventsModal implements OnInit {
     data = {'teste': 'hello world'}
 
     ngOnInit(): void {
-        let info = this.navParams.get('info');
+        let info = this.navParams.get('events');
         console.log(info);
     }
 

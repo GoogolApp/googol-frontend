@@ -13,8 +13,7 @@ export class AllEventsTab implements OnInit{
     
     events: Array<Event> = [];
 
-    constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents,
-        private loadingController: LoadingController, public viewCtrl: ViewController, public navParams: NavParams,){}
+    constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents, private loadingController: LoadingController){}
     
 
     loading = this.loadingController.create({
