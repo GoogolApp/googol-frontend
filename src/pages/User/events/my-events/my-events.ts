@@ -24,6 +24,10 @@ export class MyEventsTab implements OnInit{
         await this.fetchEvents();
     }
     
+    ionViewWillEnter() {
+        this.sharedService.emit(this.events);
+    }
+
     fetchEvents(){
         this.loading.present();
 

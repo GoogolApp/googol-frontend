@@ -24,6 +24,10 @@ export class AllEventsTab implements OnInit{
     async ngOnInit(){
         await this.fetchEvents();
     }
+
+    ionViewWillEnter() {
+        this.sharedService.emit(this.events);
+    }
     
     fetchEvents(){
         this.loading.present();
