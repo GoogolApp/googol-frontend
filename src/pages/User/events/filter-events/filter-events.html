@@ -14,7 +14,7 @@
         <ion-item>
             <ion-label>Estabelecimento</ion-label>
             <ion-select id="Estabelecimento" >
-                
+                <ion-option *ngFor="let bar of bars">{{ bar }}</ion-option>
             </ion-select>
         </ion-item>
     </ion-list>

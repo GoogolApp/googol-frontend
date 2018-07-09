@@ -12,7 +12,9 @@ export class FilterEventsModal implements OnInit {
     }
 
     private events: Event[] = [];
+
     private teams: string[] = [];
+    private bars: string[] = [];
 
     data = {'teste': 'hello world'}
 
@@ -21,6 +23,7 @@ export class FilterEventsModal implements OnInit {
         console.log(this.events);
 
         this.teams = this.getTeams(this.events);
+        this.bars = this.getBars(this.events);
     }
 
     dismiss(data?:any) {
@@ -36,5 +39,15 @@ export class FilterEventsModal implements OnInit {
             }
         );
         return Array.from(new Set(teams)).sort();
+    }
+
+    private getBars(events: Event[]) {
+        let bars: string[] = [];
+        events.forEach(
+            event => {
+                bars.push(event.bar.name);
+            }
+        );
+        return Array.from(new Set(bars)).sort();
     }
 }
