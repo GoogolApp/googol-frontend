@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController, ViewController, NavParams } from 'ionic-angular/';
 import { EventsService } from '../../../../_services/events';
+import { SharedServiceEvents } from '../shared-service';
 import { Event } from '../../../../_models/event';
 
 @Component({
@@ -12,8 +13,10 @@ export class AllEventsTab implements OnInit{
     
     events: Array<Event> = [];
 
-    constructor(private eventsService: EventsService, private loadingController: LoadingController, public viewCtrl: ViewController, public navParams: NavParams,){}
+    constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents,
+        private loadingController: LoadingController, public viewCtrl: ViewController, public navParams: NavParams,){}
     
+
     loading = this.loadingController.create({
         content: 'Buscando eventos...',
         spinner: 'bubbles'
@@ -21,7 +24,7 @@ export class AllEventsTab implements OnInit{
 
     async ngOnInit(){
         await this.fetchEvents();
-      }
+    }
     
     fetchEvents(){
         this.loading.present();
@@ -30,6 +33,7 @@ export class AllEventsTab implements OnInit{
             events => {
                 this.events = [];
                 this.events = events;
+                this.sharedService.emit(this.events);
                 this.loading.dismiss();
             },
             error => {
