@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LoadingController, ViewController, NavParams } from 'ionic-angular/';
+import { LoadingController } from 'ionic-angular/';
+import _ from 'lodash';
+
 import { EventsService } from '../../../../_services/events';
 import { SharedServiceEvents } from '../shared-service';
+
 import { Event } from '../../../../_models/event';
 
 @Component({
@@ -13,7 +16,13 @@ export class AllEventsTab implements OnInit{
     
     private events: Event[] = [];
 
-    constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents, private loadingController: LoadingController){}
+    constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents, private loadingController: LoadingController){
+        sharedService.changeEmitted.subscribe(
+            data => {
+              console.log(data)
+            }
+        );
+    }
     
 
     loading = this.loadingController.create({
@@ -26,6 +35,7 @@ export class AllEventsTab implements OnInit{
     }
 
     ionViewWillEnter() {
+        console.log("VAI ENTRAR")
         this.sharedService.emit(this.events);
     }
     

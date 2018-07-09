@@ -17,7 +17,6 @@ export class EventsPage{
 
 private filter: any = {};
 private events: Event[] = [];
-private info: any = {'bar':'tio lucio', 'times': ['brasil', 'belgica']};
 
 tab1 = AllEventsTab;
 tab2 = MyEventsTab;
@@ -35,8 +34,11 @@ openFilterModal() {
   modal.present();
 
   modal.onDidDismiss(data => {
-    this.filter = data;
+    if(data !== undefined || data !== {}) {
+      this.filter = data;
+    }
     console.log(this.filter)
+    this.sharedService.emit(this.filter)
   });
 }
 

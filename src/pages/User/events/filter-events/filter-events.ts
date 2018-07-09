@@ -14,9 +14,11 @@ export class FilterEventsModal implements OnInit {
     private events: Event[] = [];
 
     private teams: string[] = [];
-    private bars: string[] = [];
+    private selectedTeams: string[] = [];
 
-    data = {'teste': 'hello world'}
+    private bars: string[] = [];
+    private selectedBars: string[] = [];
+
 
     ngOnInit(): void {
         this.events = this.navParams.get('events');
@@ -27,7 +29,11 @@ export class FilterEventsModal implements OnInit {
     }
 
     dismiss(data?:any) {
-        this.viewCtrl.dismiss(this.data);
+        this.viewCtrl.dismiss({});
+    }
+
+    applyFilters() {
+        this.viewCtrl.dismiss({'bars': this.selectedBars, 'teams': this.selectedTeams});
     }
 
     private getTeams(events: Event[]) {

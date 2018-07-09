@@ -13,8 +13,8 @@
     <ion-list no-lines>
         <ion-item>
             <ion-label>Estabelecimento</ion-label>
-            <ion-select id="Estabelecimento" >
-                <ion-option *ngFor="let bar of bars">{{ bar }}</ion-option>
+            <ion-select id="Estabelecimento" [(ngModel)]="selectedBars" multiple="true">
+                <ion-option *ngFor="let bar of bars" [value]="bar">{{ bar }}</ion-option>
             </ion-select>
         </ion-item>
     </ion-list>
@@ -22,10 +22,15 @@
     <ion-list no-lines>
         <ion-item>
             <ion-label>Times</ion-label>
-            <ion-select id="Times">
+            <ion-select id="Times" [(ngModel)]="selectedTeams" multiple="true">
                 <ion-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-option>
             </ion-select>
         </ion-item>
     </ion-list>
 
+    <ion-buttons>
+        <button ion-button float-left color="secondary" (click)="applyFilters()">
+            Aplicar filtros
+        </button>
+    </ion-buttons>
 </ion-content>
