@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { NavParams, NavController, ViewController } from "ionic-angular/";
+import { Event } from "../../../../_models/event";
 
 @Component({
     selector: 'filter-events',
@@ -10,15 +11,35 @@ export class FilterEventsModal implements OnInit {
     constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams) {
     }
 
+    private events: Event[] = [];
+    private teams: string[] = [];
+
     data = {'teste': 'hello world'}
 
     ngOnInit(): void {
-        let info = this.navParams.get('events');
-        console.log(info);
+        this.events = this.navParams.get('events');
+        console.log(this.events);
+
+        this.teams = this.getTeams(this.events);
     }
 
     dismiss(data?:any) {
         this.viewCtrl.dismiss(this.data);
     }
 
+    private getTeams(events: Event[]) {
+        let teams: string[] = [];
+        /*matches.forEach(
+            match => {
+                teams.push(match.homeTeam);
+                teams.push(match.awayTeam);
+            }
+        );*/
+        events.forEach(
+            event => {
+                event
+            }
+        );
+        return Array.from(new Set(teams)).sort();
+    }
 }

@@ -11,7 +11,7 @@ import { Event } from '../../../../_models/event';
 
 export class AllEventsTab implements OnInit{
     
-    events: Array<Event> = [];
+    private events: Event[] = [];
 
     constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents, private loadingController: LoadingController){}
     

@@ -16,7 +16,7 @@ import { Event } from '../../../_models/event';
 export class EventsPage{
 
 private filter: any = {};
-private events: Array<Event> = [];
+private events: Event[] = [];
 private info: any = {'bar':'tio lucio', 'times': ['brasil', 'belgica']};
 
 tab1 = AllEventsTab;

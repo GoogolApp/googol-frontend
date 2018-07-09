@@ -11,7 +11,7 @@ import { SharedServiceEvents } from '../shared-service';
 
 export class MyEventsTab implements OnInit{
     
-    events: Array<Event> = [];
+    private events: Event[] = [];
 
     constructor(private eventsService: EventsService, private sharedService: SharedServiceEvents, private loadingController: LoadingController){}
     

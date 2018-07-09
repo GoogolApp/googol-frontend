@@ -8,10 +8,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EventsService {
 
-    fakeStorage = new Array<Event>();
-    fakeId = 1;
-    fakeLocation = "Bar da putaria - Campina Grande";
-    
     private url: string = AppUrl.root + '/events';
     private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
     
