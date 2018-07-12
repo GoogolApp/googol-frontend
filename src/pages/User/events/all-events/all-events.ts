@@ -35,7 +35,6 @@ export class AllEventsTab implements OnInit{
     }
 
     ionViewWillEnter() {
-        console.log("VAI ENTRAR")
         this.sharedService.emit(this.events);
     }
     
