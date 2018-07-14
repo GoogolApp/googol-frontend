@@ -1,0 +1,28 @@
+bar-events-card {
+
+    $bar-events-card-background: rgb(245, 245, 245) !default;
+    $bar-events-card-color: #000000 !default;
+    $bar-events-card-padding: 15px !default;
+    $bar-events-card-border-radius: 12px !default;
+    $bar-events-card-margin-top: 20px;
+
+    .base{
+        background: $bar-events-card-background;
+        color: $bar-events-card-color;
+        width: 100%;
+        border-radius: $bar-events-card-border-radius;
+        margin-top: $bar-events-card-margin-top;
+    }
+
+    header{
+        padding: $bar-events-card-padding;
+    }
+
+    .body{
+        padding: $bar-events-card-padding;
+    }
+
+    #liveContent .text-default-normal {
+        color: green;
+    }
+}

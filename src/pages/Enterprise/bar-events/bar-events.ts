@@ -13,6 +13,8 @@ export class BarEvents implements OnInit{
 
   owner: any;
   events: any;
+  confirmEventCb: Function;
+  removeEventCb: Function;
 
   constructor(
     public navCtrl: NavController,
@@ -26,6 +28,9 @@ export class BarEvents implements OnInit{
   }
 
   async ngOnInit(){
+    this.confirmEventCb = this.confirmEvent.bind(this);
+    this.removeEventCb = this.removeEvent.bind(this);
+
     const loading = this.loading();
     await this.getOwner();
     await this.fetchEvents();
@@ -64,4 +69,21 @@ export class BarEvents implements OnInit{
     });
     modal.present();
   }
+
+  _thisWorks () {
+    console.log("the this binding is ok!");
+  }
+
+  confirmEvent (event) {
+    console.log("confirm event has been called");
+    console.log(event);
+    this._thisWorks();
+  }
+
+  removeEvent (event) {
+    console.log("remove event has been called");
+    console.log(event);
+    this._thisWorks();
+  }
+
 }

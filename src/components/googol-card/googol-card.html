@@ -112,58 +112,29 @@
   </ng-container>
 
   <ng-template #positiveContent>
-    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW' || action === 'CONFIRM_EVENT'">
+    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
       <p class="text-small-medium text-mute" text-center>
         <span class="text-dark">@cr7</span>
         e outras 10 pesssoas confirmaram presença
       </p>
       <br>
-      <button *ngIf="action == 'CONFIRM_PRESENCE'" class="googol-btn-secondary" (click)="confirmPresence()">
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
         Confirmar Presença
       </button>
-      <button class="googol-btn-secondary" (click)="confirmPresence()">
-        Confirmar Evento
-      </button>
-      <span>
-        <ion-row>
-          <ion-col col-4>
-            <button class="googol-btn-secondary" (click)="confirmPresence()">
-              Confirmar Evento
-            </button>
-            <button class="googol-btn-secondary" (click)="confirmPresence()">
-              Apagar Evento
-            </button>
-          </ion-col>
-        </ion-row>
-      </span>
     </span>
   </ng-template>
 
   <ng-template #negativeContent>
-    <ion-grid *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW' || action === 'CONFIRM_EVENT'">
+    <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
       <p class="text-small-medium text-mute" text-center>
         <span class="text-dark">@cr7</span>
         e outras 10 pesssoas confirmaram presença
       </p>
       <br>
-      <button *ngIf="action === 'CONFIRM_PRESENCE'" class="googol-btn-danger" (click)="confirmPresence()">
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
         Confirmar Presença
       </button>
-      <ion-grid text-center *ngIf="action === 'CONFIRM_EVENT'">
-        <ion-row>
-          <ion-col col-6>
-            <button class="googol-btn-secondary">
-              Confirmar Evento
-            </button>
-          </ion-col>
-          <ion-col col-6>
-            <button class="googol-btn-danger">
-              Remover Evento
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-grid>
+    </span>
   </ng-template>
 </div>
 
