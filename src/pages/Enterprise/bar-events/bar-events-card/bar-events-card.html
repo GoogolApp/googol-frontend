@@ -1,0 +1,60 @@
+<!-- Event Card -->
+<div class="base" *ngIf="event">
+  <header>
+    <span class="text-default-medium">{{event.match.league}}</span>
+    <span class="text-small-normal">
+      <br>
+      <ion-icon name="navigate"></ion-icon> {{event.bar.name}}
+    </span>
+    <span class="text-default-normal text-mute" float-right>{{event.match.matchDate | date:'HH:mm, dd MMM'}}</span>
+  </header>
+
+  <hr>
+
+  <section class="body">
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col col-5>
+          <img width="50" height="50" src="{{event.match.homeTeamLogoUrl}}">
+          <br>
+          <span class="text-default-normal">{{event.match.homeTeam}}</span>
+        </ion-col>
+        <ion-col col-2>
+          <span class="text-xlarge-bold text-mute">
+            <br> X
+          </span>
+        </ion-col>
+        <ion-col col-5>
+          <img width="50" height="50" src="{{event.match.awayTeamLogoUrl}}">
+          <br>
+          <span class="text-default-normal">{{event.match.awayTeam}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+
+  <section>
+    <ion-grid>
+      <p class="text-small-medium text-mute" text-center>
+        <span class="text-dark">@cr7</span>
+        e outras 10 pesssoas confirmaram presença
+      </p>
+      <br>
+      <ion-grid text-center>
+        <ion-row>
+          <ion-col col-6>
+            <button class="googol-btn-secondary" (click)="confirmEventCb(event)">
+              Confirmar Evento
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button class="googol-btn-danger" (click)="removeEventCb(event)">
+              Remover Evento
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-grid>
+  </section>
+</div>
+
