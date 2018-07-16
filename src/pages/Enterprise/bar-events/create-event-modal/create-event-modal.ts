@@ -101,6 +101,8 @@ export class CreateEventModal {
         }
       })
       .filter(match => {
+        if (!match) return false;
+
         let isOnBarEvents = false;
 
         this.barEvents.forEach(event => {
@@ -111,7 +113,6 @@ export class CreateEventModal {
 
         return !isOnBarEvents;
       });
-
 
     loading.dismiss();
   }
