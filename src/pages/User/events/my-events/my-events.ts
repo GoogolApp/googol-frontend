@@ -25,7 +25,7 @@ export class MyEventsTab implements OnInit{
     }
     
     ionViewWillEnter() {
-        this.sharedService.emit(this.events);
+        this.sharedService.emit({'events': this.events});
     }
 
     fetchEvents(){
@@ -38,7 +38,7 @@ export class MyEventsTab implements OnInit{
             events => {
                 this.events = [];
                 this.events = events;
-                this.sharedService.emit(this.events);
+                this.sharedService.emit({'events': this.events});
                 this.loading.dismiss();
             },
             error => {
