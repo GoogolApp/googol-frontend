@@ -1,18 +1,20 @@
-<ion-header>
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
-    </button>
-    <ion-title class="text-large-medium">Eventos</ion-title>
-    <ion-buttons end>
-      <button ion-button (click)="openFilterModal()">
-        <ion-icon name="funnel"></ion-icon>
+<div class="event-content">
+  <ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
       </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
-
-<ion-tabs tabsPlacement="top" style="margin-top: 45px;">
-  <ion-tab tabTitle="Todos" [root]="tab1"></ion-tab>
-  <ion-tab tabTitle="Criados por mim" [root]="tab2"></ion-tab>
-</ion-tabs>
+      <ion-title class="text-large-medium">Eventos</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="openFilterModal()">
+          <ion-icon name="funnel"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-tabs tabsPlacement="top" style="margin-top: 45px;">
+    <ion-tab tabTitle="Todos" [root]="tab1"></ion-tab>
+    <ion-tab tabTitle="Criados por mim" [root]="tab2"></ion-tab>
+  </ion-tabs>  
+</div>
