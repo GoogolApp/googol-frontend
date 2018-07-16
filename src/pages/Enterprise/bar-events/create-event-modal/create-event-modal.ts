@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import {AlertController, LoadingController, NavParams, ViewController} from 'ionic-angular';
-import {Bar} from "../../../../_models/bar";
-import {MatchesService} from "../../../../_services/matches";
-import {EventsService} from "../../../../_services/events";
-import {Owner} from "../../../../_models/owner";
+import { AlertController, LoadingController, NavParams, ViewController } from 'ionic-angular';
+
+import { MatchesService } from "../../../../_services/matches";
+import { EventsService } from "../../../../_services/events";
+
+import { Bar } from "../../../../_models/bar";
+import { Owner } from "../../../../_models/owner";
 
 @Component({
   templateUrl: 'create-event-modal.html'
@@ -21,15 +23,21 @@ export class CreateEventModal {
 
   createEventCallback: Function;
   matches = [];
+  barEvents = [];
   bar:Bar;
   owner:Owner;
 
   ngOnInit(): void {
-    const owner:Owner = this.params.get('owner');
-    this.bar = owner.bar;
-    this.owner = owner;
-    this.fetchMatches();
     this.createEventCallback = this.addEvent.bind(this);
+
+    const owner:Owner = this.params.get('owner');
+    const barEvents = this.params.get('barEvents');
+
+    this.owner = owner;
+    this.bar = owner.bar;
+    this.barEvents = barEvents;
+
+    this.fetchMatches();
   }
 
   loading () {
@@ -47,15 +55,14 @@ export class CreateEventModal {
     this.viewCtrl.dismiss();
   }
 
-  _showCreateEventConfirmationAlert (successCb, rejectCb) {
+  _showCreateEventConfirmationAlert (successCb) {
     let alert = this.alertCtrl.create({
       title: "Atenção",
       subTitle: 'Tem certeza que deseja criar o evento?',
       buttons: [
         {
           text: 'Cancelar',
-          role: 'cancel',
-          handler: rejectCb
+          role: 'cancel'
         },
         {
           text: 'Sim',
@@ -67,31 +74,45 @@ export class CreateEventModal {
   }
 
   addEvent (match) {
-    const successCb = () => {
+    const successCb = async () => {
       console.log("eventService.create");
-      this.eventService.create(match._id, this.bar._id, this.owner._id).toPromise();
+      await this.eventService.create(match._id, this.bar._id, this.owner._id).toPromise();
+      this.matches = this.matches.filter(m => m._id !== match._id);
     };
     console.log(match);
     console.log("add event");
-    // TODO: Dar bind dessa função com o this desse component
-    this._showCreateEventConfirmationAlert(successCb, this.dismiss);
+    this._showCreateEventConfirmationAlert(successCb);
   }
 
   async fetchMatches () {
     const loading = this.loading();
     const matches = await this.matchesService.getAll().toPromise();
-    this.matches = matches.map((match) => {
-      const currDate = new Date();
-      const date = new Date(match.matchDate);
+    this.matches = matches
+      .map((match) => {
+        const currDate = new Date();
+        const date = new Date(match.matchDate);
 
-      date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
-      match.matchDate = date;
+        date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
+        match.matchDate = date;
 
-      let timeDiff = currDate.getTime() - date.getTime();
-      if(timeDiff/3600000 <= 2.5) {
-        return match;
-      }
-    });
+        let timeDiff = currDate.getTime() - date.getTime();
+        if(timeDiff/3600000 <= 2.5) {
+          return match;
+        }
+      })
+      .filter(match => {
+        let isOnBarEvents = false;
+
+        this.barEvents.forEach(event => {
+          if (event.match._id === match._id) {
+            isOnBarEvents = true;
+          }
+        });
+
+        return !isOnBarEvents;
+      });
+
+
     loading.dismiss();
   }
 

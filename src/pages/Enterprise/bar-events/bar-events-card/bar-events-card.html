@@ -1,5 +1,5 @@
 <!-- Event Card -->
-<div class="base" *ngIf="event">
+<div class="base" *ngIf="event && event.state !== unconfirmedByOwnerEventState && event.state !== deletedByUserEventState">
   <header>
     <span class="text-default-medium">{{event.match.league}}</span>
     <span class="text-small-normal">
@@ -40,7 +40,7 @@
         e outras 10 pesssoas confirmaram presença
       </p>
       <br>
-      <ion-grid text-center>
+      <ion-grid text-center *ngIf="event.state === confirmedByUserEventState">
         <ion-row>
           <ion-col col-6>
             <button class="googol-btn-secondary" (click)="confirmEventCb(event)">
