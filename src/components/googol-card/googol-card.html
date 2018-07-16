@@ -150,3 +150,27 @@
     <textarea class="googol-input" rows="7" readonly> {{promotion}}</textarea>
   </section>
 </div>
+
+<!-- Info Card -->
+<div class="base" *ngIf="address">
+
+  <header>
+    <span class="text-default-medium">Informações</span>
+  </header>
+
+  <hr>
+
+  <section class="body">
+    <span>
+      <ion-icon name="compass"></ion-icon> {{address}}</span>
+    <br>
+    <br>
+    <span *ngIf="phone">
+      <ion-icon name="call"></ion-icon> {{phone}}
+    </span>
+
+    <span *ngIf="!phone">
+      <ion-icon name="call"></ion-icon> Sem telefone
+    </span>
+  </section>
+</div>
