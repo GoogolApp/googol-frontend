@@ -16,7 +16,7 @@ export class MyBarPage implements OnInit{
     private ownerService: OwnerService,
     private loadingController: LoadingController
   ) {
-    this.owner = { bar: {}}
+    this.owner = { bar: { promo: { }}}
   }
 
   async ngOnInit(){

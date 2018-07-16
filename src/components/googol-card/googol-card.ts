@@ -23,6 +23,8 @@ export class GoogolCardComponent {
   @Input() promotion: string;
   @Input() place: string;
   @Input() action: string;
+  @Input() address: string;
+  @Input() phone: string;
 
   currentDate = new Date();
 
