@@ -24,8 +24,10 @@ export class FilterEventsModal implements OnInit {
         this.events = this.navParams.get('events');
         console.log(this.events);
 
-        this.teams = this.getTeams(this.events);
-        this.bars = this.getBars(this.events);
+        if(this.events.length > 0) {
+            this.teams = this.getTeams(this.events);
+            this.bars = this.getBars(this.events);
+        }
     }
 
     dismiss(data?:any) {

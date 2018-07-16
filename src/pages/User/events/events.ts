@@ -24,7 +24,7 @@ tab2 = MyEventsTab;
 constructor(public navCtrl: NavController, private modalCtrl: ModalController, private sharedService: SharedServiceEvents) {
   sharedService.changeEmitted.subscribe(
     data => {
-      this.events = data;
+      this.events = data.events;
     }
   );
 }
@@ -38,7 +38,7 @@ openFilterModal() {
       this.filter = data;
     }
     console.log(this.filter)
-    this.sharedService.emit(this.filter)
+    this.sharedService.emit({'filters': this.filter, 'events': this.events})
   });
 }
 
