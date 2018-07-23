@@ -22,6 +22,7 @@ export class MyEventsTab implements OnInit{
         const userId = JSON.parse(auth).userId;
         this.eventsService.getById(userId).subscribe(
             events => {
+                console.log(events)
                 this.events = events;
             }
         );

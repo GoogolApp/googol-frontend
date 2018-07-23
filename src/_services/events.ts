@@ -76,4 +76,11 @@ export class EventsService {
             });
     }
 
+    remove(eventId: string) : Observable<Event> {
+        return this.http.delete<Event>(this.url + '/' + eventId, this.httpOptions)
+            .map(deletedEvent => {
+                return deletedEvent;
+            });
+    }
+
 }
