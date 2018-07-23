@@ -21,7 +21,7 @@ export class AllEventsTab implements OnInit{
 
     async ngOnInit(){
         await this.fetchEvents();
-      }
+    }
     
     fetchEvents(){
         this.loading.present();

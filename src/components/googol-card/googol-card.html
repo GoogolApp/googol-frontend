@@ -137,6 +137,54 @@
   </ng-template>
 </div>
 
+<!-- My Event Card -->
+<div class="base" *ngIf="myEvent">
+  <header>
+    <span class="text-default-medium">{{myEvent.match.league}}</span>
+    <span class="text-small-normal">
+      <br>
+      <ion-icon name="navigate"></ion-icon> {{myEvent.bar.name}}
+    </span>
+    <span class="text-default-normal text-mute" float-right>{{myEvent.match.matchDate | date:'HH:mm, dd MMM'}}</span>
+  </header>
+
+  <hr>
+
+  <section class="body">
+    <ion-grid text-center>
+      <ion-row>
+        <ion-col col-5>
+          <img width="50" height="50" src="{{myEvent.match.homeTeamLogoUrl}}">
+          <br>
+          <span class="text-default-normal">{{myEvent.match.homeTeam}}</span>
+        </ion-col>
+        <ion-col col-2>
+          <span class="text-xlarge-bold text-mute">
+            <br> X
+          </span>
+        </ion-col>
+        <ion-col col-5>
+          <img width="50" height="50" src="{{myEvent.match.awayTeamLogoUrl}}">
+          <br>
+          <span class="text-default-normal">{{myEvent.match.awayTeam}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+
+  <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
+    <p class="text-small-medium text-mute" text-center>
+      <span class="text-dark">@cr7</span>
+      e outras 10 pesssoas confirmaram presença
+    </p>
+    <br>
+    <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
+      Remover Evento
+    </button>
+  </span>
+
+</div>
+
 <!-- Promotion Card -->
 <div class="base" *ngIf="promotion">
 
