@@ -4,6 +4,7 @@ import { NavController, ActionSheetController } from 'ionic-angular';
 import { CreateEventPage } from '../../pages/User/matches/create-event/create-event';
 import { Match } from '../../_models/match';
 import { Event } from '../../_models/event';
+import { EventsService } from '../../_services/events';
 
 @Component({
   selector: 'googol-card',
@@ -27,7 +28,7 @@ export class GoogolCardComponent {
 
   currentDate = new Date();
 
-  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController) {}
+  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController, public eventsService: EventsService) {}
 
   confirmPresence() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -65,7 +66,16 @@ export class GoogolCardComponent {
           text: 'Remover',
           role: 'confirm',
           handler: () => {
-            console.log('Evento removido');
+            this.eventsService.remove(this.myEvent._id).subscribe(
+              removedEvent => {
+                console.log('Evento removido');
+                console.log(removedEvent);
+                this.reloadView();
+              }, 
+              error => {
+                console.log("Erro ao remover evento!")
+              }
+            );
           }
         },
         {
@@ -81,4 +91,7 @@ export class GoogolCardComponent {
     actionSheet.present();
   }
 
+  private reloadView() {
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  }
 }
