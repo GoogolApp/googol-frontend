@@ -56,4 +56,29 @@ export class GoogolCardComponent {
     console.log(this.navCtrl.getViews());
     this.navCtrl.push(CreateEventPage, { match: this.match });
   }
+
+  deleteEvent() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Tem certeza que deseja remover o evento?',
+      buttons: [
+        {
+          text: 'Remover',
+          role: 'confirm',
+          handler: () => {
+            console.log('Evento removido');
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Remoção cancelada');
+          }
+        }
+      ]
+    });
+
+    actionSheet.present();
+  }
+
 }
