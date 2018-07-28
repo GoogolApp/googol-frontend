@@ -94,26 +94,15 @@ export class BarEvents implements OnInit{
     modal.present();
   }
 
-  _thisWorks () {
-    console.log("the this binding is ok!");
-  }
-
-  confirmEvent (event) {
-    console.log("confirm event has been called");
-    console.log(event);
-    //this.fetchEvents();
-    event.state = EventStates.CONFIRMED_BY_OWNER;
+  async confirmEvent (event) {
+    await this.eventsService.confirmEventByOwner(event._id).toPromise();
     this.pendingEvents.splice(this.pendingEvents.indexOf(event), 1);
     this.confirmedEvents.push(event);
-    this._thisWorks();
   }
 
-  removeEvent (event) {
-    console.log("remove event has been called");
-    console.log(event);
-    //this.fetchEvents();
+  async removeEvent (event) {
+    await this.eventsService.removeEventByOwner(event._id).toPromise();
     event.state = EventStates.UNCONFIMED_BY_OWNER;
-    this._thisWorks();
   }
 
   private buildTabsParams () {

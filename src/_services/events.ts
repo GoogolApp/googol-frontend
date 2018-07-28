@@ -11,10 +11,10 @@ export class EventsService {
     fakeStorage = new Array<Event>();
     fakeId = 1;
     fakeLocation = "Bar da putaria - Campina Grande";
-    
+
     private url: string = AppUrl.root + '/events';
     private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-    
+
     constructor(private http: HttpClient) { }
 
     getAll() : Observable<Event[]> {
@@ -26,7 +26,7 @@ export class EventsService {
 
                     date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
                     event.match.matchDate = date;
-                    
+
                     let timeDiff = currDate.getTime() - date.getTime();
                     if(timeDiff/3600000 <= 2.5) {
                         return event;
@@ -34,7 +34,7 @@ export class EventsService {
                 }).filter(event => event !== undefined);
             });
     }
-    
+
     create(matchId: string, barId: string, userId?: string){
         let body;
         if(userId !== undefined) {
@@ -65,15 +65,25 @@ export class EventsService {
 
                     date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
                     event.match.matchDate = date;
-                    
+
                     let timeDiff = currDate.getTime() - date.getTime();
                     if(timeDiff/3600000 <= 2.5) {
                         return event;
                     }
-                }).filter(event => 
+                }).filter(event =>
                     event !== undefined && event.user !== undefined && event.user === userId
                 );
             });
     }
+
+    confirmEventByOwner (eventId: string) : Observable<Event> {
+      return this.http.patch<Event>(this.url + '/' + eventId, {
+        operation: 'confirmedByOwner'
+      });
+    }
+
+  removeEventByOwner (eventId: string) : Observable<Event> {
+    return this.http.delete<Event>(this.url + '/' + eventId);
+  }
 
 }
