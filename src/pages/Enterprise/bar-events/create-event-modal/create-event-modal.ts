@@ -75,12 +75,9 @@ export class CreateEventModal {
 
   addEvent (match) {
     const successCb = async () => {
-      console.log("eventService.create");
       await this.eventService.create(match._id, this.bar._id, this.owner._id).toPromise();
       this.matches = this.matches.filter(m => m._id !== match._id);
     };
-    console.log(match);
-    console.log("add event");
     this._showCreateEventConfirmationAlert(successCb);
   }
 

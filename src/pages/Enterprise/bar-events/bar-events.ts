@@ -21,8 +21,8 @@ export class BarEvents implements OnInit{
   confirmEventCb: Function;
   removeEventCb: Function;
 
-  pendingEvents: any;
-  confirmedEvents: any;
+  pendingEvents = [];
+  confirmedEvents = [];
 
   pendindEventsTabParams: Object;
   confirmedEventsTabParams: Object;
@@ -76,11 +76,14 @@ export class BarEvents implements OnInit{
       .filter(event => event.bar._id === this.owner.bar._id)
       .sort((ev1, ev2) => (+new Date(ev1.match.matchDate)) -  (+new Date(ev2.match.matchDate)));
 
-    this.pendingEvents = this.events
-      .filter(event => event.state === EventStates.CREATED_BY_USER);
+    this.pendingEvents.splice(0, this.pendingEvents.length);
+    this.confirmedEvents.splice(0, this.confirmedEvents.length);
 
-    this.confirmedEvents = this.events
-      .filter(event => event.state === EventStates.CONFIRMED_BY_OWNER || event.state === EventStates.CREATED_BY_OWNER);
+    this.pendingEvents.push(... this.events
+      .filter(event => event.state === EventStates.CREATED_BY_USER));
+
+    this.confirmedEvents.push(... this.events
+      .filter(event => event.state === EventStates.CONFIRMED_BY_OWNER || event.state === EventStates.CREATED_BY_OWNER));
   }
 
   openCreateEventModal () {
