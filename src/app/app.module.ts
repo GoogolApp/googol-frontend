@@ -18,7 +18,6 @@ import { UsersService } from '../_services/users';
 import { Maps } from '../_config/maps.config';
 import { BarService } from '../_services/bar';
 import { OwnerService } from '../_services/owner';
-import { SharedServiceEvents } from '../pages/User/events/shared-service';
 
 
 import {TokenInterceptor} from "../_providers/auth.interceptor";
@@ -154,7 +153,6 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     TeamService,
     BarService,
     OwnerService,
-    SharedServiceEvents,
     {provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true}
