@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController } from 'ionic-angular/';
-import { EventsService } from '../../../../_services/events';
+import { Component} from '@angular/core';
+import { NavParams } from 'ionic-angular/';
+
+
 import { Event } from '../../../../_models/event';
 
 @Component({
@@ -8,33 +9,12 @@ import { Event } from '../../../../_models/event';
     templateUrl: 'all-events.html'
 })
 
-export class AllEventsTab implements OnInit{
-    
-    events: Array<Event> = [];
+export class AllEventsTab {
 
-    constructor(private eventsService: EventsService, private loadingController: LoadingController){}
-    
-    loading = this.loadingController.create({
-        content: 'Buscando eventos...',
-        spinner: 'bubbles'
-    });
+    private events: Event[] = [];
 
-    async ngOnInit(){
-        await this.fetchEvents();
-      }
-    
-    fetchEvents(){
-        this.loading.present();
-
-        this.eventsService.getAll().subscribe(
-            events => {
-                this.events = [];
-                this.events = events;
-                this.loading.dismiss();
-            },
-            error => {
-                this.loading.dismiss();
-            }
-        );
+    constructor(private navParams: NavParams){
+        this.events = navParams.data;
     }
+
 }

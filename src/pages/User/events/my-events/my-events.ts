@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingController, NavParams } from 'ionic-angular/';
 import { EventsService } from '../../../../_services/events';
 import { Event } from '../../../../_models/event';
 
@@ -7,23 +8,11 @@ import { Event } from '../../../../_models/event';
     templateUrl: 'my-events.html'
 })
 
-export class MyEventsTab implements OnInit{
-    
-    events: Array<Event> = [];
+export class MyEventsTab {
 
-    constructor(public eventsService: EventsService){}
-    
-    async ngOnInit(){
-        await this.fetchEvents();
-    }
-    
-    fetchEvents(){
-        const auth = localStorage.getItem('authUser');
-        const userId = JSON.parse(auth).userId;
-        this.eventsService.getById(userId).subscribe(
-            events => {
-                this.events = events;
-            }
-        );
+    private events: Event[] = [];
+
+    constructor(private navParams: NavParams){
+        this.events = navParams.data;
     }
 }

@@ -4,6 +4,7 @@ export class Bar{
     name: string;
     latitude: number;
     longitude: number;
+    phone: string;
     location: {
         coordinates: any;
     };
@@ -19,12 +20,13 @@ export class Bar{
     createdAt: Date;
     eventHistory: any[];
 
-    constructor(placeId?:string, name?:string, latitude?:number, longitude?:number, address?:string){
+    constructor(placeId?:string, name?:string, latitude?:number, longitude?:number, address?:string, phone?:string){
         this.placeId = placeId;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.address = address;
+        this.phone = phone;
     }
 
 }

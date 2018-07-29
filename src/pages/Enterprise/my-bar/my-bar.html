@@ -9,6 +9,20 @@
 
 <ion-content padding class="MyBarPage">
 
-  <div id="map" style="height: 40%"></div>
+  <!-- profile pic -->
+  <section text-center>
+    <profile-pic-generator word="{{owner.bar.name}}" color="#4A90E2"></profile-pic-generator>
+  </section>
+
+  <!-- name / email -->
+  <p class="text-xxlarge-normal" text-center>
+    {{owner.bar.name}}
+    <br>
+    <span class="text-default-light" text-center>{{owner.email}}</span>
+  </p>
+
+  <button class="googol-btn-light" (click)="gotoFollowers()"> Seguidores</button>
+
+  <googol-card [address]="owner.bar.address" [phone]="owner.bar.phone"></googol-card>
 
 </ion-content>

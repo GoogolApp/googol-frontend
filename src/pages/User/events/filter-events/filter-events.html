@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Filtros</ion-title>
+        <ion-buttons end>
+            <button ion-button (click)="dismiss()">
+            <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="content">
+    <ion-list no-lines>
+        <ion-item>
+            <ion-label>Estabelecimento</ion-label>
+            <ion-select id="Estabelecimento" [(ngModel)]="selectedBars" multiple="true">
+                <ion-option *ngFor="let bar of bars" [value]="bar">{{ bar.name }}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-list no-lines>
+        <ion-item>
+            <ion-label>Times</ion-label>
+            <ion-select id="Times" [(ngModel)]="selectedTeams" multiple="true">
+                <ion-option *ngFor="let team of teams" [value]="team">{{ team }}</ion-option>
+            </ion-select>
+        </ion-item>
+    </ion-list>
+
+    <ion-buttons>
+        <button ion-button float-left color="secondary" (click)="applyFilters()">
+            Aplicar filtros
+        </button>
+    </ion-buttons>
+</ion-content>

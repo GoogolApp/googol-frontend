@@ -54,11 +54,13 @@ import { SearchUserTab } from '../pages/User/search/search-user/search-user';
 import { SearchBarTab } from '../pages/User/search/search-bar/search-bar';
 import { SearchedBarPage } from '../pages/User/searched-bar/searched-bar';
 import { FilterMatchesModal } from '../pages/User/matches/filter-matches/filter-matches';
+import { FilterEventsModal } from '../pages/User/events/filter-events/filter-events'
 
 //Enterprise
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
 import { BarEvents } from '../pages/Enterprise/bar-events/bar-events';
+import { FollowersBarPage } from  '../pages/Enterprise/followers-bar/followers-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
 import { CreateEventModal } from '../pages/Enterprise/bar-events/create-event-modal/create-event-modal';
@@ -101,7 +103,10 @@ import { ListEventsTab } from '../pages/Enterprise/bar-events/list-events-tab/li
     AddPromotionModal,
     CreateEventModal,
     ClaimBarPage,
-    FilterMatchesModal
+    FilterMatchesModal,
+    FilterEventsModal,
+    FilterMatchesModal,
+    FollowersBarPage
   ],
   imports: [
     ComponentsModule,
@@ -147,7 +152,10 @@ import { ListEventsTab } from '../pages/Enterprise/bar-events/list-events-tab/li
     AddPromotionModal,
     CreateEventModal,
     ClaimBarPage,
-    FilterMatchesModal
+    FilterMatchesModal,
+    FilterEventsModal,
+    FilterMatchesModal,
+    FollowersBarPage
   ],
   providers: [
     StatusBar,

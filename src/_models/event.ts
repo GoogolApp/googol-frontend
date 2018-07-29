@@ -4,14 +4,14 @@ import { Bar } from './bar';
 
 export class Event {
 
-    _id: number;
+    _id: string;
     match: Match;
     bar: Bar;
     user: User;
     state: String;
     attendants: Array<User>;
 
-    constructor(_id: number, state:String, match: Match, bar: Bar, user?: User){
+    constructor(_id: string, state:String, match: Match, bar: Bar, user?: User){
         this._id = _id;
         this.match = match;
         this.bar = bar;

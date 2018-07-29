@@ -18,7 +18,8 @@ import { Maps } from '../../../_config/maps.config';
         place_id: "",
         latitude: 0,
         longitude: 0,
-        formatted_address: ""
+        formatted_address: "",
+        phone: ""
     };
 
     public styles = Maps.styles;
@@ -83,6 +84,7 @@ import { Maps } from '../../../_config/maps.config';
                   this.place.latitude = place.geometry.location.lat();
                   this.place.longitude = place.geometry.location.lng();
                   this.place.formatted_address = place.formatted_address;
+                  this.place.phone = place.formatted_phone_number;
                   
               });
           });

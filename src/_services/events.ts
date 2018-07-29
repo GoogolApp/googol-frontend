@@ -8,10 +8,6 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class EventsService {
 
-    fakeStorage = new Array<Event>();
-    fakeId = 1;
-    fakeLocation = "Bar da putaria - Campina Grande";
-
     private url: string = AppUrl.root + '/events';
     private httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
@@ -58,7 +54,6 @@ export class EventsService {
     getById(userId: string) : Observable<Event[]> {
         return this.http.get<any[]>(this.url, this.httpOptions)
             .map(events => {
-                console.log(events)
                 return events.map(function(event) {
                     const currDate = new Date();
                     const date = new Date(event.match.matchDate);
@@ -85,5 +80,12 @@ export class EventsService {
   removeEventByOwner (eventId: string) : Observable<Event> {
     return this.http.delete<Event>(this.url + '/' + eventId);
   }
+
+    remove(eventId: string) : Observable<Event> {
+        return this.http.delete<Event>(this.url + '/' + eventId, this.httpOptions)
+            .map(deletedEvent => {
+                return deletedEvent;
+            });
+    }
 
 }
