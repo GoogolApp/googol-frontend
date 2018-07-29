@@ -59,11 +59,15 @@ import { FilterEventsModal } from '../pages/User/events/filter-events/filter-eve
 //Enterprise
 import { OwnerHomePage } from '../pages/Enterprise/home-owner/owner-home';
 import { MyBarPage } from '../pages/Enterprise/my-bar/my-bar';
+import { BarEvents } from '../pages/Enterprise/bar-events/bar-events';
 import { FollowersBarPage } from  '../pages/Enterprise/followers-bar/followers-bar';
 import { PromotionsPage } from '../pages/Enterprise/promotions/promotions';
 import { AddPromotionModal } from '../pages/Enterprise/promotions/add-promotion-modal/add-promotion-modal';
+import { CreateEventModal } from '../pages/Enterprise/bar-events/create-event-modal/create-event-modal';
 import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
 import { SearchBarEventPage } from '../pages/User/matches/create-event/search-bar-event/search-bar-event';
+import { ListEventsTab } from '../pages/Enterprise/bar-events/list-events-tab/list-events-tab';
+
 
 @NgModule({
   declarations: [
@@ -78,6 +82,7 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     EventsPage,
     AllEventsTab,
     MyEventsTab,
+    ListEventsTab,
     SearchPage,
     SearchUserTab,
     SearchBarTab,
@@ -93,8 +98,10 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     HomePage,
     OwnerHomePage,
     MyBarPage,
+    BarEvents,
     PromotionsPage,
     AddPromotionModal,
+    CreateEventModal,
     ClaimBarPage,
     FilterMatchesModal,
     FilterEventsModal,
@@ -124,6 +131,7 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     EventsPage,
     AllEventsTab,
     MyEventsTab,
+    ListEventsTab,
     SearchPage,
     SearchUserTab,
     SearchBarTab,
@@ -139,8 +147,10 @@ import { SearchBarEventPage } from '../pages/User/matches/create-event/search-ba
     HomePage,
     OwnerHomePage,
     MyBarPage,
+    BarEvents,
     PromotionsPage,
     AddPromotionModal,
+    CreateEventModal,
     ClaimBarPage,
     FilterMatchesModal,
     FilterEventsModal,

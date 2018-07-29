@@ -25,10 +25,12 @@ export class GoogolCardComponent {
   @Input() promotion: string;
   @Input() place: string;
   @Input() action: string;
+  @Input() addEventFn: Function;
   @Input() address: string;
   @Input() phone: string;
 
   currentDate = new Date();
+
 
   constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController, public eventsService: EventsService) {}
 
@@ -51,7 +53,7 @@ export class GoogolCardComponent {
         }
       ]
     });
- 
+
     actionSheet.present();
   }
 
@@ -73,7 +75,7 @@ export class GoogolCardComponent {
                 console.log('Evento removido');
                 console.log(removedEvent);
                 this.reloadView();
-              }, 
+              },
               error => {
                 console.log("Erro ao remover evento!")
               }

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <img width="22" height="17" src="./assets/imgs/hamburger_icon.png"/>
+    </button>
+    <ion-title class="text-large-medium">Próximos Eventos</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openCreateEventModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<!--<ion-content padding class="barEvents">
+  <p *ngIf="events.length === 0" class="text-default-medium" text-center> Seu bar não possui eventos cadastrados!</p>
+  <bar-events-card *ngFor="let event of events" [event]="event" [confirmEventCb]="confirmEventCb" [removeEventCb]="removeEventCb"></bar-events-card>
+</ion-content>-->
+
+
+<ion-tabs tabsPlacement="top" style="margin-top: 50px;" *ngIf="tabsInfoLoaded">
+  <ion-tab tabTitle="Eventos Pendentes" [root]="pendingEventsTab" [rootParams]="pendindEventsTabParams" ></ion-tab>
+  <ion-tab tabTitle="Eventos Confirmados" [root]="confirmedEventsTab" [rootParams]="confirmedEventsTabParams"></ion-tab>
+</ion-tabs>
