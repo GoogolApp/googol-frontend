@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController,LoadingController } from 'ionic-angular';
 import { OwnerService } from '../../../_services/owner';
+import { FollowersBarPage } from '../followers-bar/followers-bar';
 
 @Component({
   selector: 'my-bar',
@@ -15,7 +16,7 @@ export class MyBarPage implements OnInit{
     private ownerService: OwnerService,
     private loadingController: LoadingController
   ) {
-    this.owner = { bar: {}}
+    this.owner = { bar: { promo: { }}}
   }
 
   async ngOnInit(){
@@ -29,6 +30,10 @@ export class MyBarPage implements OnInit{
         this.owner = owner;
       }
     );
+  }
+
+  gotoFollowers(){
+    this.navCtrl.push(FollowersBarPage, { "parentPage": this, "followers": this.owner.bar.followers});
   }
 
   loading(){

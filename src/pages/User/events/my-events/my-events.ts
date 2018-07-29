@@ -9,12 +9,10 @@ import { Event } from '../../../../_models/event';
 })
 
 export class MyEventsTab {
-    
+
     private events: Event[] = [];
 
     constructor(private navParams: NavParams){
         this.events = navParams.data;
     }
-    
-
 }

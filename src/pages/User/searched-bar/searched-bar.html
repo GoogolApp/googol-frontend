@@ -10,5 +10,6 @@
 
 
 <ion-content padding>
-  <googol-card></googol-card>
+  <googol-card [address]="currentBar.address" [phone]="currentBar.phone"></googol-card>
+  <googol-card [promotion]="getPromoContent()"></googol-card>
 </ion-content>

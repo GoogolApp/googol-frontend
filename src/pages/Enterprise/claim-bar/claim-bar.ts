@@ -58,7 +58,8 @@ export class ClaimBarPage implements OnInit{
       this.place.name,
       this.place.latitude,
       this.place.longitude,
-      this.place.formatted_address
+      this.place.formatted_address,
+      this.place.phone
     );
 
     this.ownerService.putBar(this.owner._id, bar).subscribe(

@@ -29,6 +29,11 @@ export class SearchedBarPage {
 
   }
 
+  getPromoContent () {
+    const promo = this.currentBar.promo;
+    return promo ?  promo.content : "";
+  }
+
   fetchBar(id:string) {
     this.barService.getOne(id).subscribe(
       res => {

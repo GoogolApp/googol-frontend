@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LoadingController, NavParams } from 'ionic-angular/';
-import _ from 'lodash';
+import { Component} from '@angular/core';
+import { NavParams } from 'ionic-angular/';
 
 
 import { Event } from '../../../../_models/event';
@@ -11,11 +10,11 @@ import { Event } from '../../../../_models/event';
 })
 
 export class AllEventsTab {
-    
+
     private events: Event[] = [];
 
     constructor(private navParams: NavParams){
         this.events = navParams.data;
     }
-    
+
 }
