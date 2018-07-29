@@ -71,6 +71,8 @@ export class EventsService {
             });
     }
 
+    //teste
+
     confirmEventByOwner (eventId: string) : Observable<Event> {
       return this.http.patch<Event>(this.url + '/' + eventId, {
         operation: 'confirmedByOwner'
