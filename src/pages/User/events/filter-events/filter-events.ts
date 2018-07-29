@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { NavParams, NavController, ViewController } from "ionic-angular/";
 import { Event } from "../../../../_models/event";
+import { Bar } from "../../../../_models/bar";
+
+import _ from 'lodash';
 
 @Component({
     selector: 'filter-events',
@@ -16,8 +19,8 @@ export class FilterEventsModal implements OnInit {
     private teams: string[] = [];
     private selectedTeams: string[] = [];
 
-    private bars: string[] = [];
-    private selectedBars: string[] = [];
+    private bars: any[] = [];
+    private selectedBars: any[] = [];
 
 
     ngOnInit(): void {
@@ -31,7 +34,10 @@ export class FilterEventsModal implements OnInit {
     }
 
     dismiss(data?:any) {
-        this.viewCtrl.dismiss({});
+        this.viewCtrl.dismiss({
+            bars : this.bars,
+            teams : this.teams
+        });
     }
 
     applyFilters() {
@@ -50,12 +56,12 @@ export class FilterEventsModal implements OnInit {
     }
 
     private getBars(events: Event[]) {
-        let bars: string[] = [];
+        let bars: Bar[] = [];
         events.forEach(
             event => {
-                bars.push(event.bar.name);
+                bars.push(event.bar);
             }
         );
-        return Array.from(new Set(bars)).sort();
+        return _.uniqBy(bars, '_id');
     }
 }
