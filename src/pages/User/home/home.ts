@@ -24,8 +24,6 @@ export class HomePage {
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public auth:AuthService, public app:App) {
-    this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [ 
       { title: 'Feed', component: FeedPage },
@@ -40,13 +38,6 @@ export class HomePage {
   logout(){
     this.auth.signOut();
     this.app.getRootNav().popToRoot();
-  }
-
-  initializeApp() {
-    this.platform.ready().then(() => {
-      this.statusBar.backgroundColorByHexString('#ffffff');
-      this.splashScreen.hide();
-    });
   }
 
   openPage(page) {
