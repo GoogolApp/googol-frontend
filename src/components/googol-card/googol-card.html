@@ -112,19 +112,31 @@
   </ng-container>
 
   <ng-template #positiveContent>
-    <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
+    <span *ngIf="!isPresenceConfirmed() && action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
       <br>
       <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
         Confirmar Presença
       </button>
     </span>
+    <span *ngIf="isPresenceConfirmed() && action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
+      <br>
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="unconfirmPresence()">
+        Desconfirmar Presença
+      </button>
+    </span>
   </ng-template>
 
   <ng-template #negativeContent>
-    <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
+    <span *ngIf="!isPresenceConfirmed() && action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
       <br>
       <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
         Confirmar Presença
+      </button>
+    </span>
+    <span *ngIf="isPresenceConfirmed() && action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
+      <br>
+      <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="unconfirmPresence()">
+        Desconfirmar Presença
       </button>
     </span>
   </ng-template>

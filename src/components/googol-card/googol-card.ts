@@ -30,9 +30,25 @@ export class GoogolCardComponent {
   @Input() phone: string;
 
   currentDate = new Date();
+  currentUser = JSON.parse(localStorage.getItem('authUser'));
 
+  constructor(
+    public navCtrl:NavController,
+    public actionSheetCtrl:ActionSheetController,
+    public eventsService: EventsService
+  ) {}
 
-  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController, public eventsService: EventsService) {}
+  isPresenceConfirmed(){
+    let res: boolean = false
+    
+    this.event.attendants.forEach( user => {
+      if(user._id === this.currentUser.userId){
+        res =  true;
+      }
+    });
+
+    return res;
+  }
 
   confirmPresence() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -41,21 +57,49 @@ export class GoogolCardComponent {
         {
           text: 'Confirmar',
           handler: () => {
-            console.log('Confirmado');
+            console.log(this.event);
+            this.eventsService.confirmPresence(this.event._id).subscribe(
+              data=>{
+                console.log('confirmed');
+              }
+            )
           }
         },
         {
           text: 'Cancelar',
           role: 'cancel',
-          handler: () => {
-            console.log('Cancelado');
-          }
+          handler: () => {}
         }
       ]
     });
-
     actionSheet.present();
   }
+
+  unconfirmPresence() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Tem certeza que deseja desconfirmar presença?',
+      buttons: [
+        {
+          text: 'Desconfirmar',
+          handler: () => {
+            console.log(this.event);
+            this.eventsService.unconfirmPresence(this.event._id).subscribe(
+              data=>{
+                console.log('unconfirmed');
+              }
+            )
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {}
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
 
   createEvent(){
     console.log(this.navCtrl.getViews());
