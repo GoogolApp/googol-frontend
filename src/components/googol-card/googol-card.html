@@ -113,10 +113,6 @@
 
   <ng-template #positiveContent>
     <span *ngIf="action == 'CONFIRM_PRESENCE' || action == 'SHOW'">
-      <p class="text-small-medium text-mute" text-center>
-        <span class="text-dark">@cr7</span>
-        e outras 10 pesssoas confirmaram presença
-      </p>
       <br>
       <button *ngIf="action !== 'SHOW'" class="googol-btn-secondary" (click)="confirmPresence()">
         Confirmar Presença
@@ -126,10 +122,6 @@
 
   <ng-template #negativeContent>
     <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
-      <p class="text-small-medium text-mute" text-center>
-        <span class="text-dark">@cr7</span>
-        e outras 10 pesssoas confirmaram presença
-      </p>
       <br>
       <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="confirmPresence()">
         Confirmar Presença
@@ -174,10 +166,6 @@
   </section>
 
   <span *ngIf="action === 'CONFIRM_PRESENCE' || action === 'SHOW'">
-    <p class="text-small-medium text-mute" text-center>
-      <span class="text-dark">@cr7</span>
-      e outras 10 pesssoas confirmaram presença
-    </p>
     <br>
     <button *ngIf="action !== 'SHOW'" class="googol-btn-danger" (click)="deleteEvent()">
       Remover Evento
