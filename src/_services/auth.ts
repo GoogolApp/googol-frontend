@@ -73,7 +73,7 @@ export class AuthService{
      * @returns {string}
      */
     getToken() : string {
-      return this.token;
+      return JSON.parse(localStorage.getItem('authUser')).token;
     }
 
     /**
