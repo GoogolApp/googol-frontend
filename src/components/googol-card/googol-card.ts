@@ -29,11 +29,28 @@ export class GoogolCardComponent {
   @Input() reloadView: Function;
   @Input() address: string;
   @Input() phone: string;
+  @Input() updateAllEventsFn: Function;
 
   currentDate = new Date();
+  currentUser = JSON.parse(localStorage.getItem('authUser'));
 
+  constructor(
+    public navCtrl:NavController,
+    public actionSheetCtrl:ActionSheetController,
+    public eventsService: EventsService
+  ) {}
 
-  constructor(public navCtrl:NavController, public actionSheetCtrl:ActionSheetController, public eventsService: EventsService) {}
+  isPresenceConfirmed(){
+    let res: boolean = false
+    
+    this.event.attendants.forEach( user => {
+      if(user._id === this.currentUser.userId){
+        res =  true;
+      }
+    });
+
+    return res;
+  }
 
   confirmPresence() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -42,21 +59,47 @@ export class GoogolCardComponent {
         {
           text: 'Confirmar',
           handler: () => {
-            console.log('Confirmado');
+            this.eventsService.confirmPresence(this.event._id).subscribe(
+              data => {
+                this.updateAllEventsFn();
+              }
+            );
           }
         },
         {
           text: 'Cancelar',
           role: 'cancel',
-          handler: () => {
-            console.log('Cancelado');
-          }
+          handler: () => {}
         }
       ]
     });
-
     actionSheet.present();
   }
+
+  unconfirmPresence() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Tem certeza que deseja desconfirmar presença?',
+      buttons: [
+        {
+          text: 'Desconfirmar',
+          handler: () => {
+            this.eventsService.unconfirmPresence(this.event._id).subscribe(
+              data => {
+                this.updateAllEventsFn();
+              }
+            );
+          }
+        },
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {}
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
 
   createEvent(){
     console.log(this.navCtrl.getViews());
