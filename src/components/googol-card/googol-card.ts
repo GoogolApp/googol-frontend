@@ -29,6 +29,7 @@ export class GoogolCardComponent {
   @Input() reloadView: Function;
   @Input() address: string;
   @Input() phone: string;
+  @Input() updateAllEventsFn: Function;
 
   currentDate = new Date();
   currentUser = JSON.parse(localStorage.getItem('authUser'));
@@ -58,12 +59,11 @@ export class GoogolCardComponent {
         {
           text: 'Confirmar',
           handler: () => {
-            console.log(this.event);
             this.eventsService.confirmPresence(this.event._id).subscribe(
-              data=>{
-                console.log('confirmed');
+              data => {
+                this.updateAllEventsFn();
               }
-            )
+            );
           }
         },
         {
@@ -83,12 +83,11 @@ export class GoogolCardComponent {
         {
           text: 'Desconfirmar',
           handler: () => {
-            console.log(this.event);
             this.eventsService.unconfirmPresence(this.event._id).subscribe(
-              data=>{
-                console.log('unconfirmed');
+              data => {
+                this.updateAllEventsFn();
               }
-            )
+            );
           }
         },
         {

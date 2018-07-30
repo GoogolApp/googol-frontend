@@ -71,12 +71,12 @@ export class EventsService {
             });
     }
 
-    confirmPresence(eventId: string): Observable<Event>{
-        return this.http.patch<Event>(this.url + '/' + eventId, {operation: "confirm"});
+    confirmPresence (eventId: string): Observable<Event> {
+        return this.http.patch<Event>(this.url + '/' + eventId, {operation: 'confirm'});
     }
 
-    unconfirmPresence(eventId: string): Observable<Event>{
-        return this.http.patch<Event>(this.url + '/' + eventId, {operation: "unconfirm"});
+    unconfirmPresence (eventId: string): Observable<Event> {
+        return this.http.patch<Event>(this.url + '/' + eventId, {operation: 'unconfirm'});
     }
 
     confirmEventByOwner (eventId: string) : Observable<Event> {

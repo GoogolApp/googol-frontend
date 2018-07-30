@@ -24,6 +24,7 @@ export class EventsPage implements OnInit{
   private myEvents = [];
   currentTab = 0;
   myEventsParams = {};
+  allEventsParams = {};
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController,
       private loadingController: LoadingController, 
@@ -37,6 +38,11 @@ export class EventsPage implements OnInit{
     this.myEventsParams = {
       myEvents: this.myEvents,
       fetchMyEventsCb: this.fetchMyEvents.bind(this)
+    };
+
+    this.allEventsParams = {
+      allEvents: this.allEvents,
+      fetchAllEventsCb: this.fetchAllEvents.bind(this)
     };
   }
 

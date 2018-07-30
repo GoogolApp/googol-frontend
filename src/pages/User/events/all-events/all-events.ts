@@ -12,9 +12,10 @@ import { Event } from '../../../../_models/event';
 export class AllEventsTab {
 
     private events: Event[] = [];
-
+    private updateAllEvents: Function;
     constructor(private navParams: NavParams){
-        this.events = navParams.data;
+        this.events = navParams.data.allEvents;
+        this.updateAllEvents = navParams.data.fetchAllEventsCb;
     }
 
 }
