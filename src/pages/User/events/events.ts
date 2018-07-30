@@ -23,6 +23,7 @@ export class EventsPage implements OnInit{
   private allEvents = [];
   private myEvents = [];
   currentTab = 0;
+  myEventsParams = {};
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController,
       private loadingController: LoadingController, 
@@ -32,6 +33,11 @@ export class EventsPage implements OnInit{
   ngOnInit() {
     this.fetchAllEvents();
     this.fetchMyEvents();
+    
+    this.myEventsParams = {
+      myEvents: this.myEvents,
+      fetchMyEventsCb: this.fetchMyEvents.bind(this)
+    };
   }
 
   tabSelected(tab: Tab) {
@@ -61,10 +67,16 @@ export class EventsPage implements OnInit{
     });
   }
 
-  loading = this.loadingController.create({
-    content: 'Buscando eventos...',
-    spinner: 'bubbles'
-  });
+  loading(){
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
+  }
 
   filterAllEvents(bars, teams) {
     bars = bars.map((bar) => bar._id);
@@ -85,7 +97,7 @@ export class EventsPage implements OnInit{
   }
 
   async fetchAllEvents(){
-    this.loading.present();
+    const loading = this.loading();
 
     const events = await this.eventsService.getAll().toPromise();
     events.sort((e1, e2) => {
@@ -93,13 +105,12 @@ export class EventsPage implements OnInit{
     });
     this.allEvents.splice(0, this.allEvents.length);
     this.allEvents.push(...events);
-    console.log('terminou fetch all events')
-    this.loading.dismiss();
+    loading.dismiss();
 
   }
 
   async fetchMyEvents(){
-    this.loading.present();
+    const loading = this.loading();
 
     const auth = localStorage.getItem('authUser');
     const userId = JSON.parse(auth).userId;
@@ -110,7 +121,7 @@ export class EventsPage implements OnInit{
     });
     this.myEvents.splice(0, this.myEvents.length);
     this.myEvents.push(...events);
-    this.loading.dismiss();
+    loading.dismiss();
   }
 
 }
