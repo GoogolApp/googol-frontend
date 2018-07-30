@@ -26,6 +26,7 @@ export class GoogolCardComponent {
   @Input() place: string;
   @Input() action: string;
   @Input() addEventFn: Function;
+  @Input() reloadView: Function;
   @Input() address: string;
   @Input() phone: string;
 
@@ -95,7 +96,4 @@ export class GoogolCardComponent {
     actionSheet.present();
   }
 
-  private reloadView() {
-    this.navCtrl.setRoot(this.navCtrl.getActive().component);
-  }
 }
