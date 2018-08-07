@@ -13,5 +13,10 @@
 </ion-header>
 
 <ion-content padding>
-  <googol-card *ngFor="let match of filteredMatches" [match]="match" action="ADD_EVENT"></googol-card>
+  <div *ngIf="filteredMatches.length !== 0">
+    <googol-card *ngFor="let match of filteredMatches" [match]="match" action="ADD_EVENT"></googol-card>
+  </div>
+  <div *ngIf="filteredMatches.length === 0">
+    Jogo(s) não encontrado(s)
+  </div>
 </ion-content>
