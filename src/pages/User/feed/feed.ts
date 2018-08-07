@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { UsersService } from '../../../_services/users';
 
 @Component({
@@ -12,14 +12,16 @@ export class FeedPage{
 
   constructor(
     public navCtrl: NavController,
-    private userService: UsersService
+    private userService: UsersService,
+    private loadingController: LoadingController,
   ) {
     this.fetchFeed();
   }
 
   fetchFeed(){
+    const loading = this.loading();
     let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
-    this.userService.getFeed(authUserId).then( feed => this.feed = this.fisherYatesShuffle([...feed]));
+    this.userService.getFeed(authUserId).then( feed => {this.feed = this.fisherYatesShuffle([...feed]); loading.dismiss();});
   }
 
   fisherYatesShuffle(arr) {
@@ -29,6 +31,17 @@ export class FeedPage{
       [arr[currentI], arr[randomI]] = [arr[randomI], arr[currentI]]
     }
     return arr;
+  }
+
+  loading(){
+    let loading = this.loadingController.create({
+      content: 'Por favor, aguarde...',
+      spinner: 'bubbles'
+    });
+
+    loading.present();
+
+    return loading;
   }
 
 }
