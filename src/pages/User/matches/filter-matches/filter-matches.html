@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding class="content">
-    <ion-list>
+    <ion-list no-lines>
         <ion-item>
          <ion-label>Campeonato</ion-label>
            <ion-select id="Liga/Campeonato" [(ngModel)]="selectedLeagues" multiple="true">
@@ -19,7 +19,7 @@
         </ion-item>
     </ion-list>
 
-    <ion-list>
+    <ion-list no-lines>
         <ion-item>
          <ion-label>Time/Seleção</ion-label>
            <ion-select id="Time/Seleção" [(ngModel)]="selectedTeams" multiple="true">
@@ -28,10 +28,10 @@
         </ion-item>
     </ion-list>
 
-    <ion-list>
+    <ion-list no-lines>
         <ion-item>
             <ion-label>Apenas times favoritos</ion-label>
-            <ion-toggle [(ngModel)]="favorites" color="royal" checked="false"></ion-toggle>
+            <ion-toggle [(ngModel)]="favorites" checked="false"></ion-toggle>
         </ion-item>
     </ion-list>
 

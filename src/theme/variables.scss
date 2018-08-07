@@ -51,13 +51,19 @@ $colors: (
 // iOS only Sass variables can go here
 $tabs-ios-tab-text-color: color($colors, light);
 $tabs-ios-tab-text-color-active: color($colors, danger);
-
+$toggle-ios-background-color-on: color($colors, light);
+$toggle-ios-background-color-off: color($colors, light);
+$toggle-ios-handle-background-color: color($colors, dark);
+$toggle-ios-handle-box-shadow: 0 3px 12px rgba(0, 0, 0, .76), 0 3px 1px rgba(0, 0, 0, 0);
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-
-
+$toggle-md-track-background-color-on: color($colors, light);
+$toggle-md-track-background-color-off: color($colors, light);
+$toggle-md-handle-background-color-on: color($colors, mute);
+$toggle-md-handle-background-color-off: color($colors, light);
+$toggle-md-handle-box-shadow: 0 3px 12px rgba(0, 0, 0, .76), 0 3px 1px rgba(0, 0, 0, 0);
 
 
 // App Windows Variables
