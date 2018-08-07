@@ -1,8 +1,15 @@
 
 .pg-profile{
-    .last-match{
-        padding-top: 5%;
-        padding-bottom: 5%;  
+    .follow-grid{
+        padding-top: 20px;
     }
-    
+    .favorite-teams{
+        padding-top: 20px;
+        .team-row{
+            text-align: center;
+            img{
+                margin: 2px;
+            }
+        }
+    }    
 }
