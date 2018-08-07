@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
 import { AppUrl } from '../_config/url.config';
+import { Event } from '../_models/event';
 
 @Injectable()
 export class UsersService {
@@ -109,5 +110,16 @@ export class UsersService {
         .map(user => {
             return user;
         });
+    }
+
+    async getFeed (userId: string) {
+        
+        const events = <any> await this.http.get(`${AppUrl.root}/events/feed/${userId}`).toPromise();
+        const promotions = <any> await this.http.get(`${this.url}/${userId}/followingBars/promo`).toPromise();
+
+        return [
+            ...events.filter(ev => +(new Date(ev.match.matchDate)) >= +(new Date())), 
+            ...promotions,
+        ];
     }
 }

@@ -8,5 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Feed</h3>
+  <div *ngFor="let item of feed">
+      <googol-card *ngIf="item.match" [myEvent]="item" action="SHOW"></googol-card>
+      <googol-card *ngIf="item.promo" [place]="item.name" [promotion]="item.promo.content"></googol-card>
+  </div>
+  
+  
 </ion-content>

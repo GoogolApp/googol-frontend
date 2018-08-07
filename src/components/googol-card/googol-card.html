@@ -189,14 +189,17 @@
 <!-- Promotion Card -->
 <div class="base" *ngIf="promotion">
 
-  <header text-center>
+  <header>
     <span class="text-default-medium">Promoção</span>
+    <span class="text-default-normal text-mute" float-right>
+        <ion-icon name="navigate"></ion-icon> {{place}}
+    </span>
   </header>
 
   <hr>
 
-  <section class="body" style="padding-top: 0px">
-    <textarea class="googol-input" rows="7" readonly> {{promotion}}</textarea>
+  <section class="body" text-center>
+    <pre class="text-average-medium"> {{promotion}}</pre>
   </section>
 </div>
 
