@@ -24,20 +24,20 @@
   </p>
 
   <!-- follow grid -->
-  <ion-grid>
+  <ion-grid class="follow-grid">
     <ion-row>
-      <ion-col class="text-default-light" text-center (click)="gotoFollowingPage()">
-        <span class="text-default-medium" >{{user.following.length}}</span>
+      <ion-col class="text-average-light" text-center (click)="gotoFollowingPage()">
+        <span class="text-average-medium" >{{user.following.length}}</span>
         <br> Seguindo
       </ion-col>
 
-      <ion-col class="text-default-light" text-center (click)="gotoFollowersPage()">
-        <span class="text-default-medium" >{{user.followers.length}}</span>
+      <ion-col class="text-average-light" text-center (click)="gotoFollowersPage()">
+        <span class="text-average-medium" >{{user.followers.length}}</span>
         <br> Seguidores
       </ion-col>
 
-      <ion-col class="text-default-light" text-center>
-        <span class="text-default-medium">{{user.reputation}}</span>
+      <ion-col class="text-average-light" text-center>
+        <span class="text-average-medium">{{user.reputation}}</span>
         <br> Reputação
       </ion-col>
     </ion-row>
@@ -45,34 +45,15 @@
 
   <!-- teams row -->
   <section class="favorite-teams">
-    <p class="text-default-light">Times Favoritos</p>
+    <p class="text-average-medium" text-center>Times Favoritos</p>
 
     <div *ngIf="user.favTeams.length==0" (click)="gotoTeamsPage()">
-      <p class="text-default-light">Adicione seus times favoritos!</p>
+      <p class="text-default-light" text-center>Adicione seus times favoritos!</p>
     </div>
 
-    <div *ngIf="user.favTeams.length==1" (click)="gotoTeamsPage()">
-      <img width="40" height="40" src={{user.favTeams[0].teamLogoUrl}}>
-    </div>
-
-    <div *ngIf="user.favTeams.length==2" (click)="gotoTeamsPage()">
-      <img width="40" height="40" src={{user.favTeams[0].teamLogoUrl}}>
-      <img width="40" height="40" src={{user.favTeams[1].teamLogoUrl}}>
-    </div>
-
-    <div *ngIf="user.favTeams.length >=3 " (click)="gotoTeamsPage()">
-      <img width="40" height="40" src={{user.favTeams[0].teamLogoUrl}}>
-      <img width="40" height="40" src={{user.favTeams[1].teamLogoUrl}}>
-      <img width="40" height="40" src={{user.favTeams[2].teamLogoUrl}}>
-    </div>
-  </section>
-
-  <section class="last-match">
-
-    <span class="text-default-light">Ultima partida</span>
-    <span class="text-secondary" float-right> Ver todas </span>
-
-    <googol-card [event]="eventos[0]" action="NONE"></googol-card>
+    <span (click)="gotoTeamsPage()" class="team-row" text-center>
+      <img width="45" height="45" *ngFor="let team of user.favTeams" src={{team.teamLogoUrl}}>
+    </span>
   </section>
 
 </ion-content>
