@@ -1,9 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { NavController, ActionSheetController } from 'ionic-angular';
+import { NavController, ActionSheetController, ModalController } from 'ionic-angular';
 
 import { Event } from '../../../../_models/event';
 
 import { EventStates} from "../../../../_models/eventStates";
+import { UsersEventsPage } from '../../users-events/users-events';
+import { User } from '../../../../_models/user';
+import { EventsService } from '../../../../_services/events';
 
 @Component({
   selector: 'bar-events-card',
@@ -22,8 +25,13 @@ export class BarEventsCardComponent {
 
   constructor(
     public navCtrl:NavController,
-    public actionSheetCtrl:ActionSheetController
+    public actionSheetCtrl:ActionSheetController,
+    public modalCtrl: ModalController,
   ) {
+
+  }
+  gotoUsersEvent(id: string){
+    this.navCtrl.push(UsersEventsPage, {id: id});
   }
 
 }

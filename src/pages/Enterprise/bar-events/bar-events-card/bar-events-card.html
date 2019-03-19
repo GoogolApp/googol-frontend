@@ -1,5 +1,6 @@
 <!-- Event Card -->
-<div class="base" *ngIf="event && event.state !== unconfirmedByOwnerEventState && event.state !== deletedByUserEventState">
+<div class="base"
+  *ngIf="event && event.state !== unconfirmedByOwnerEventState && event.state !== deletedByUserEventState">
   <header>
     <span class="text-default-medium">{{event.match.league}}</span>
     <span class="text-small-normal">
@@ -36,8 +37,7 @@
   <section>
     <ion-grid>
       <p class="text-small-medium text-mute" text-center>
-        <span class="text-dark">@cr7</span>
-        e outras 10 pesssoas confirmaram presença
+        <span class="text-dark" (click)="gotoUsersEvent(event._id)">@{{event.attendants[0].username}} e outras {{event.attendants.length - 1}} pesssoas confirmaram presença</span>
       </p>
       <br>
       <ion-grid text-center *ngIf="event.state === confirmedByUserEventState">
@@ -57,4 +57,3 @@
     </ion-grid>
   </section>
 </div>
-

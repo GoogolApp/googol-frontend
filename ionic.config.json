@@ -4,5 +4,6 @@
     "cordova": {}
   },
   "type": "ionic-angular",
-  "pro_id": "googol"
+  "pro_id": "googol",
+  "id": "googol"
 }
