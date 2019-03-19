@@ -36,9 +36,26 @@
 
   <section>
     <ion-grid>
-      <p class="text-small-medium text-mute" text-center>
-        <span class="text-dark" (click)="gotoUsersEvent(event._id)">@{{event.attendants[0].username}} e outras {{event.attendants.length - 1}} pesssoas confirmaram presença</span>
-      </p>
+      <div *ngIf="event.attendants.length > 1 ">
+        <p class="text-small-medium text-mute" text-center>
+          <span class="text-dark" (click)="gotoUsersEvent(event._id)">@{{event.attendants[0].username}} e outras
+            {{event.attendants.length - 1}} confirmaram presença </span>
+        </p>
+      </div>
+
+      <div *ngIf="event.attendants.length == 1">
+          <p class="text-small-medium text-mute" text-center>
+            <span class="text-dark"> @{{event.attendants[0].username}} confirmou presença!</span>
+          </p>
+        </div>
+
+      <div *ngIf="event.attendants.length == 0">
+        <p class="text-small-medium text-mute" text-center>
+          <span class="text-dark"> Nenhhum usuário confirmou presença ainda!</span>
+        </p>
+      </div>
+
+
       <br>
       <ion-grid text-center *ngIf="event.state === confirmedByUserEventState">
         <ion-row>
