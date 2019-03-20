@@ -21,7 +21,11 @@ export class UsersEventsPage {
     ) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.fetchUsers();
+  }
+
+  fetchUsers(){
     let event_id = this.navParams.get('id');
     this.eventsService.getEventById(event_id).subscribe(
       data=> {
@@ -31,6 +35,5 @@ export class UsersEventsPage {
         console.log(err);
       }
     )
-  
   }
 }

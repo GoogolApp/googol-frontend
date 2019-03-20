@@ -4,13 +4,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding padding id="usersConfirmed">
   <ion-list no-lines>
     <button ion-item detail-none *ngFor="let user of users">
       <ion-avatar item-start>
         <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
       </ion-avatar>
-      @{{user.username}}
+      {{user.username}}
     </button>
   </ion-list>
 </ion-content>

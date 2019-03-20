@@ -9,7 +9,6 @@
     </span>
     <span class="text-default-normal text-mute" float-right>{{event.match.matchDate | date:'HH:mm, dd MMM'}}</span>
   </header>
-
   <hr>
 
   <section class="body">
@@ -45,7 +44,7 @@
 
       <div *ngIf="event.attendants.length == 1">
           <p class="text-small-medium text-mute" text-center>
-            <span class="text-dark"> @{{event.attendants[0].username}} confirmou presença!</span>
+            <span class="text-dark" (click)="gotoUsersEvent(event._id)"> @{{event.attendants[0].username}} confirmou presença!</span>
           </p>
         </div>
 

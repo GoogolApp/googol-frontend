@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController, ActionSheetController, ModalController } from 'ionic-angular';
+import { NavController, ActionSheetController, ModalController, ViewController } from 'ionic-angular';
 
 import { Event } from '../../../../_models/event';
 
@@ -26,7 +26,8 @@ export class BarEventsCardComponent {
   constructor(
     public navCtrl:NavController,
     public actionSheetCtrl:ActionSheetController,
-    public modalCtrl: ModalController,
+    public viewCtrl: ViewController,
+    
   ) {
 
   }
