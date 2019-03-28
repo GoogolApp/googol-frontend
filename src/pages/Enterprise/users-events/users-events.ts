@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events, ViewController } from 'ionic-angular';
 import { EventsService } from '../../../_services/events';
 import { Event } from '../../../_models/event';
 import { User } from '../../../_models/user';
@@ -16,8 +16,8 @@ export class UsersEventsPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private eventsService: EventsService
-    
+    private eventsService: EventsService,
+    private viewController: ViewController
     ) {
   }
 
@@ -35,5 +35,9 @@ export class UsersEventsPage {
         console.log(err);
       }
     )
+  }
+
+  dismiss(){
+    this.viewController.dismiss();
   }
 }

@@ -1,7 +1,14 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Usuários Confirmados</ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <ion-title>
+      Usuarios confirmados
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span class="text-default-medium text-danger">Fechar</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content padding padding id="usersConfirmed">

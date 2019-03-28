@@ -27,12 +27,13 @@ export class BarEventsCardComponent {
     public navCtrl:NavController,
     public actionSheetCtrl:ActionSheetController,
     public viewCtrl: ViewController,
+    public modalController: ModalController
     
   ) {
 
   }
   gotoUsersEvent(id: string){
-    this.navCtrl.push(UsersEventsPage, {id: id});
+    const modal = this.modalController.create(UsersEventsPage, {id:id});
+    modal.present();
   }
-
 }
