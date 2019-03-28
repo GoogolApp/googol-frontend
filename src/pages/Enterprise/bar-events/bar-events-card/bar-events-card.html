@@ -1,5 +1,6 @@
 <!-- Event Card -->
-<div class="base" *ngIf="event && event.state !== unconfirmedByOwnerEventState && event.state !== deletedByUserEventState">
+<div class="base"
+  *ngIf="event && event.state !== unconfirmedByOwnerEventState && event.state !== deletedByUserEventState">
   <header>
     <span class="text-default-medium">{{event.match.league}}</span>
     <span class="text-small-normal">
@@ -8,7 +9,6 @@
     </span>
     <span class="text-default-normal text-mute" float-right>{{event.match.matchDate | date:'HH:mm, dd MMM'}}</span>
   </header>
-
   <hr>
 
   <section class="body">
@@ -35,10 +35,26 @@
 
   <section>
     <ion-grid>
-      <p class="text-small-medium text-mute" text-center>
-        <span class="text-dark">@cr7</span>
-        e outras 10 pesssoas confirmaram presença
-      </p>
+      <div *ngIf="event.attendants.length > 1 ">
+        <p class="text-small-medium text-mute" text-center>
+          <span class="text-dark" (click)="gotoUsersEvent(event._id)">@{{event.attendants[0].username}} e outras
+            {{event.attendants.length - 1}} confirmaram presença </span>
+        </p>
+      </div>
+
+      <div *ngIf="event.attendants.length == 1">
+          <p class="text-small-medium text-mute" text-center>
+            <span class="text-dark" (click)="gotoUsersEvent(event._id)"> @{{event.attendants[0].username}} confirmou presença!</span>
+          </p>
+        </div>
+
+      <div *ngIf="event.attendants.length == 0">
+        <p class="text-small-medium text-mute" text-center>
+          <span class="text-dark"> Nenhhum usuário confirmou presença ainda!</span>
+        </p>
+      </div>
+
+
       <br>
       <ion-grid text-center *ngIf="event.state === confirmedByUserEventState">
         <ion-row>
@@ -57,4 +73,3 @@
     </ion-grid>
   </section>
 </div>
-

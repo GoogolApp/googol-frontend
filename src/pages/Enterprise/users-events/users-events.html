@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Usuarios confirmados
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span class="text-default-medium text-danger">Fechar</span>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding padding id="usersConfirmed">
+  <ion-list no-lines>
+    <button ion-item detail-none *ngFor="let user of users">
+      <ion-avatar item-start>
+        <profile-pic-generator word="{{user.username}}" color="#4A90E2"></profile-pic-generator>
+      </ion-avatar>
+      {{user.username}}
+    </button>
+  </ion-list>
+</ion-content>

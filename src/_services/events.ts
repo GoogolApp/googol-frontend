@@ -71,6 +71,10 @@ export class EventsService {
             });
     }
 
+    getEventById(eventId : string) : Observable<Event> {
+        return this.http.get<Event>(this.url + '/' + eventId, this.httpOptions);
+    }
+
     confirmPresence (eventId: string): Observable<Event> {
         return this.http.patch<Event>(this.url + '/' + eventId, {operation: 'confirm'});
     }
