@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams, LoadingController, Events, Tab } from 'ionic-angular';
 import { User } from '../../../_models/user';
 import { UsersService } from '../../../_services/users';
 import { SearchedProfilePage } from '../searched-profile/searched-profile';
+
+import { UsersTab } from "./users-tab/users-tab";
+import { BarsTab } from "./bars-tab/bars-tab";
 
 @Component({
   selector: 'page-following',
@@ -10,22 +13,36 @@ import { SearchedProfilePage } from '../searched-profile/searched-profile';
 })
 export class FollowingPage {
 
+  tab1 = UsersTab;
+  tab2 = BarsTab;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
     private userService: UsersService, 
     private loadingController: LoadingController,
     private events: Events) {
-
-  }
-
+      
+    }
+    
   ionViewDidEnter(){
     this.getFollowingUserFirst();
     
   }
-
+  
   user = new User();
   private following:User[] = [];
+  
+  async fetchUsers() {
+    const loading = this.loading();
+
+    const users = await this.userService
+
+  }
+
+  async fetchBars() {
+    throw new Error("Method not implemented.");
+  }
 
   async getFollowingUserFirst(){
     let loading = this.loading();
