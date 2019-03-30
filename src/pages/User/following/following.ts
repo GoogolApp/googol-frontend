@@ -33,16 +33,7 @@ export class FollowingPage {
   user = new User();
   private following:User[] = [];
   
-  async fetchUsers() {
-    const loading = this.loading();
-
-    const users = await this.userService
-
-  }
-
-  async fetchBars() {
-    throw new Error("Method not implemented.");
-  }
+  
 
   async getFollowingUserFirst(){
     let loading = this.loading();
