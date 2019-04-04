@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { User } from '../_models/user';
+import { Bar } from "../_models/bar";
 import { AppUrl } from '../_config/url.config';
 import { Event } from '../_models/event';
 
@@ -58,12 +59,20 @@ export class UsersService {
             });
     }
 
-    getAllFollowing() : Observable<User> {
+    getFollowingUsers() : Observable<User> {
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
         return this.http.get<User>(this.url + '/' + authUserId + '/following', this.httpOptions)
             .map(user => {
-                return user;
+                return user.following;
             });
+    }
+
+    getFollowingBars() : Observable<Bar> {
+        let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
+        return this.http.get<Bar>(this.url + '/' + authUserId + '/followingBars', this.httpOptions)
+            .map(bar => {
+                return bar.followingBars;
+            })
     }
 
     getAllFollowers() : Observable<User> {
