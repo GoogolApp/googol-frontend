@@ -18,7 +18,7 @@
     Entrar
   </button>
 
-  <p class="text-default-normal text-mute account">Você não tem uma conta?</p>
-  <p class="text-default-medium" (click)="goSignUp()">REGISTRAR-SE AQUI</p>
+  <p *ngIf="this.type === 'user'"  class="text-default-normal text-mute account">Você não tem uma conta?</p>
+  <p *ngIf="this.type === 'user'"  class="text-default-medium" (click)="goSignUp()">REGISTRAR-SE AQUI</p>
 
 </ion-content>
