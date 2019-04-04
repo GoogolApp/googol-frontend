@@ -27,7 +27,7 @@
   <ion-grid class="follow-grid">
     <ion-row>
       <ion-col class="text-average-light" text-center (click)="gotoFollowingPage()">
-        <span class="text-average-medium" >{{user.following.length}}</span>
+        <span class="text-average-medium" >{{user.following.length + user.followingBars.length}}</span>
         <br> Seguindo
       </ion-col>
 
