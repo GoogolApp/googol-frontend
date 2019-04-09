@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Events, ViewController } from 'ion
 import { EventsService } from '../../../_services/events';
 import { Event } from '../../../_models/event';
 import { User } from '../../../_models/user';
+import { FollowerProfilePage } from '../../follower-profile/follower-profile';
 
 @Component({
   selector: 'page-users-events',
@@ -10,7 +11,6 @@ import { User } from '../../../_models/user';
 })
 export class UsersEventsPage {
 
-  
   private users:User[] = [];
 
   constructor(
@@ -36,6 +36,11 @@ export class UsersEventsPage {
       }
     )
   }
+
+  showPageUser(id:string){
+    this.navCtrl.push(FollowerProfilePage, {id:id})
+  }
+
 
   dismiss(){
     this.viewController.dismiss();
