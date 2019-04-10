@@ -11,7 +11,7 @@
   <p text-center *ngIf="followers.length == 0">Você ainda não tem nenhum seguidor.</p>
 
   <ion-list no-lines *ngIf="followers.length > 0">
-    <button ion-item detail-none *ngFor="let follower of users">
+    <button ion-item detail-none *ngFor="let follower of users" (click)="showPageUser(follower._id)">
       <ion-avatar item-start>
         <profile-pic-generator word="{{follower.username}}" color="#4A90E2"></profile-pic-generator>
       </ion-avatar>

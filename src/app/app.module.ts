@@ -68,6 +68,7 @@ import { ClaimBarPage } from '../pages/Enterprise/claim-bar/claim-bar';
 import { SearchBarEventPage } from '../pages/User/matches/create-event/search-bar-event/search-bar-event';
 import { ListEventsTab } from '../pages/Enterprise/bar-events/list-events-tab/list-events-tab';
 import { UsersEventsPage } from '../pages/Enterprise/users-events/users-events';
+import { FollowerProfilePage } from '../pages/follower-profile/follower-profile';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { UsersEventsPage } from '../pages/Enterprise/users-events/users-events';
     FilterEventsModal,
     FilterMatchesModal,
     FollowersBarPage,
-    UsersEventsPage
+    UsersEventsPage,
+    FollowerProfilePage
   ],
   imports: [
     ComponentsModule,
@@ -158,7 +160,8 @@ import { UsersEventsPage } from '../pages/Enterprise/users-events/users-events';
     FilterEventsModal,
     FilterMatchesModal,
     FollowersBarPage,
-    UsersEventsPage
+    UsersEventsPage,
+    FollowerProfilePage
   ],
   providers: [
     StatusBar,

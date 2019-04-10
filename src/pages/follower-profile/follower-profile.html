@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="pg-profile">
+  <!-- img -->
+  <section text-center>
+    <profile-pic-generator word="{{userSearch.username}}" color="#4A90E2"></profile-pic-generator>
+  </section>
+
+  <!-- name / username -->
+  <p class="text-xxlarge-normal" text-center>
+    @{{userSearch.username}}
+    <br>
+    <span class="text-default-light" text-center>{{userSearch.email}}</span>
+  </p>
+
+  <!-- follow grid -->
+  <ion-grid>
+    <ion-row>
+      <ion-col class="text-default-light" text-center>
+        <span class="text-default-medium">{{userSearch.following.length}}</span>
+        <br> Seguindo
+      </ion-col>
+
+      <ion-col class="text-default-light" text-center>
+        <span class="text-default-medium">{{userSearch.followers.length}}</span>
+        <br> Seguidores
+      </ion-col>
+
+      <ion-col class="text-default-light" text-center>
+        <span class="text-default-medium">{{userSearch.reputation}}</span>
+        <br> Reputação
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- teams row -->
+  <section class="favorite-teams">
+    <p class="text-default-light">Times Favoritos</p>
+    <div *ngIf="userSearch.favTeams.length==0">
+      <p class="text-default-light">Usuário sem times favoritos!</p>
+    </div>
+
+    <div *ngIf="userSearch.favTeams.length==1">
+      <img width="40" height="40" src={{userSearch.favTeams[0].teamLogoUrl}}>
+    </div>
+
+    <div *ngIf="userSearch.favTeams.length==2" (click)="gotoTeamsPage()">
+      <img width="40" height="40" src={{userSearch.favTeams[0].teamLogoUrl}}>
+      <img width="40" height="40" src={{userSearch.favTeams[1].teamLogoUrl}}>
+    </div>
+
+    <div *ngIf="userSearch.favTeams.length >=3 ">
+      <img width="40" height="40" src={{userSearch.favTeams[0].teamLogoUrl}}>
+      <img width="40" height="40" src={{userSearch.favTeams[1].teamLogoUrl}}>
+      <img width="40" height="40" src={{userSearch.favTeams[2].teamLogoUrl}}>
+    </div>
+  </section>
+</ion-content>

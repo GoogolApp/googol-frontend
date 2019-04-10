@@ -2,6 +2,8 @@ import { Component} from '@angular/core';
 import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
 import { User } from '../../../_models/user';
 import { UsersService } from '../../../_services/users';
+import { EventsPage } from '../../User/events/events';
+import { FollowerProfilePage } from '../../follower-profile/follower-profile';
 
 @Component({
   selector: 'page-followers-bar',
@@ -50,6 +52,10 @@ export class FollowersBarPage{
       )
       
     });
+  }
+
+  showPageUser(id:string){
+    this.navCtrl.push(FollowerProfilePage, {id:id})
   }
 
 }
