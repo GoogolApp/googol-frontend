@@ -1,0 +1,10 @@
+<ion-content padding padding id="bars-page">
+    <ion-list no-lines>
+        <button ion-item detail-none *ngFor="let bar of bars" (click)="showPageBar(bar._id)">
+        <ion-avatar item-start>
+            <profile-pic-generator word="{{bar.name}}" color="#4A90E2"></profile-pic-generator>
+        </ion-avatar>
+        {{bar.name}}
+        </button>
+    </ion-list>
+</ion-content>
