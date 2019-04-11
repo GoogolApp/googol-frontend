@@ -21,7 +21,6 @@ export class BarsTab {
         const loading = this.loading();
         const bars = await this.userService.getFollowingBars().toPromise();
         this.bars = bars;
-        console.log(this.bars)
         loading.dismiss();
     }
 

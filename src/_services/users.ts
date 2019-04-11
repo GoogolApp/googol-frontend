@@ -62,17 +62,13 @@ export class UsersService {
     getFollowingUsers() : Observable<User> {
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
         return this.http.get<User[]>(this.url + '/' + authUserId + '/following', this.httpOptions)
-            .map(user => {
-                return user.following;
-            });
+            .map(user => user.following);
     }
 
     getFollowingBars() : Observable<Bar> {
         let authUserId = JSON.parse(localStorage.getItem('authUser')).userId;
         return this.http.get<Bar[]>(this.url + '/' + authUserId + '/followingBars', this.httpOptions)
-            .map(bar => {
-                return bar.followingBars;
-            })
+            .map(bar => bar.followingBars)
     }
 
     getAllFollowers() : Observable<User> {
