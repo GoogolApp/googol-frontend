@@ -49,6 +49,8 @@ import { EditTeamsPage } from '../pages/User/edit-teams/edit-teams';
 import { MyTeamsPage } from '../pages/User/edit-teams/my-teams/my-teams';
 import { AllTeamsPage } from '../pages/User/edit-teams/all-teams/all-teams';
 import { FollowingPage } from '../pages/User/following/following';
+import { UsersTab } from "../pages/User/following/users-tab/users-tab";
+import { BarsTab } from "../pages/User/following/bars-tab/bars-tab";
 import { FollowersPage } from '../pages/User/followers/followers';
 import { SearchUserTab } from '../pages/User/search/search-user/search-user';
 import { SearchBarTab } from '../pages/User/search/search-bar/search-bar';
@@ -77,6 +79,8 @@ import { FollowerProfilePage } from '../pages/follower-profile/follower-profile'
     FeedPage,
     ProfilePage,
     FollowingPage,
+    UsersTab,
+    BarsTab,
     FollowersPage,
     MatchesPage,
     CreateEventPage,
@@ -128,6 +132,8 @@ import { FollowerProfilePage } from '../pages/follower-profile/follower-profile'
     FeedPage,
     ProfilePage,
     FollowingPage,
+    UsersTab,
+    BarsTab,
     FollowersPage,
     MatchesPage,
     CreateEventPage,

@@ -1,62 +1,48 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, Events } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 import { User } from '../../../_models/user';
-import { UsersService } from '../../../_services/users';
 import { SearchedProfilePage } from '../searched-profile/searched-profile';
+import { SearchedBarPage } from "../searched-bar/searched-bar";
+
+import { UsersTab } from "./users-tab/users-tab";
+import { BarsTab } from "./bars-tab/bars-tab";
 
 @Component({
   selector: 'page-following',
   templateUrl: 'following.html',
 })
-export class FollowingPage {
-
-  constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private userService: UsersService, 
-    private loadingController: LoadingController,
-    private events: Events) {
-
-  }
-
-  ionViewDidEnter(){
-    this.getFollowingUserFirst();
-    
-  }
+export class FollowingPage implements OnInit{
 
   user = new User();
-  private following:User[] = [];
+  tab1 = UsersTab;
+  tab2 = BarsTab;
 
-  async getFollowingUserFirst(){
-    let loading = this.loading();
-    await loading;
-    this.userService.getAllFollowing().subscribe(
-      user=> {
-        this.user = user;
-        this.following = user.following;
-        loading.dismiss();
-      },
-      err =>{
-        console.log(err);
-        loading.dismiss();
-      }
-    ) 
+  allUsersParam: {};
+  allBarsParam: {};
+
+  ngOnInit() {
+    this.allUsersParam = {
+      showPageUserCb: this.showPageUser.bind(this)
+    };
+
+    this.allBarsParam = {
+      showPageBarCb: this.showPageBar.bind(this)
+    };
   }
+  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams) {
+    }
 
   showPageUser(id: string) {
     localStorage.setItem('searchedUser', JSON.stringify(id));
     this.navCtrl.push(SearchedProfilePage, { "parentPage": this });
   }
 
-  loading(){
-    let loading = this.loadingController.create({
-      content: 'Por favor, aguarde...',
-      spinner: 'bubbles'
-    });
-
-    loading.present();
-
-    return loading;
+  showPageBar(id: string) {
+    localStorage.setItem('searchedBar', JSON.stringify(id));
+    this.navCtrl.parent.push(SearchedBarPage);
   }
 
 }
