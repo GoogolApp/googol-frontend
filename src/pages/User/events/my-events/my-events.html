@@ -1,4 +1,5 @@
 <ion-content padding>
+    <br/><br/>
     <p *ngIf="events.length === 0" class="text-default-medium" text-center> Você ainda não criou nenhum evento!</p>
     <googol-card *ngFor="let myEvent of events" [myEvent]="myEvent" [reloadView]="reload" action="CONFIRM_PRESENCE"></googol-card>
 </ion-content>
