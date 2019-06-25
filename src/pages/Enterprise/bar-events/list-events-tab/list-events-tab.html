@@ -1,4 +1,5 @@
 <ion-content padding class="barEvents">
   <p *ngIf="events.length === 0" class="text-default-medium" text-center> {{emptyCollectionMessage}}</p>
   <bar-events-card *ngFor="let event of events" [event]="event" [confirmEventCb]="confirmEventCb" [removeEventCb]="removeEventCb"></bar-events-card>
+  <br/><br/><br/>
 </ion-content>
